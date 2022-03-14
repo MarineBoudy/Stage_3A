@@ -20,6 +20,13 @@ bookdown::gitbook:
       after: |
         <li><a href="https://github.com/GitHubID/Repository" target="blank">Published with bookdown</a></li>
     download: "pdf"
+        
+  includes:
+
+    in_header: hypothesis.html
+
+    before_body: open_review_block.html
+    
 bookdown::bs4_book:
   css: bs4_style.css
   theme:
