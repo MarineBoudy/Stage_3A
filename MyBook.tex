@@ -321,7 +321,7 @@
 
 \author{Authors' names}
 
-\date{2022-03-14}
+\date{2022-03-16}
 
 
 % Include headers (preamble.tex) here
@@ -470,6 +470,122 @@ The entire book is created by clicking on the \emph{Build Book} button in the RS
 The button's drop-down list allows you to create all documents or limit yourself to one format.
 
 \mainmatter
+
+\hypertarget{point-duxe9tape}{%
+\chapter{Point d'étape}\label{point-duxe9tape}}
+
+\hypertarget{probluxe9matique-du-stage}{%
+\section{Problématique du stage}\label{probluxe9matique-du-stage}}
+
+En en Guyane française, les espèces exploitées ont majoritairement un comportement semi-tolérantes ou tolérantes à la lumière, on les trouve principalement en forêt peu perturbées par les activités anthropiques. Afin de garantir la durabilité de la ressource en bois il est donc nécessaire que les méthodes d'exploitation forestières permettent la régénération des espèces exploitées afin de garantir le potentiel de reproduction de ces dernières : dans le cas des forêts guyanaises, cela passe par le maintien d'une dynamique de peuplement le plus proche possible de la dynamique naturelle. (Guide sylviculture ONF 2014). La norme pour les aménagements forestiers est aujourd'hui l'exploitation faible impact depuis 2010 (ONF,2017) .Cette méthode doit garantir « une opération d'exploitation forestière intensément planifiée, précautionneusement mise en œuvre et contrôlée afin de minimiser son impact sur le peuplement et les sols forestiers, et se basant habituellement sur une sélection des individus à abattre (FAO,2004) ». Les préconisations liées à l'exploitation sont ainsi réunie dans la Charte EFI: désignation, exploitation d'une faible densité de tige à l'hectare, rotations de 65 ans\ldots{}
+
+La modélisation de la structure et de la dynamique des peuplements peut contribuer à évaluer les impacts de l'exploitation et des autres perturbations d'origine anthropique ou climatiques sur les peuplements forestiers, un des moyens mis en œuvre est la modélisation de la structure ou de la dynamique des peuplements (Fargeon et al, 2016),(Fischer et al, 2016)(Gourlet-Fleury et al,2005) . Or, un des manques de ces modèles concerne les stades de développement des arbres de diamètre inférieurs à 10 cm (Gourlet-Fleury et al). En effet, peu de données exploitables sont disponibles sur la croissance et les affinités environnementales de ces stades ontogéniques, et la majorité des modèles de croissance ne permettent l'analyse des individus qu'à partir de 10 cm de diamètre (Haurault et al, 2010).
+
+La lumière disponible serait un des principaux facteurs abiotiques influençant la croissance de la régénération. (Poorter, 1999),(Rüger et al,2011),(Laurans et al 2012),(Sheil, 2006),(Stark et al, 2015).Or, en forêt tropicale humide, la mise en lumière des semis se fait principalement à proximité de zone de trouées ou « chablis ». L'ouverture de trouées provient d'une part de phénomènes naturels tels que la chute d'arbres brisés ou déracinés, la chute de grosses branches ; l'exploitation forestière génère également des trouées à l'emplacement des arbres exploités, des pistes et des places de retournement ou de dépôt. Fréquence de formation variable, vitesse de fermeture aussi.
+
+Plusieurs études ont ainsi cherché à modéliser l'impact de la lumière sur la croissance des différents stades de développement en utilisant les trouées en tant que proxi de la lumière disponible.(Hérault, 2010).
+
+Aujourd'hui, les données LiDAR permettent de mieux appréhender la répartition spatiale et la dynamique des trouées (Hunter et al, 2015), (Pinagé et al, 2019),(Vepakomma et al 2018), (Goulamoussenne et al, 2017).
+
+La thèse intitulée « Effet de la dynamique de canopée de forêt exploitée sur les populations d'espèces d'arbres récoltées en Guyane » en appui duquel a lieu ce stage va aborder la question de la modélisation de la croissance de 11 espèces considérées comme semi-héliophiles (trouver source définition semi-héliophiles), les 7 premières appartenant aux Essences Commerciales Majeures Principales(ECMP) en intégrant le facteur lumière. Le stage se centrera autour de la modélisation du recrutement des espèces étudiées, en intégrant le facteur lumière. Ces modèles seront dans une étape ultérieure intégrée à un simulateur de dynamique du peuplement (SELVA).
+
+Ainsi, ce stage a pour objectif de répondre aux questions suivantes :
+1) Quelles variables retenir pour caractériser la présence de la régénération d'espèces ligneuses exploitées au stade juvénile (diamètre supérieur à 10cm) ?
+La lumière étant un facteur environnemental important pour la croissance des individus, quelles sont les conditions de lumière qui déterminent la croissance différentielle de l'espèce étudiées ?
+En particulier, qu'en est-il pour les espèces dont les juvéniles ont un caractère semi-héliophiles ?
+
+Pour chacune des espèces semis-héliophiles étudiées, il s'agit d'une part d'identifier les variables à expliquer, ainsi que les variables explicatives.
+
+Parmi les variables à expliquer, plusieurs ont déjà étés étudiées avec des résultats variables selon l'espèce et le site d'étude :
+
+\begin{itemize}
+\item
+  nombre d'individus par espèce
+\item
+  densité d'individus par espèce à l'hectare,
+\item
+  hauteur moyenne, médiane et cumulée des individus
+\end{itemize}
+
+Plusieurs variables explicatives de l'influence de la lumière sont envisagées :
+
+\begin{itemize}
+\item
+  Distance de la placette à la trouée,
+\item
+  surface de la trouée la plus proche
+\item
+  Surface de la placette impactée par le chablis (création de zones tampon de 5, 10 ou 15m autour du chablis et analyse de la surface de recouvrement entre les zones tampon et la placette)
+\item
+  Hauteur moyenne, dominante, quartiles des arbres de la canopée entourant le chablis, mesurés dans des zones tampon autour du chablis
+\end{itemize}
+
+D'autres variables explicatives autres que des proxi de la lumière sont envisagées :
+
+\begin{itemize}
+\item
+  le stade ontogénique des semis (via un rapport DBH/DBH95 ou H/H95)
+\item
+  la compétition vis-à-vis des espèces ligneuses présentes dans les régénérations, autres que celles étudiées
+\item
+  l'indice TWI
+\end{itemize}
+
+Des modèles de présence-absence Zero-inflated Poisson seront construits à partir des variables les plus pertinentes pour chaque espèce.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Comment intégrer les informations obtenues par les modèles précédents dans un modèle de recrutement ?
+\end{enumerate}
+
+Il s'agira de construire le modèle de recrutement le plus adapté pour chaque espèce étudiée. Les modèles ZIP construit pour chaque espèce devront être intégré dans les modèles de recrutement choisi.
+
+\hypertarget{duxe9rouluxe9-du-stage}{%
+\section{Déroulé du stage}\label{duxe9rouluxe9-du-stage}}
+
+Afin de répondre au question précédentes, le stage va se diviser en une phase d'inventaire de terrain et une phase d'analyse et de modélisation, le planning étant décrit en figure x (chronogramme à insérer).
+
+Le terrain se fera dans les forêts de Paracou et Régina, pour lesquels des données d'inventaires et des LiDAR (à partir desquels une pré-identification des zones de trouées a été faite) sont disponibles.
+
+Protocole d'échantillonnage:
+
+Les trouées de plus de 10m2 sont préalablement repérées via le MNC issu des données LiDAR. Ces trouées sont donc géo référencées. Lors de la phase terrain, chacune de ces trouées sera visitée. Un inventaire est réalisé dans les cas où un semencier d'une des espèces cibles est présent à proximité de la trouées, et (ou ?) si des individus de notre liste d'espèce se trouve au stade de régénération dans la trouée en question.
+
+Protocole d'inventaire:
+Les espèces inventoriées sont les suivantes: Dicorynia Guianensis, Quaela rosa, Eperua falcata, Eperua Grandiflora, Ruitzeriana albiflora, Peltogyne spp, Manilkara bidentata, Manilkara uberi, Serotinia rubra, Goupia Glabra, Bagassa guianensis, Vouacapoua americana.
+
+Au niveau des trouées d'intérêt repérées via les données lidar, 4 placettes de 5m de rayon seront réalisées par trouées :
+
+\begin{itemize}
+\item
+  Une placette aura pour centre la souche de l'arbre exploité(ou tombé naturellement ? que fait-on dans ce cas?)
+\item
+  Une 2\textsuperscript{e} aura pour centre le houppier de l'arbre
+\item
+  Une 3\textsuperscript{e} est placée en lisière du chablis
+\item
+  Une 4\textsuperscript{e} est placée à distance du chablis ( comment on choisit la distance au chablis?)
+\end{itemize}
+
+Dans chaque placette sont inventoriés les individus des 11 espèces présentant une hauteur supérieure à 30 cm et un diamètre inférieur à 10 cm:
+
+\begin{itemize}
+\item
+  La hauteur de chaque individu est mesurée à l'aide d'un télémètre(?)
+\item
+  Le diamètre des tiges de plus de 1,3m de haut est mesuré au pied à coulisse.
+\end{itemize}
+
+On mesure également la hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèce à inventorier. Cette mesure permet d'avoir une idée de la compétition entre nos espèces d'intérêt et les autres.
+
+Effort d'échantillonnage:
+
+En moyenne, 12 placettes d'inventaire sont réalisée en une journée 2 terrain avec 2 opérateurs.
+
+12 semaines soit 60 jours de terrain sont prévu, une marge de quelques jours étant nécessaire du fait des conditions météorologiques. Ainsi, 720 placettes pourront, au maximum, être réalisées dans le cadre de ce stage. En plus de cet inventaire, les données de 2 stages de 2 mois réalisée en 2021 et 2022 (Van, der Meersh,2022 et Pierre-Justin, 2021) selon le même protocole seront intégrées à l'analyse.
 
 \hypertarget{getting_started}{%
 \chapter{Getting Started}\label{getting_started}}

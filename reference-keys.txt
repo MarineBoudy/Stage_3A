@@ -2,6 +2,9 @@ fig:pressure
 fig:pressure2
 tab:kable
 eq:disk
+point-détape
+problématique-du-stage
+déroulé-du-stage
 getting_started
 index
 bookdown.yml
