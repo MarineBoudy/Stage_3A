@@ -16,9 +16,9 @@ bookdown::gitbook:
       github: yes
     toc:
       before: |
-        <li><a href="./">Title of the Memoir</a></li>
+        <li><a href="./">Memoire Marine Boudy</a></li>
       after: |
-        <li><a href="https://github.com/GitHubID/Repository" target="blank">Published with bookdown</a></li>
+        <li><a href="https://github.com/MarineBoudy/Stage_3A" target="blank">Published with bookdown</a></li>
     download: "pdf"
         
   includes:
@@ -31,5 +31,5 @@ bookdown::bs4_book:
   css: bs4_style.css
   theme:
     primary: "#096B72"
-  repo: https://github.com/GitHubID/Repository
+  repo: https://github.com/MarineBoudy/Stage_3A
 bookdown::word_document2: default

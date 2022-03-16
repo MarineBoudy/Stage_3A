@@ -48,46 +48,6 @@
 % Strikeout
 
 % Necessary for code chunks
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 
 % Listings package
 
@@ -303,7 +263,7 @@
 \usepackage{hyperref}
 \hypersetup{
   pdftitle={Memoir Template},
-  pdfauthor={Authors' names},
+  pdfauthor={Marine Boudy},
   colorlinks=true,
   linkcolor=Maroon,
   citecolor=Blue,
@@ -319,7 +279,7 @@
 
 \title{Memoir Template}
 
-\author{Authors' names}
+\author{Marine Boudy}
 
 \date{2022-03-16}
 
@@ -435,64 +395,34 @@ Leave an empty line for line breaks.}
 \chapter*{Introduction}\label{introduction}}
 \addcontentsline{toc}{chapter}{Introduction}
 
-This document allows you to create a book in PDF format (and ePub format) at the same time as an HTML version to be published on the web.
-The syntax is that of \textbf{Markdown} with some extensions.
+Ce gitbook est un document de travail provisoire, qui servira de support pour le suivi du stage de fin d'étude et la rédaction du mémoire de fin d'études de Marine Boudy.
 
-The \textbf{bookdown} package must be installed from CRAN or GitHub:
-
-\scriptsize
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(}\StringTok{"bookdown"}\NormalTok{)}
-\CommentTok{\# or the development version}
-\CommentTok{\# devtools::install\_github(\textquotesingle{}rstudio/bookdown\textquotesingle{})}
-\end{Highlighting}
-\end{Shaded}
-
-\normalsize
-
-The book is organized in chapters.
-Each chapter is an Rmd file, whose name normally begins with its number (e.g.~\texttt{01-intro.Rmd}).
-All Rmd files in the project folder are actually treated as chapters, sorted by filename.
-The index.Rmd file is special: it contains the document header and the first chapter.
-
-This first chapter is placed in the foreword of the printed book: it should not be numbered (hence the \texttt{\{-\}} code next to the title) in the HTML version.
-It must end with the LaTeX command \texttt{\textbackslash{}mainmatter} which marks the beginning of the body of the book.
-
-The outline levels start with \texttt{\#} for chapters (only one per file), \texttt{\#\#} for sections, etc.
-
-Compilation in PDF format is done by XeLaTeX, which must be installed.
-
-While writing, it is strongly advised to create only the HTML file, which is much faster than a LaTeX compilation.
-Each chapter can be viewed very quickly by clicking on the \emph{Knit} button above the source window.
-The entire book is created by clicking on the \emph{Build Book} button in the RStudio \emph{Build} window.
-The button's drop-down list allows you to create all documents or limit yourself to one format.
-
-\mainmatter
-
-\hypertarget{point-duxe9tape}{%
-\chapter{Point d'étape}\label{point-duxe9tape}}
+\hypertarget{point-duxe9tape-du-1er-mois-de-stage}{%
+\chapter{Point d'étape du 1er mois de stage}\label{point-duxe9tape-du-1er-mois-de-stage}}
 
 \hypertarget{probluxe9matique-du-stage}{%
 \section{Problématique du stage}\label{probluxe9matique-du-stage}}
 
-En en Guyane française, les espèces exploitées ont majoritairement un comportement semi-tolérantes ou tolérantes à la lumière, on les trouve principalement en forêt peu perturbées par les activités anthropiques. Afin de garantir la durabilité de la ressource en bois il est donc nécessaire que les méthodes d'exploitation forestières permettent la régénération des espèces exploitées afin de garantir le potentiel de reproduction de ces dernières : dans le cas des forêts guyanaises, cela passe par le maintien d'une dynamique de peuplement le plus proche possible de la dynamique naturelle. (Guide sylviculture ONF 2014). La norme pour les aménagements forestiers est aujourd'hui l'exploitation faible impact depuis 2010 (ONF,2017) .Cette méthode doit garantir « une opération d'exploitation forestière intensément planifiée, précautionneusement mise en œuvre et contrôlée afin de minimiser son impact sur le peuplement et les sols forestiers, et se basant habituellement sur une sélection des individus à abattre (FAO,2004) ». Les préconisations liées à l'exploitation sont ainsi réunie dans la Charte EFI: désignation, exploitation d'une faible densité de tige à l'hectare, rotations de 65 ans\ldots{}
+En Guyane française, les espèces exploitées ont majoritairement un comportement semi-tolérant ou tolérant à la lumière, on les trouve principalement en forêt peu perturbée par les activités anthropiques. Afin de garantir la durabilité de la ressource en bois il est donc nécessaire que les méthodes d'exploitation forestières permettent la régénération des espèces exploitées, pour garantir le potentiel de reproduction de ces dernières : dans le cas des forêts guyanaises, cela passe par le maintien d'une dynamique de peuplement le plus proche possible de la dynamique naturelle (Guide sylviculture ONF 2014). La norme pour les aménagements forestiers est aujourd'hui l'exploitation faible impact depuis 2010 (ONF,2017). Cette méthode doit garantir « une opération d'exploitation forestière intensément planifiée, précautionneusement mise en œuvre et contrôlée afin de minimiser son impact sur le peuplement et les sols forestiers, et se basant habituellement sur une sélection des individus à abattre» (FAO,2004). Les préconisations liées à l'exploitation sont ainsi réunies dans la Charte EFI: désignation, exploitation d'une faible densité de tige à l'hectare, rotations de 65 ans\ldots{}
 
-La modélisation de la structure et de la dynamique des peuplements peut contribuer à évaluer les impacts de l'exploitation et des autres perturbations d'origine anthropique ou climatiques sur les peuplements forestiers, un des moyens mis en œuvre est la modélisation de la structure ou de la dynamique des peuplements (Fargeon et al, 2016),(Fischer et al, 2016)(Gourlet-Fleury et al,2005) . Or, un des manques de ces modèles concerne les stades de développement des arbres de diamètre inférieurs à 10 cm (Gourlet-Fleury et al). En effet, peu de données exploitables sont disponibles sur la croissance et les affinités environnementales de ces stades ontogéniques, et la majorité des modèles de croissance ne permettent l'analyse des individus qu'à partir de 10 cm de diamètre (Haurault et al, 2010).
+La modélisation de la structure et de la dynamique des peuplements peut contribuer à évaluer les impacts de l'exploitation et des autres perturbations d'origine anthropique ou climatiques sur les peuplements forestiers (Fargeon et al, 2016),(Fischer et al, 2016),(Gourlet-Fleury et al,2005) . Or, un des manques de ces modèles concerne les stades de développement des arbres de diamètre inférieurs à 10 cm (Gourlet-Fleury et al). En effet, peu de données exploitables sont disponibles sur la croissance et les affinités environnementales de ces stades ontogéniques, et la majorité des modèles de croissance ne permettent l'analyse des individus qu'à partir de 10 cm de diamètre (Herault et al, 2010).
 
-La lumière disponible serait un des principaux facteurs abiotiques influençant la croissance de la régénération. (Poorter, 1999),(Rüger et al,2011),(Laurans et al 2012),(Sheil, 2006),(Stark et al, 2015).Or, en forêt tropicale humide, la mise en lumière des semis se fait principalement à proximité de zone de trouées ou « chablis ». L'ouverture de trouées provient d'une part de phénomènes naturels tels que la chute d'arbres brisés ou déracinés, la chute de grosses branches ; l'exploitation forestière génère également des trouées à l'emplacement des arbres exploités, des pistes et des places de retournement ou de dépôt. Fréquence de formation variable, vitesse de fermeture aussi.
+La lumière disponible serait un des principaux facteurs abiotiques influençant la croissance de la régénération. (Poorter, 1999),(Rüger et al,2011),(Laurans et al 2012),(Sheil et al, 2006),(Stark et al, 2015). Or, en forêt tropicale humide, la mise en lumière des semis se fait principalement à proximité de zone de trouées ou « chablis ». L'ouverture de trouées provient d'une part de phénomènes naturels tels que la chute d'arbres brisés ou déracinés, la chute de grosses branches ; l'exploitation forestière génère également des trouées à l'emplacement des arbres exploités, des pistes et des places de retournement ou de dépôt.
 
-Plusieurs études ont ainsi cherché à modéliser l'impact de la lumière sur la croissance des différents stades de développement en utilisant les trouées en tant que proxi de la lumière disponible.(Hérault, 2010).
+Plusieurs études ont ainsi cherché à modéliser l'impact de la lumière sur la croissance des différents stades de développement en utilisant les trouées en tant que proxi de la lumière disponible.(Hérault,2010). Par ailleur, les données LiDAR permettent aujourd'hui de mieux appréhender la répartition spatiale et la dynamique des trouées (Hunter et al, 2015), (Pinagé et al, 2019),(Vepakomma et al 2018), (Goulamoussenne et al, 2017).
 
-Aujourd'hui, les données LiDAR permettent de mieux appréhender la répartition spatiale et la dynamique des trouées (Hunter et al, 2015), (Pinagé et al, 2019),(Vepakomma et al 2018), (Goulamoussenne et al, 2017).
-
-La thèse intitulée « Effet de la dynamique de canopée de forêt exploitée sur les populations d'espèces d'arbres récoltées en Guyane » en appui duquel a lieu ce stage va aborder la question de la modélisation de la croissance de 11 espèces considérées comme semi-héliophiles (trouver source définition semi-héliophiles), les 7 premières appartenant aux Essences Commerciales Majeures Principales(ECMP) en intégrant le facteur lumière. Le stage se centrera autour de la modélisation du recrutement des espèces étudiées, en intégrant le facteur lumière. Ces modèles seront dans une étape ultérieure intégrée à un simulateur de dynamique du peuplement (SELVA).
+La thèse intitulée « Effet de la dynamique de canopée de forêt exploitée sur les populations d'espèces d'arbres récoltées en Guyane » en appui duquel a lieu ce stage va aborder la question de la modélisation de la croissance de 11 espèces considérées comme semi-héliophiles (trouver source définition semi-héliophiles), les 7 premières appartenant aux Essences Commerciales Majeures Principales(ECMP) en intégrant le facteur lumière. Le stage se centrera autour de la modélisation du recrutement des espèces étudiées, en intégrant le facteur lumière. Ces modèles seront dans une étape ultérieure intégrés à un simulateur de dynamique du peuplement (SELVA).
 
 Ainsi, ce stage a pour objectif de répondre aux questions suivantes :
-1) Quelles variables retenir pour caractériser la présence de la régénération d'espèces ligneuses exploitées au stade juvénile (diamètre supérieur à 10cm) ?
-La lumière étant un facteur environnemental important pour la croissance des individus, quelles sont les conditions de lumière qui déterminent la croissance différentielle de l'espèce étudiées ?
-En particulier, qu'en est-il pour les espèces dont les juvéniles ont un caractère semi-héliophiles ?
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  Quelles variables retenir pour caractériser la présence de la régénération d'espèces ligneuses exploitées au stade juvénile (diamètre supérieur à 10cm) ?
+  La lumière étant un facteur environnemental important pour la croissance des individus, quelles sont les conditions de lumière qui déterminent la croissance différentielle de l'espèce étudiées ?
+  En particulier, qu'en est-il pour les espèces dont les juvéniles ont un caractère semi-héliophiles ?
+\end{enumerate}
 
 Pour chacune des espèces semis-héliophiles étudiées, il s'agit d'une part d'identifier les variables à expliquer, ainsi que les variables explicatives.
 
@@ -541,20 +471,39 @@ Des modèles de présence-absence Zero-inflated Poisson seront construits à par
   Comment intégrer les informations obtenues par les modèles précédents dans un modèle de recrutement ?
 \end{enumerate}
 
-Il s'agira de construire le modèle de recrutement le plus adapté pour chaque espèce étudiée. Les modèles ZIP construit pour chaque espèce devront être intégré dans les modèles de recrutement choisi.
+Il s'agira de construire le modèle de recrutement le plus adapté pour chaque espèce étudiée. Les modèles ZIP construit pour chaque espèce devront être intégrés dans les modèles de recrutement choisis.
 
 \hypertarget{duxe9rouluxe9-du-stage}{%
 \section{Déroulé du stage}\label{duxe9rouluxe9-du-stage}}
 
-Afin de répondre au question précédentes, le stage va se diviser en une phase d'inventaire de terrain et une phase d'analyse et de modélisation, le planning étant décrit en figure x (chronogramme à insérer).
+Afin de répondre aux questions précédentes, le stage va se diviser en une phase d'inventaire de terrain et une phase d'analyse et de modélisation, le planning étant décrit en figure x (chronogramme à insérer).
 
-Le terrain se fera dans les forêts de Paracou et Régina, pour lesquels des données d'inventaires et des LiDAR (à partir desquels une pré-identification des zones de trouées a été faite) sont disponibles.
+\scriptsize
 
-Protocole d'échantillonnage:
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/chronogramme} 
+
+}
+
+\caption{Chronogramme du stage}\label{fig:planning}
+\end{figure}
+
+\normalsize
+
+Le terrain se fera dans les forêts de Paracou et Régina Saint-Georges, pour lesquelles des données d'inventaires des arbres adultes sont disponible, ainsi que des données issues du LiDAR, à partir desquels une pré-identification des zones de trouées est faite.
+
+\textbf{Protocole d'échantillonnage :}
 
 Les trouées de plus de 10m2 sont préalablement repérées via le MNC issu des données LiDAR. Ces trouées sont donc géo référencées. Lors de la phase terrain, chacune de ces trouées sera visitée. Un inventaire est réalisé dans les cas où un semencier d'une des espèces cibles est présent à proximité de la trouées, et (ou ?) si des individus de notre liste d'espèce se trouve au stade de régénération dans la trouée en question.
 
-Protocole d'inventaire:
+\textbf{Effort d'échantillonnage:}
+
+En moyenne, 12 placettes d'inventaire sont réalisées en une journée 2 terrain avec 2 opérateurs.
+
+12 semaines soit 60 jours de terrain sont prévus, une marge de quelques jours étant nécessaire du fait des conditions météorologiques. Ainsi, 720 placettes pourront, au maximum, être réalisées dans le cadre de ce stage. En plus de cet inventaire, seront intégrées à l'analyse les données de 2 stages de 2 mois réalisés en 2021(Pierre-Justin, 2021) et 2022(Van der Meersh,2022) selon le même protocole .
+
+\textbf{Protocole d'inventaire :}
 Les espèces inventoriées sont les suivantes: Dicorynia Guianensis, Quaela rosa, Eperua falcata, Eperua Grandiflora, Ruitzeriana albiflora, Peltogyne spp, Manilkara bidentata, Manilkara uberi, Serotinia rubra, Goupia Glabra, Bagassa guianensis, Vouacapoua americana.
 
 Au niveau des trouées d'intérêt repérées via les données lidar, 4 placettes de 5m de rayon seront réalisées par trouées :
@@ -579,582 +528,7 @@ Dans chaque placette sont inventoriés les individus des 11 espèces présentant
   Le diamètre des tiges de plus de 1,3m de haut est mesuré au pied à coulisse.
 \end{itemize}
 
-On mesure également la hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèce à inventorier. Cette mesure permet d'avoir une idée de la compétition entre nos espèces d'intérêt et les autres.
-
-Effort d'échantillonnage:
-
-En moyenne, 12 placettes d'inventaire sont réalisée en une journée 2 terrain avec 2 opérateurs.
-
-12 semaines soit 60 jours de terrain sont prévu, une marge de quelques jours étant nécessaire du fait des conditions météorologiques. Ainsi, 720 placettes pourront, au maximum, être réalisées dans le cadre de ce stage. En plus de cet inventaire, les données de 2 stages de 2 mois réalisée en 2021 et 2022 (Van, der Meersh,2022 et Pierre-Justin, 2021) selon le même protocole seront intégrées à l'analyse.
-
-\hypertarget{getting_started}{%
-\chapter{Getting Started}\label{getting_started}}
-
-\emph{RStudio} in version higher than 1 must be used.
-The \textbf{bookdown} package must be installed.
-
-For the creation of the PDF file, an installation of LaTeX is necessary.
-Under Windows, use \href{https://miktex.org/download}{MikTex}.
-The automatic download of missing packages (under Windows: MiKTeX settings, \emph{Install missing packages=Yes}) is required.
-
-The main file is \emph{index.Rmd} which contains the description of the book in its header.
-All other \emph{.Rmd} files in the folder contain a chapter: the order of chapters is that of the file names, sorted alphabetically.
-The \emph{references.bib} file contains the bibliography.
-
-The basic parameters of the project must be entered in the following files.
-
-\hypertarget{index}{%
-\section{index.Rmd}\label{index}}
-
-In the file header, enter the title of the work and the name of the author(s).
-
-\begin{verbatim}
-title: "Title of the Memoir" 
-author: "Authors' names"
-\end{verbatim}
-
-The date field may be kept to display the knitting date automatically.
-
-The \texttt{url} field contains the link to the GitHub pages of the project.
-It is used by \texttt{build\_readme()}.
-
-The \texttt{github-repo} field contains the name of the repository of the project on GitHub.
-It is used to build a link to the repository from the menu bar of the GitBook version of the document.
-
-\texttt{description} is used by \texttt{build\_readme()} and to build an HTML meta tag intended for search engines.
-\texttt{cover-image} is the name of an image file that will be used by social networks when the GitBook is shared.
-Twitter uses both to build a link to the project.
-If a PDF file is used as the PDF book cover (see below), a good idea is to export it to PNG and declare the PNG file in \texttt{cover-image}.
-
-The cover will be:
-
-\begin{itemize}
-\tightlist
-\item
-  that of a book if the \emph{maintitlepage} statement is present.
-  The content of \emph{epigraph} and \emph{credits} will be written on page 2, with \texttt{images/logo.pdf}.
-\item
-  the first page of the PDF file declared in the \emph{pdftitlepage} instruction if it is present.
-\end{itemize}
-
-Delete one of the two instructions in the header or both covers will be built, like in the gallery\footnote{\url{https://ericmarcon.github.io/memoiR/gallery/memoir/MyBook.pdf}}.
-
-The languages are specified according to the IETF language tags, such as ``en-US''.
-The main language (\texttt{lang}) is that of the structure of the document, translating elements such as ``chapter''.
-The other languages (\texttt{otherlangs}) can be used to switch language inside the PDF document to benefit from correct hyphenation.
-
-The name of the \texttt{.bib} file containing the references is in \texttt{bibliography}.
-It must be entered with its \texttt{.bib} extension.
-
-The default citation style in HTML outputs is \texttt{chicago-author-date.csl}.
-Any valid csl file can be used: uncomment the line and enter the file name.
-Note that PDF outputs use their own style: see below.
-
-LaTeX specific options are:
-
-\begin{itemize}
-\tightlist
-\item
-  \emph{documentclass}: the document class is \emph{memoir} for this template.
-  The options of the \emph{memoir} class are listed, not to be changed normally.
-\item
-  \emph{papersize}: A4.
-\item
-  \emph{fontsize}: 11pt.
-\item
-  \emph{mainfont} and \emph{mathfont} may replace the standard Computer Modern font.
-  Tex Gyre fonts\footnote{\url{https://www.ctan.org/pkg/tex-gyre}} are a good choice.
-  Both \textbf{tex-gyre} and \textbf{tex-gyre-math} LaTeX packages must be available.
-\item
-  \emph{MemoirChapStyle} and \emph{MemoirPageStyle} define the style of the document.
-  Two styles are favored: \emph{companion} for documents with large outer margins containing notes, references and captions, or \emph{daleif1} and \emph{Ruled} for more classical layouts with small margins.
-\item
-  Margins: choose whether to use \emph{largemargins} or not, and adjust the other parameters according to that.
-  Margin values should work well in most cases.
-\item
-  \emph{toc-depth}: number of levels in the table of contents, 2 by default (i.e.~\texttt{\#\#\#} subsections are shown).
-\item
-  \emph{secnum-depth}: The lowest numbered level in the document. Default is \texttt{section} (i.e.~\texttt{\#\#}).
-  Alternatives are \texttt{chapter} (i.e.~\texttt{\#}), \texttt{subsection} (i.e.~\texttt{\#\#\#}) or \texttt{subsubsection} (i.e.~\texttt{\#\#\#\#}).
-\item
-  \emph{lot} and \emph{lof} to add lists of tables and figures.
-\end{itemize}
-
-Bibliography is managed by BibLaTeX, whose options should not be changed except for the style.
-It is \texttt{verbose-inote} in documents with large margins to show the full citations in them.
-The citations are called as notes in the text.
-\texttt{authoryear-ibid} is suited for small-margin documents: the citations in the text contain author and year, and no footnote is used.
-The line \texttt{pageref=true} must be deleted or commented out if this style is used or an error may occur during LaTeX compilation.
-
-\texttt{longbibliography} formats the bibliography on two columns with a small font when it is set to \texttt{true}.
-If \texttt{false}, the regular font is used in a single column with small margins.
-
-The back cover appears in PDF outputs only.
-It is designed to to display abstract and keyword in several languages if necessary.
-The items of \texttt{backcover} are a list:
-
-\begin{itemize}
-\tightlist
-\item
-  language: the name of the language, that will be passed to the LaTeX command \texttt{\textbackslash{}selectlanguage\{\}}.
-\item
-  abstract: the content of the abstract.
-\item
-  keywords: a list of keywords.
-\item
-  abstractlabel and keywordlabel: the localized text to print before abstract and keywords.
-\end{itemize}
-
-\texttt{backcoverfontsize} may be changed better fit the page size, according to the length of the abstracts.
-
-Some options should not be modified, including:
-
-\begin{itemize}
-\tightlist
-\item
-  \emph{fig\_crop}: yes to allow cropping of excess margins of figures.
-  GhostScript must be installed.
-  If it is not, or in order to save computing time, the option may be set to \texttt{no}.
-\end{itemize}
-
-Some may be added to the header:
-
-\begin{itemize}
-\tightlist
-\item
-  \emph{fontfamily}: \href{https://en.wikibooks.org/wiki/LaTeX/Fonts\#Font_families}{font}, \emph{lmodern} by default.
-\item
-  \emph{linestretch}: line spacing, 1 by default.
-\end{itemize}
-
-For a student thesis, prepare the cover page with Word, Powerpoint or a DTP program and save it in PDF format, in A4 size.
-Only the first page of the PDF is used.
-
-\hypertarget{bookdown.yml}{%
-\section{\_bookdown.yml}\label{bookdown.yml}}
-
-Enter the name of the Rmd file that will be the result of the merging of all chapters and choose if it should be destroyed after use.
-It will also be the name of the PDF and Word files.
-The default options will suit most uses.
-
-\begin{verbatim}
-book_filename: "MyBook"
-delete_merged_file: true
-\end{verbatim}
-
-If the project is hosted on GitHub, indicate its address.
-Otherwise, delete the line.
-
-\begin{verbatim}
-repo: "https://github.com/GitHubID/Repository"
-\end{verbatim}
-
-The knitted files are stored in the output directory.
-\texttt{docs} is the good choice for GitHub Pages.
-
-\hypertarget{output.yml}{%
-\section{\_output.yml}\label{output.yml}}
-
-Customize the table of contents in HTML format.
-
-\begin{verbatim}
-config:
-  toc:
-    before: |
-      <li><a href="./">Bookdown book</a></li>
-    after: |
-      <li><a href="https://github.com/GitHubID/Repository"
-\end{verbatim}
-
-Update the repository in the bs4 book options.
-
-\begin{verbatim}
-bookdown::bs4_book:
- repo: https://github.com/GitHubID/Repository
-\end{verbatim}
-
-\hypertarget{multilingual-documents}{%
-\section{Multilingual documents}\label{multilingual-documents}}
-
-Languages are declared in the document header.
-
-The main language of the document (\texttt{lang}) changes the name of some elements, such as the table of contents.
-To use other languages in the text, they must be declared in \texttt{otherlangs}.
-
-Changing the language has no effect in HTML, but changes hyphenation in PDF output.
-
-The language change in basic markdown format,
-
-\begin{verbatim}
-::: {lang=en-US}
-\end{verbatim}
-
-is not supported by R Markdown.
-See the correct syntax in section \ref{sec:languages}.
-
-\hypertarget{syntax}{%
-\chapter{Syntax}\label{syntax}}
-
-\scriptsize
-
-\begin{Summary}
-Deliver the take-home message here.
-
-It can contain several paragraphs.
-\end{Summary}
-
-\normalsize
-
-The syntax of \emph{R Mardown} extended by \emph{Bookdown} is recalled here.
-
-In RStudio, create a new document of type Document R Markdown.
-The wizard allows you to choose between different formats.
-
-Click on \emph{From template}: from templates installed by packages.
-The memoiR package templates are displayed: choose \emph{Memoir}.
-
-Each chapter of the book is an Rmd file, whose name normally starts with its number (e.g.~\texttt{01-intro.Rmd}).
-All Rmd files in the project folder are actually treated as chapters, sorted by file name, including those provided by the template (startup and syntax) which should be deleted except for \texttt{99-references.Rmd} which contains the bibliography, placed at the end.
-The \texttt{index.Rmd} file is special: it contains the document header and the first chapter.
-
-Each other file starts with a top-level title:
-
-\begin{verbatim}
-# Title of the Chapter
-\end{verbatim}
-
-If the document is made of parts containing chapters, the file with the fist chapter of each part must start with:
-
-\begin{verbatim}
-# (PART) Title of the Part {-}
-  
-# Title of the Chapter
-\end{verbatim}
-
-Note the \texttt{\{-\}} instruction after the title of the part to avoid having it numbered.
-
-Appendices are introduced as a special part:
-
-\begin{verbatim}
-# (APPENDIX) Appendix {-} 
-
-# Title of the first appendix
-\end{verbatim}
-
-\hypertarget{write}{%
-\section{Write}\label{write}}
-
-The main features of Markdown are summarized here.
-A quick and complete training is offered by RStudio\footnote{\url{https://rmarkdown.rstudio.com/lesson-1.html}}.
-
-The text is written without any formatting other than line breaks.
-A simple line break has no effect on the document produced: it allows to separate sentences to simplify the tracking of the source code by git.
-
-A line break marks a paragraph change.
-
-The different levels of the plan are designated by the number of braces at the beginning of the line: \texttt{\#} for a level 1 title, \texttt{\#\#} for a level 2 title, etc.
-A space separates the hashes and the title text.
-
-Bullet lists are marked by a dash (followed by a space) at the beginning of the line.
-An empty line is required before the beginning of the list, but the elements of the list are separated by a simple line break.
-Indented lists are created by inserting 4 spaces before the dash at the beginning of the line.
-Last, numbered lists are created in the same way by replacing the hyphens by numbers, whose value does not matter.
-
-In the text, the italicized parts are surrounded by a star or an underscore (\texttt{*italic*}), while two stars mark the bold.
-
-\hypertarget{r-code}{%
-\section{R code}\label{r-code}}
-
-R code is included in code chunks (\emph{code chunks}) that are easily created by clicking on the ``Insert a new code chunk'' button above the source code window in RStudio.
-They start and end with three quotation marks on a new line.
-These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example:
-
-\begin{verbatim}
-```{r cars, echo=TRUE}
-```
-\end{verbatim}
-
-The name and options are optional: the minimum header is \texttt{\{r\}}.
-
-The most useful options are:
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{echo} to show (\texttt{=TRUE}) or hide (\texttt{=FALSE}) the code.
-\item
-  \texttt{message=FALSE} to hide the opening messages of some packages.
-\item
-  \texttt{warning=FALSE} to hide warnings.
-\end{itemize}
-
-The default options are declared in the code snippet named ``Options'' at the beginning of the Markdown document, in the \texttt{opts\_chunk\$set()} function.
-The \texttt{echo} option should be set to \texttt{FALSE} by default for a scientific article for example.
-
-When it is \texttt{TRUE}, the code is printed as follow
-
-\scriptsize
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\DecValTok{2} \SpecialCharTok{+} \DecValTok{2}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 4
-\end{verbatim}
-
-\normalsize
-
-\hypertarget{figures}{%
-\section{Figures}\label{figures}}
-
-\scriptsize
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(pressure)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-
-{\centering \includegraphics[width=\widthw]{MyBook_files/figure-latex/pressure-1} 
-
-}
-
-\caption{A full width figure}\label{fig:pressure}
-\end{figure}
-
-\normalsize
-
-Figures can be created by the R code (figure \ref{fig:pressure}).
-With Bookdown, a label is associated with each figure: its name is \texttt{fig:xxx} where \texttt{xxx} is the name of the R code snippet.
-References are made with the command \texttt{\textbackslash{}@ref(fig:xxx)}.
-
-The header of the code snippet of the figure \ref{fig:pressure} is:
-
-\begin{verbatim}
-```{r pressure, fig.cap="Title of the figure, out.width="\\widthw"}
-```
-\end{verbatim}
-
-It contains at least the name of the figure and its caption.
-
-The default width of figures is set in the option chunk in \texttt{index.Rmd}.
-It is \texttt{out.width=\textquotesingle{}80\%\textquotesingle{}} in this template, i.e.~80\% of the width of the text.
-If a full-width figure is needed, including the margin width, use \texttt{out.width="\textbackslash{}\textbackslash{}widthw"} in its code snippet.
-
-If the caption is long, the header is not easy to read.
-Also, the caption is limited to simple text.
-For more elaborate captions, it is possible to declare the caption in a separate paragraph that begins with the text \texttt{(ref:FigureName)}.
-The figure \ref{fig:pressure2} benefits from an improved caption.
-
-
-
-\scriptsize
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/pressure2-1} 
-
-}
-
-\caption{Title with \emph{italic}, math (\(\sqrt\pi\)) and reference to figure \ref{fig:pressure}}\label{fig:pressure2}
-\end{figure}
-
-\normalsize
-
-The text in \texttt{fig.cap}, ``Title of figure'' previously, is replaced by \texttt{(ref:pressure)} \emph{within the quotation marks} and the caption is entered in a paragraph starting with \texttt{(ref:pressure)} followed by a space.
-Captions are limited to a single paragraph.
-They should not contain bibliographic references or references to the figures may not find them: if necessary, cite the source of a figure in the text.
-
-Figures that are not created by R but come from files are embedded in a piece of code by the \texttt{include\_graphics()} function whose argument is the file containing the image to be displayed.
-Always place these files in the \texttt{images} folder for good organization.
-
-\hypertarget{tables}{%
-\section{Tables}\label{tables}}
-
-The horizontal - and vertical separators \textbar{} allow to draw a table according to the Markdown syntax, but it is not the best method.
-
-Tables can also be produced by R code.
-The content of the table is in a dataframe.
-The \texttt{kable} function in the \emph{knitr} package prepares the table for display and passes the result to the \texttt{kable\_styling} function in the \emph{kableExtra} package for final formatting.
-
-\scriptsize
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
-\FunctionTok{names}\NormalTok{(iris) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Sepal length ($l\_s$)"}\NormalTok{, }\StringTok{"Width"}\NormalTok{, }\StringTok{"Petal length"}\NormalTok{,}
-    \StringTok{"Width"}\NormalTok{, }\StringTok{"Species"}\NormalTok{)}
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(iris), }\AttributeTok{caption =} \StringTok{"Table created by R"}\NormalTok{, }\AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{,}
-    \AttributeTok{escape =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{    kableExtra}\SpecialCharTok{::}\FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \StringTok{"striped"}\NormalTok{,}
-        \AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{table}
-
-\caption{\label{tab:kable}Table created by R}
-\centering
-\begin{tabular}[t]{rrrrl}
-\toprule
-Sepal length ($l_s$) & Width & Petal length & Width & Species\\
-\midrule
-5.1 & 3.5 & 1.4 & 0.2 & setosa\\
-4.9 & 3.0 & 1.4 & 0.2 & setosa\\
-4.7 & 3.2 & 1.3 & 0.2 & setosa\\
-4.6 & 3.1 & 1.5 & 0.2 & setosa\\
-5.0 & 3.6 & 1.4 & 0.2 & setosa\\
-\addlinespace
-5.4 & 3.9 & 1.7 & 0.4 & setosa\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\normalsize
-
-The caption is specified by the \texttt{caption} argument and referencing is possible because the table is given a label whose name is \texttt{tab:} followed by the name of the code snippet (table \ref{tab:kable}).
-As with figures, an enhanced legend can be written in a separate paragraph.
-
-Always use the \texttt{booktabs\ =\ TRUE} argument so that the thickness of the separator lines is optimal in LaTeX.
-Since the table contains mathematics (in the name of the first column), the \texttt{escape\ =\ FALSE} option is necessary.
-
-The \texttt{bootstrap\_options\ =\ "striped"} style option provides more readable tables in HTML.
-Last, the \texttt{full\_width\ =\ FALSE} option allows you to adjust the width of the table to its content instead of occupying all the available width.
-
-\hypertarget{maths}{%
-\section{Maths}\label{maths}}
-
-Equations in LaTeX format can be inserted in line, like \(A=\pi r^2\) (code: \texttt{\$A=\textbackslash{}pi\ r\^{}2\$}) or isolated (the \$ are doubled) like \[e^{i \pi} = -1.\]
-
-They can be numbered: see equation \eqref{eq:disk}, using the \texttt{\textbackslash{}equation} environment.
-
-\begin{equation}
-  A = \pi r^2.
-  \label{eq:disk}
-\end{equation}
-
-The numbered equation is created by the following code:
-
-\begin{verbatim}
-\begin{equation}
-  A = \pi r^2.
-  \label{eq:disk}
-\end{equation}
-\end{verbatim}
-
-\hypertarget{cross-references}{%
-\section{Cross-references}\label{cross-references}}
-
-Figures and tables have an automatically generated label, identical to the name of the code snippet prefixed with \texttt{fig:} and \texttt{tab:}.
-
-For equations, the label is added manually by the code \texttt{(\textbackslash{}\#eq:xxx)} before the end of the equation.
-
-Sections can be tagged by ending their title with \texttt{\{\#yyy\}}.
-
-Bookmarks can also be placed freely in the text with the command \texttt{(ref:zzz)}.
-
-In all cases, the call to the reference is made by the command \texttt{\textbackslash{}@ref(ref:zzz)}.
-
-\hypertarget{bibliography}{%
-\section{Bibliography}\label{bibliography}}
-
-Bibliographic references in bibtex format must be included in the \texttt{.bib} file declared in the header of the Markdown document.
-
-\begin{verbatim}
-bibliography: references.bib
-\end{verbatim}
-
-They can be called in the text, between brackets by the code \texttt{{[}@CitationKey{]}}, as sidenotes \autocite{Xie2016}, or without square brackets, to include the authors' names in the text, such as \textcite{Xie2018} .
-
-Bibliography is handled by pandoc when producing Word or HTML documents.
-The bibliographic style can be specified, by adding the line
-
-\begin{verbatim}
-csl:file_name.csl
-\end{verbatim}
-
-in the document header and copying the \emph{.csl} style file into the project folder.
-The default style (if no csl is specified) is ``chicago-author-date''.
-Several thousand styles are available \footnote{\url{https://github.com/citation-style-language/styles}}.
-
-For PDF documents, the bibliography is handled by BibLaTeX, see section \ref{index}.
-
-\hypertarget{forcing-line-breaks}{%
-\section{Forcing line breaks}\label{forcing-line-breaks}}
-
-Hyphenation is handled automatically in LaTeX.
-If a word is not hyphenated correctly, add its hyphenation in the preamble of the file with the command \texttt{hyphenation} (words are separated by spaces, hyphenation locations are represented by dashes).
-
-If LaTeX can't find a solution for the line break, for example because some code is too long a non-breaking block, add the LaTeX command \texttt{\textbackslash{}break} to the line break location.
-Do not leave a space before the command.
-The HTML document ignores LaTeX commands.
-
-\hypertarget{sec:languages}{%
-\section{Languages}\label{sec:languages}}
-
-Languages are declared in the document header.
-
-The main language of the document (\texttt{lang}) changes the name of some elements, such as the table of contents.
-The change of language in the document (one of \texttt{otherlangs}) is managed in LaTeX but not in HTML by inserting on a new line the following command:
-
-\begin{verbatim}
-\selectlanguage{english}
-\end{verbatim}
-
-The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
-The \texttt{\textbackslash{}selectlanguage} command is simply ignored in HTML.
-
-Language codes are used in the header, such as \texttt{en-US} but language names are necessary in \texttt{\textbackslash{}selectlanguage\{\}}.
-Name matches are listed in table 3 of the polyglossia package documentation\footnote{\url{http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf}}.
-
-\hypertarget{chapter-summary}{%
-\section{Chapter summary}\label{chapter-summary}}
-
-The take-home message of each chapter can be displayed in a box, see the beginning of this one.
-The code is that of a code block of type ``Summary''.
-
-\begin{verbatim}
-```{block, type='Summary'}
-Some text for this block.
-```
-\end{verbatim}
-
-Its heading text is set in the header of \texttt{index.Rmd}:
-
-\begin{verbatim}
-chaptersummary: In a Nutshell
-\end{verbatim}
-
-\hypertarget{documentation}{%
-\section{Documentation}\label{documentation}}
-
-\hypertarget{user-documentation}{%
-\subsection{User documentation}\label{user-documentation}}
-
-\begin{itemize}
-\tightlist
-\item
-  The book \href{https://bookdown.org/yihui/bookdown/}{bookdown: Authoring Books and Technical Documents with R Markdown} by Yihui Xie, the author of \textbf{bookdown} and \textbf{knitr}.
-  All the necessary details for writing (writing equations, cross-references, etc.) are given.
-\item
-  The \href{https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf}{R Markdown cheat sheet} for the syntax.
-\end{itemize}
-
-\hypertarget{documentation-for-developers}{%
-\subsection{Documentation for developers}\label{documentation-for-developers}}
-
-\begin{itemize}
-\tightlist
-\item
-  \href{http://rmarkdown.rstudio.com/pdf_document_format.html\#advanced_customization}{LaTeX file format customization}.
-\item
-  The \href{https://pandoc.org/MANUAL.html}{Pandoc manual} for possible options in the YAML header.
-\end{itemize}
+La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces à inventorier est également mesurée. Cette mesure permet d'avoir une idée de la compétition entre nos espèces d'intérêt et les autres.
 
 This template is based on \emph{Bookdown} and the \emph{Memoir} LaTeX class to allow writing a book, a report, a PhD thesis, etc. in \emph{R Markdown}.
 
