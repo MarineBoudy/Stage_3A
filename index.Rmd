@@ -6,6 +6,7 @@ url: https://marineboudy.github.io/Stage_3A/
 github-repo:  MarineBoudy/Stage_3A 
 description: "Bookdown template based on LaTeX memoir class"
 cover-image: "images/logo.png"
+output: html_document
 # Title page...
 maintitlepage:
   epigraph: |
@@ -25,8 +26,8 @@ maintitlepage:
 # ... or a PDF cover
 pdftitlepage: images/cover.pdf
 # Language
-lang: en-US
-otherlangs: [fr-FR,it]
+lang: fr-FR
+otherlangs: [en-US, it]
 # Bibliography
 bibliography: references.bib
 # Citation style in HTML

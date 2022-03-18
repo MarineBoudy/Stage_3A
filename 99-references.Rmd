@@ -1,1 +1,7 @@
+---
+output: html_document
+bibliography: reference.bib
+---
+# References
+
 `r if (knitr:::is_html_output()) '# References {-}'`

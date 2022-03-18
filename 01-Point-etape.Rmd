@@ -1,4 +1,9 @@
-# Point d'étape 3e semaine de stage
+---
+output: html_document
+bibliography: reference.bib
+---
+
+# Point d'étape: 3^e^ semaine de stage
 
 ## Problématique du stage
 
@@ -6,7 +11,7 @@ En Guyane française, les espèces exploitées ont majoritairement un comporteme
 
 La modélisation de la structure et de la dynamique des peuplements peut contribuer à évaluer les impacts de l'exploitation et des autres perturbations d'origine anthropique ou climatique sur les peuplements forestiers (Fargeon et al, 2016),(Fischer et al, 2016),(Gourlet-Fleury et al,2005) . Or, un des manques de ces modèles concerne les stades de développement des arbres de diamètre inférieurs à 10 cm (Gourlet-Fleury et al). En effet, peu de données exploitables sont disponibles sur la croissance et les affinités environnementales de ces stades ontogéniques, et la majorité des modèles de croissance ne permettent l'analyse des dynamiques de peuplement qu'à partir des classes de diamètre supérieures à 10cm.(Herault et al, 2010).
 
-La lumière disponible est un des principaux facteurs abiotiques influençant la présence de plantules et le développement de juvéniles établis. Or, en forêt tropicale humide, la mise en lumière de la régénération se fait principalement à proximité de zone de trouées ou « chablis ». L'ouverture de trouées provient d'une part de phénomènes naturels tels que la chute d'arbres brisés ou déracinés, la chute de grosses branches ; l'exploitation forestière génère également des trouées à l'emplacement des arbres exploités, des pistes et des places de retournement ou de dépôt. La réponse de la régénération au gradient de lumière généré par les trouées a fait l'objet de nombreuses études (Poorter, 1999),(Sheil et al, 2006),(Rüger et al,2011),(Laurans et al 2012),(Jiao-jun et al, 2014).
+La lumière disponible est un des principaux facteurs abiotiques influençant la présence de plantules et le développement de juvéniles établis. Or, en forêt tropicale humide, la mise en lumière de la régénération se fait principalement à proximité de zone de trouées ou « chablis ». L'ouverture de trouées provient d'une part de phénomènes naturels tels que la chute d'arbres brisés ou déracinés, la chute de grosses branches ; l'exploitation forestière génère également des trouées à l'emplacement des arbres exploités, des pistes et des places de retournement ou de dépôt. La réponse de la régénération au gradient de lumière généré par les trouées a fait l'objet de nombreuses études (Poorter, 1999),(Sheil et al, 2006),(Rüger et al,2011),(Laurans et al 2012),(Zhu et al, 2014).
 
 Pourtant, peu d'études ont inclut le facteur lumière dans la modélisation de la démographie des espèces, car ce facteur présente de fortes variabilités temporelles et spatiales (Ferment et al, 2001),(Hérault,2010). Aujourd'hui, l'accès à des données LiDAR permet l'obtention de mesures précises et objectives des trouées dans la canopée et constitue une réelle opportunité pour la compréhension de la démographie des espèces dépendantes à la lumière, dont les espèces semi-héliophiles (Hunter et al, 2015), (Goulamoussenne et al, 2017),(Pinagé et al, 2019),(Stark et al, 2015).
 
