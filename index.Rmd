@@ -1,5 +1,5 @@
 --- 
-title: "Modélisation de la régénération d’espèces semi-héliophiles de Guyane sur un gradient de perturbation naturelle et anthropique"
+title: "Modélisation de la régénération d’espèces semi-héliophiles de Guyane sur un gradient de perturbations naturelles et anthropiques"
 author: "Marine Boudy"
 date: "`r Sys.Date()`"
 url: https://marineboudy.github.io/Stage_3A/
