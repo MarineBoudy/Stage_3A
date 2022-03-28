@@ -6,7 +6,6 @@ url: https://marineboudy.github.io/Stage_3A/
 github-repo:  MarineBoudy/Stage_3A 
 description: "Bookdown template based on LaTeX memoir class"
 cover-image: "images/logo.png"
-output: html_document
 # Title page...
 maintitlepage:
   epigraph: |
@@ -24,10 +23,10 @@ maintitlepage:
     An explanatory sentence.
     Leave an empty line for line breaks.
 # ... or a PDF cover
-pdftitlepage: images/cover.pdf
+#pdftitlepage: images/cover.pdf
 # Language
-lang: fr-FR
-otherlangs: [en-US, it]
+lang: en-US
+otherlangs: [fr-FR,it]
 # Bibliography
 bibliography: references.bib
 # Citation style in HTML
@@ -185,3 +184,7 @@ set.seed(973)
 # Introduction {-}
 
 Ce gitbook est un document de travail provisoire, qui servira de support pour le suivi du stage de fin d'étude et la rédaction du mémoire de fin d'études de Marine Boudy.
+
+<!-- The \mainmatter command marks the beginning of the LaTeX document body--> 
+<!-- It must not be deleted-->
+\mainmatter

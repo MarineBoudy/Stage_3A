@@ -1,7 +1,6 @@
 ---
 title: "Modélisation de la régénération d’espèces semi-héliophiles de Guyane sur un gradient de perturbations naturelles et anthropiques"
 output: html_document
-bibliography: reference.bib
 ---
 
 This template is based on _Bookdown_ and the _Memoir_ LaTeX class to allow writing a book, a report, a PhD thesis, etc. in _R Markdown_.

@@ -1,19 +1,15 @@
----
-output: html_document
-bibliography: reference.bib
----
 
 # Point d'étape: 3^e^ semaine de stage
 
 ## Problématique du stage
 
-En Guyane française, les espèces exploitées ont majoritairement un comportement semi-héliophile. De plus, l'exploitation forestière en forêt tropicale a principalement lieu en des forêts peu perturbées. Afin de garantir la durabilité de la ressource en bois il est donc nécessaire que les méthodes d'exploitation forestières permettent la régénération des espèces exploitées, pour garantir le potentiel de reproduction de ces dernières. Dans le cas des forêts guyanaises, cela passe par le maintien d'une dynamique de peuplement le plus proche possible de la dynamique naturelle (Guide sylviculture ONF 2014). La norme pour les aménagements forestiers est aujourd'hui l'Exploitation Faible Impact (EFI) depuis 2010 (ONF,2017). Cette méthode doit garantir « une opération d'exploitation forestière intensément planifiée, précautionneusement mise en œuvre et contrôlée afin de minimiser son impact sur le peuplement et les sols forestiers, et se basant habituellement sur une sélection des individus à abattre» (FAO,2004). Les préconisations liées à l'exploitation sont ainsi réunies dans la Charte EFI: désignation, exploitation d'une faible densité de tige à l'hectare, rotations de 65 ans...
+En Guyane française, les espèces exploitées ont majoritairement un comportement semi-héliophile, c'est à dire que les jeunes stades de développement ont besoin de lumière pour croître mais peuvent entrer en stade d'attente en l'absence de celle ci. De plus, l'exploitation forestière en forêt tropicale a principalement lieu en des forêts peu perturbées. Afin de garantir la durabilité de la ressource en bois il est donc nécessaire que les méthodes d'exploitation forestières permettent la régénération des espèces exploitées, pour garantir le potentiel de reproduction de ces dernières. Dans le cas des forêts guyanaises, cela passe par le maintien d'une dynamique de peuplement le plus proche possible de la dynamique naturelle [@Guitet2014]. La norme pour les aménagements forestiers est aujourd'hui l'Exploitation Faible Impact (EFI) depuis 2010 [@ONF2017]. Cette méthode doit garantir « une opération d'exploitation forestière intensément planifiée, précautionneusement mise en œuvre et contrôlée afin de minimiser son impact sur le peuplement et les sols forestiers, et se basant habituellement sur une sélection des individus à abattre» (FAO,2004 in [@ONF2017]). Les préconisations liées à l'exploitation sont ainsi réunies dans la Charte EFI: désignation, exploitation d'une faible densité de tige à l'hectare, rotations de 65 ans...
 
-La modélisation de la structure et de la dynamique des peuplements peut contribuer à évaluer les impacts de l'exploitation et des autres perturbations d'origine anthropique ou climatique sur les peuplements forestiers (Fargeon et al, 2016),(Fischer et al, 2016),(Gourlet-Fleury et al,2005) . Or, un des manques de ces modèles concerne les stades de développement des arbres de diamètre inférieurs à 10 cm (Gourlet-Fleury et al). En effet, peu de données exploitables sont disponibles sur la croissance et les affinités environnementales de ces stades ontogéniques, et la majorité des modèles de croissance ne permettent l'analyse des dynamiques de peuplement qu'à partir des classes de diamètre supérieures à 10cm.(Herault et al, 2010).
+La modélisation de la structure et de la dynamique des peuplements peut contribuer à évaluer les impacts de l'exploitation et des autres perturbations d'origine anthropique ou climatique sur les peuplements forestiers [@Fargeon2016],[@Fischer2016],[@Gourlet-Fleury2005a] . Or, un des manques de ces modèles concerne les stades de développement des arbres de diamètre inférieurs à 10 cm [@Gourlet-Fleury2005a]. En effet, peu de données exploitables sont disponibles sur la croissance et les affinités environnementales de ces stades ontogéniques, et la majorité des modèles de croissance ne permettent l'analyse des dynamiques de peuplement qu'à partir des classes de diamètre supérieures à 10cm [@Herault2010d].
 
-La lumière disponible est un des principaux facteurs abiotiques influençant la présence de plantules et le développement de juvéniles établis. Or, en forêt tropicale humide, la mise en lumière de la régénération se fait principalement à proximité de zone de trouées ou « chablis ». L'ouverture de trouées provient d'une part de phénomènes naturels tels que la chute d'arbres brisés ou déracinés, la chute de grosses branches ; l'exploitation forestière génère également des trouées à l'emplacement des arbres exploités, des pistes et des places de retournement ou de dépôt. La réponse de la régénération au gradient de lumière généré par les trouées a fait l'objet de nombreuses études (Poorter, 1999),(Sheil et al, 2006),(Rüger et al,2011),(Laurans et al 2012),(Zhu et al, 2014).
+La lumière disponible est un des principaux facteurs abiotiques influençant la présence de plantules et le développement de juvéniles établis. Or, en forêt tropicale humide, la mise en lumière de la régénération se fait principalement à proximité de zone de trouées ou « chablis ». L'ouverture de trouées provient d'une part de phénomènes naturels tels que la chute d'arbres brisés ou déracinés, la chute de grosses branches ; l'exploitation forestière génère également des trouées à l'emplacement des arbres exploités, des pistes et des places de retournement ou de dépôt. La réponse de la régénération au gradient de lumière généré par les trouées a fait l'objet de nombreuses études [@Poorter1999], [@Sheil2006] ,[@Ruger2011a],[@Laurans2012],[@Zhu2014].
 
-Pourtant, peu d'études ont inclut le facteur lumière dans la modélisation de la démographie des espèces, car ce facteur présente de fortes variabilités temporelles et spatiales (Ferment et al, 2001),(Hérault,2010). Aujourd'hui, l'accès à des données LiDAR permet l'obtention de mesures précises et objectives des trouées dans la canopée et constitue une réelle opportunité pour la compréhension de la démographie des espèces dépendantes à la lumière, dont les espèces semi-héliophiles (Hunter et al, 2015), (Goulamoussenne et al, 2017),(Pinagé et al, 2019),(Stark et al, 2015).
+Pourtant, peu d'études ont inclut le facteur lumière dans la modélisation de la démographie des espèces, car ce facteur présente de fortes variabilités temporelles et spatiales (Ferment et al, 2001),(Hérault,2010). Aujourd'hui, l'accès à des données LiDAR permet l'obtention de mesures précises et objectives des trouées dans la canopée et constitue une réelle opportunité pour la compréhension de la démographie des espèces dépendantes à la lumière, dont les espèces semi-héliophiles [@Hunter2015],[@Goulamoussene2017],[@Rangel2019],[@Stark2015].
 
 La thèse intitulée « Effet de la dynamique de canopée de forêt exploitée sur les populations d'espèces d'arbres récoltées en Guyane », en appui duquel a lieu ce stage, va aborder la question de la modélisation de la croissance des individus de diamètre supérieur à 10 cm pour 11 espèces considérées comme semi-héliophiles, dont 7 appartiennent aux Essences Commerciales Majeures Principales(ECMP) en intégrant le facteur lumière. 
 La problématique du stage est donc la suivante: Comment modéliser le recrutement des espèces semi-héliophiles étudiées en prenant en compte le facteur lumière? 
@@ -41,11 +37,13 @@ Plusieurs variables explicatives de l'influence de la lumière sont envisagées 
 
 - Surface de la trouée la plus proche.
 
-- Proportion de la surface de la placette impactée par le chablis (création de zones tampon de 5, 10 ou 15m autour du chablis et analyse de la surface de recouvrement entre les zones tampon et la placette).
+- Proportion de la surface de la placette impactée par la trouee (création de zones tampon de 5, 10 ou 15 m autour de la trouee et analyse de la surface de recouvrement entre les zones tampon et la placette).
+
+- Intersection d'une zone tampon autour de la placette avec les trouées (création de zones tampon de 5, 10 ou 15 m autour de la placette et analyse de la surface de recouvrement entre les zones tampon et la trouee).
 
 - Hauteur moyenne, dominante, quartiles de la hauteur des arbres de la canopée entourant la trouée, mesurés dans des zones tampon autour de la trouée.
 
-Des variables explicatives autres que des proxy de la lumière sont envisagées :
+Des variables explicatives autres que des proxy de la lumière sont envisagées 
 
 - Un des indice les plus utilisé pour mesurer le stade ontogénique d'un individu est le rapport DBH/DBH95. Or, il est connu que les juvéniles ont une plus forte croissance en hauteur qu'en diamètre; il serait donc intéressant de créer un indice Hauteur/Hauteur maximum (La hauteur maximum(Hmax) correspondant à la hauteur Maximum de l'espèce obtenu a partir d'un équation d'allométiee prenant en compte le DBH 95.
 
@@ -77,20 +75,20 @@ Les trouées de plus de 10 m^2^ sont préalablement repérées via le Modèle Nu
 
 En moyenne, 12 placettes d'inventaire sont réalisable pour deux opérateur en une journée de terrain.
 
-12 semaines soit 60 jours de terrain sont prévus, une marge de quelques jours étant nécessaire du fait des conditions météorologiques. Ainsi, 720 placettes pourront, au maximum, être réalisées dans le cadre de ce stage. En plus de cet inventaire, seront intégrées à l'analyse les données de 2 stages de 2 mois réalisés en 2021(Pierre-Justin, 2021) et 2022 (Van der Meersh,2022) selon le même protocole .
+12 semaines soit 60 jours de terrain sont prévus, une marge de quelques jours étant nécessaire du fait des conditions météorologiques. Ainsi, 720 placettes pourront, au maximum, être réalisées dans le cadre de ce stage. En plus de cet inventaire, seront intégrées à l'analyse les données de 2 stages de 2 mois réalisés en 2021 [@Pierre-Justin2021] et 2022 [@Van2022] selon le même protocole .
 
 **Protocole d'inventaire :**
-Les espèces inventoriées sont les suivantes: _Dicorynia Guianensis_, _Quaela rosa_, _Eperua falcata_, _Eperua Grandiflora_, _Ruitzeriana albiflora_, _Peltogyne spp_, _Manilkara bidentata_, _Manilkara huberii_, _Sextonia rubra_, _Goupia Glabra_, _Bagassa guianensis_, _Vouacapoua americana_.
+Les espèces inventoriées sont les suivantes: _Dicorynia guianensis_, _Qualea rosa_, _Eperua falcata_, _Eperua grandiflora_, _Qualea albiflora_, _Peltogyne spp_, _Manilkara bidentata_, _Manilkara huberii_, _Sextonia rubra_, _Goupia glabra_, _Bagassa guianensis_, _Vouacapoua americana_.
 
-Au niveau des trouées d'intérêt repérées via les données lidar, 4 placettes de 5m de rayon sont inventorié par trouées :
+Au niveau des trouées d'intérêt repérées via les données lidar et des données d'exploitation géoréférencées, 4 placettes de 5m de rayon sont inventorié par trouées :
 
-- Une placette est placée à proximité de la souche de l'arbre tombé
+- Une placette est placée à proximité de la souche de l'arbre tombé.
 
-- Une 2^e^ à proximité du houppier de l'arbre
+- Une 2^e^ à proximité du houppier de l'arbre.
 
-- Une 3^e^ en lisière du chablis
+- Une 3^e^ en lisière du chablis, lorsque la trouée est suffisamment grande.
 
-- Une 4^e^ à distance du chablis, en se placant 
+- Une 4^e^ à distance du chablis, en se plaçant si possible sous couvert forestier.
 
 Dans chaque placette sont inventoriés les individus des 11 espèces présentant une hauteur supérieure à 30 cm et un diamètre inférieur à 10 cm:
 
@@ -99,9 +97,6 @@ Dans chaque placette sont inventoriés les individus des 11 espèces présentant
 - Le diamètre des tiges de plus de 1,3 m de haut est mesuré au pied à coulisse.
 
 La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces à inventorier est également mesurée. Cette mesure permet d'avoir une idée de la compétition entre nos espèces d'intérêt et les autres.
-
-
-
 
 
 
