@@ -5,7 +5,7 @@ date: '2022-04-28'
 output: html_document
 ---
 
-```{r library}
+```{r librarairies_3}
 
 library(tidyverse)
 library(knitr)
@@ -21,6 +21,7 @@ library(multcomp)
 ```
 
 #AFDM:Analyse factorielle de données mixtes
+##Angélique
 
 ```{r}
 load("vault/data/AG_plac.RData")
@@ -159,7 +160,3 @@ fviz_ellipses(res.famd, 1:2, geom = "point")
 ```
 
 
-
-# Avec seuleemnt les individus\<130
-
-# Avec seulement les individus\>=130

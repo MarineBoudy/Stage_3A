@@ -4,9 +4,9 @@ author: "Marine Boudy"
 date: '2022-04-28'
 output: html_document
 ---
+#Creation de variables
 
-
-```{r library}
+```{r librairies_2}
 library(tidyverse)
 library(readxl)
 library(sf)
@@ -245,7 +245,7 @@ for (i in 1:compte){
 }
 
 
-save(juveniles_plac, file="data/juveniles_plac.RData")
+save(juveniles_plac, file="vault/data/juveniles_plac.RData")
 
 #---Creation d'un tableau de donnees pour chaque espece etudiee
 
