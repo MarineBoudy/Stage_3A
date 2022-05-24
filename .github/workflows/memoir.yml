@@ -21,7 +21,7 @@ jobs:
         run: |
           options(pkgType = "binary")
           options(install.packages.check.source = "no")
-          install.packages(c("memoiR", "rmdformats", "tinytex","sf"))
+          install.packages(c("memoiR", "rmdformats", "tinytex","sf","raster"))
           tinytex::install_tinytex()
           tinytex::tlmgr_install("hyphen-french")
           tinytex::tlmgr_install("hyphen-italian")
