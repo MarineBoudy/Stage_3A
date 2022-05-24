@@ -48,6 +48,46 @@
 % Strikeout
 
 % Necessary for code chunks
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 
 % Listings package
 
@@ -280,7 +320,7 @@
 
 \author{Marine Boudy}
 
-\date{2022-03-28}
+\date{2022-04-28}
 
 
 % Include headers (preamble.tex) here
@@ -532,6 +572,785 @@ Dans chaque placette sont inventoriés les individus des 11 espèces présentant
 \end{itemize}
 
 La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces à inventorier est également mesurée. Cette mesure permet d'avoir une idée de la compétition entre nos espèces d'intérêt et les autres.
+
+\#Creation de variables
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(readxl)}
+\FunctionTok{library}\NormalTok{(sf)}
+\FunctionTok{library}\NormalTok{(raster)  }\CommentTok{\# moins rapide que terra qui reprend toutes les fonctions de raster}
+\FunctionTok{library}\NormalTok{(rgdal)}
+\FunctionTok{library}\NormalTok{(terra)}
+\FunctionTok{library}\NormalTok{(rmapshaper)  }\CommentTok{\#pour la conversion polygone vers ligne}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#{-}{-}{-}NUMERIC}
+\DocumentationTok{\#\#{-}{-}{-} convertir une colonne en numeric}
+\NormalTok{convert\_col\_to\_num }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(df, my\_col\_name) \{}
+\NormalTok{    my\_col }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(df[, my\_col\_name])}
+\NormalTok{    df[, my\_col\_name] }\OtherTok{\textless{}{-}}\NormalTok{ my\_col}
+    \FunctionTok{return}\NormalTok{(df)}
+\NormalTok{\}}
+\DocumentationTok{\#\#{-}{-}{-}conversion de plusieurs colones en numeric}
+\NormalTok{convert\_multiple\_col\_to\_num }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(df, my\_col\_names) \{}
+\NormalTok{    length\_list }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(my\_col\_names)}
+    \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{length\_list) \{}
+\NormalTok{        df }\OtherTok{\textless{}{-}} \FunctionTok{convert\_col\_to\_num}\NormalTok{(df, my\_col\_names[i])}
+\NormalTok{    \}}
+    \FunctionTok{return}\NormalTok{(df)}
+\NormalTok{\}}
+\CommentTok{\#{-}{-}{-}FACTOR}
+\DocumentationTok{\#\#{-}{-}{-} convertir une colonne en facteur}
+\NormalTok{convert\_col\_to\_factor }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(df, my\_col\_name) \{}
+\NormalTok{    my\_col }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(df[, my\_col\_name])}
+\NormalTok{    df[, my\_col\_name] }\OtherTok{\textless{}{-}}\NormalTok{ my\_col}
+    \FunctionTok{return}\NormalTok{(df)}
+\NormalTok{\}}
+\DocumentationTok{\#\#{-}{-}{-}conversion de plusieurs colones en facteur}
+\NormalTok{convert\_multiple\_col\_to\_factor }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(df, my\_col\_names) \{}
+\NormalTok{    length\_list }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(my\_col\_names)}
+    \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{length\_list) \{}
+\NormalTok{        df }\OtherTok{\textless{}{-}} \FunctionTok{convert\_col\_to\_factor}\NormalTok{(df, my\_col\_names[i])}
+\NormalTok{    \}}
+    \FunctionTok{return}\NormalTok{(df)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\# Import des donnees\#\#\#}
+\CommentTok{\#{-}{-}{-}Placette d\textquotesingle{}inventaire}
+\NormalTok{plac\_col\_to\_num }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"XUTM"}\NormalTok{, }\StringTok{"YUTM"}\NormalTok{, }\StringTok{"h1"}\NormalTok{, }\StringTok{"h2"}\NormalTok{, }\StringTok{"h3"}\NormalTok{)}
+\NormalTok{placettes }\OtherTok{\textless{}{-}} \FunctionTok{read.csv2}\NormalTok{(}\StringTok{"vault/data/tableur/Placettes\_S9.csv"}\NormalTok{,}
+    \AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{sep =} \StringTok{";"}\NormalTok{, }\AttributeTok{dec =} \StringTok{","}\NormalTok{, }\AttributeTok{fill =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{convert\_multiple\_col\_to\_num}\NormalTok{(plac\_col\_to\_num)}
+\CommentTok{\#{-}{-}{-}Inventaire des juveniles}
+\NormalTok{liste\_col\_to\_num }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"azimut"}\NormalTok{, }\StringTok{"Distance.au.centre"}\NormalTok{)}
+\NormalTok{liste\_col\_to\_factor }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Foret"}\NormalTok{, }\StringTok{"Parcelle"}\NormalTok{, }\StringTok{"Carre"}\NormalTok{, }\StringTok{"Essence"}\NormalTok{,}
+    \StringTok{"Genre"}\NormalTok{, }\StringTok{"Espece"}\NormalTok{, }\StringTok{"Nom.Vernaculaire"}\NormalTok{, }\StringTok{"Type.placette"}\NormalTok{, }\StringTok{"Traitement"}\NormalTok{)}
+\NormalTok{juveniles }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"vault/data/tableur/DB\_JUVENILES\_S9\_xl.xlsx"}\NormalTok{,}
+    \AttributeTok{sheet =} \StringTok{"DB\_JUVENILES\_S9"}\NormalTok{, }\AttributeTok{col\_names =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{guess\_max =} \DecValTok{2000}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{convert\_multiple\_col\_to\_num}\NormalTok{(liste\_col\_to\_num) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{convert\_multiple\_col\_to\_factor}\NormalTok{(liste\_col\_to\_factor)}
+\FunctionTok{save}\NormalTok{(juveniles, }\AttributeTok{file =} \StringTok{"vault/data/juveniles.RData"}\NormalTok{)}
+\DocumentationTok{\#\#\# trouees}
+\DocumentationTok{\#\#\# arbres parents}
+\DocumentationTok{\#\#\# lineaires}
+\DocumentationTok{\#\#\#}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#{-}{-}{-}Fonction qui calcule les variables de hauteur pour une essence donnee}
+\NormalTok{var\_hauteur\_tot }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(tableau, code\_essence) \{}
+\NormalTok{    juveniles\_hauteur }\OtherTok{\textless{}{-}}\NormalTok{ tableau }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{filter}\NormalTok{(Essence }\SpecialCharTok{==}\NormalTok{ code\_essence) }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{group\_by}\NormalTok{(Nom\_Placette) }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{summarise}\NormalTok{(}\AttributeTok{sumhauteur =} \FunctionTok{sum}\NormalTok{(Hauteur..cm.), }\AttributeTok{hauteur\_moy =} \FunctionTok{mean}\NormalTok{(Hauteur..cm.),}
+            \AttributeTok{hauteur\_max =} \FunctionTok{max}\NormalTok{(Hauteur..cm.), }\AttributeTok{hauteur\_min =} \FunctionTok{min}\NormalTok{(Hauteur..cm.)) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{        dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(Nom\_Placette, sumhauteur, hauteur\_moy,}
+\NormalTok{            hauteur\_max, hauteur\_min)}
+    \FunctionTok{return}\NormalTok{(juveniles\_hauteur)}
+\NormalTok{\}}
+\CommentTok{\#{-}{-}{-}Fonction qui calcule les variables de hauteur des individus de moins de 130 cm de hauteur pour une essence donnee}
+\NormalTok{var\_inf130 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(tableau, code\_essence) \{}
+\NormalTok{    juveniles\_inf\_130 }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(juveniles, Essence }\SpecialCharTok{==}\NormalTok{ code\_essence,}
+\NormalTok{        Hauteur..cm. }\SpecialCharTok{\textless{}} \DecValTok{130}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{group\_by}\NormalTok{(Nom\_Placette) }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n\_inf\_130 =} \FunctionTok{n}\NormalTok{(), }\AttributeTok{sum\_h\_inf\_130 =} \FunctionTok{sum}\NormalTok{(Hauteur..cm.),}
+            \AttributeTok{mean\_h\_inf\_130 =} \FunctionTok{mean}\NormalTok{(Hauteur..cm.)) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{        dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(Nom\_Placette, n\_inf\_130, sum\_h\_inf\_130)}
+    \FunctionTok{return}\NormalTok{(juveniles\_inf\_130)}
+\NormalTok{\}}
+\CommentTok{\#{-}{-}{-}Fonction qui calcule les variables de hauteur des individus \textgreater{}= 130 cm de hauteur pour une essence donnee}
+\NormalTok{var\_sup130 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(tableau, code\_essence) \{}
+\NormalTok{    juveniles\_sup\_130 }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(juveniles, Essence }\SpecialCharTok{==}\NormalTok{ code\_essence,}
+\NormalTok{        Hauteur..cm. }\SpecialCharTok{\textgreater{}=} \DecValTok{130}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{group\_by}\NormalTok{(Nom\_Placette) }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n\_sup\_130 =} \FunctionTok{n}\NormalTok{(), }\AttributeTok{sum\_h\_sup\_130 =} \FunctionTok{sum}\NormalTok{(Hauteur..cm.),}
+            \AttributeTok{moy\_h\_sup\_130 =} \FunctionTok{mean}\NormalTok{(Hauteur..cm.), }\AttributeTok{diam\_moy =} \FunctionTok{mean}\NormalTok{(Diametre..cm.)) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{        dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(Nom\_Placette, n\_sup\_130, sum\_h\_sup\_130,}
+\NormalTok{            moy\_h\_sup\_130, diam\_moy)}
+    \FunctionTok{return}\NormalTok{(juveniles\_sup\_130)}
+\NormalTok{\}}
+\CommentTok{\#{-}{-}{-}Fonction qui regroupe toutes les données d\textquotesingle{}une essence en un seul tableau tableau}
+\NormalTok{tableau\_essence }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(juveniles, juveniles\_plac, code\_essence) \{}
+\NormalTok{    essence\_hauteurs\_tot }\OtherTok{\textless{}{-}} \FunctionTok{var\_hauteur\_tot}\NormalTok{(juveniles, code\_essence)}
+\NormalTok{    essence\_sup130 }\OtherTok{\textless{}{-}} \FunctionTok{var\_sup130}\NormalTok{(juveniles, code\_essence)}
+\NormalTok{    essence\_infsup130 }\OtherTok{\textless{}{-}} \FunctionTok{var\_inf130}\NormalTok{(juveniles, code\_essence)}
+\NormalTok{    juveniles\_essence }\OtherTok{\textless{}{-}}\NormalTok{ juveniles\_plac }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{left\_join}\NormalTok{(essence\_hauteurs\_tot) }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{left\_join}\NormalTok{(essence\_sup130) }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{left\_join}\NormalTok{(essence\_infsup130) }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{as.data.frame}\NormalTok{()}
+    \CommentTok{\#{-}{-}{-}Remplace les NA par des 0 pour les variables mesurees sur le terrain}
+    \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{c}\NormalTok{(}\DecValTok{9}\SpecialCharTok{:}\DecValTok{21}\NormalTok{, }\DecValTok{26}\NormalTok{, }\DecValTok{30}\NormalTok{)) \{}
+        \CommentTok{\# faire une fonction pour que ce soit moins moche ?}
+\NormalTok{        juveniles\_essence[, i][}\FunctionTok{is.na}\NormalTok{(juveniles\_essence[, i])] }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{    \}}
+    \FunctionTok{return}\NormalTok{(juveniles\_essence)}
+\NormalTok{\}}
+\DocumentationTok{\#\# verification fonctions}
+\CommentTok{\# AG\_hauteur \textless{}{-} var\_hauteur\_tot(juveniles, \textquotesingle{}AG\textquotesingle{})}
+\CommentTok{\# AG\_sup130 \textless{}{-} var\_sup130(juveniles, \textquotesingle{}AG\textquotesingle{})}
+\CommentTok{\# AG\_infsup130 \textless{}{-} var\_inf130(juveniles, \textquotesingle{}AG\textquotesingle{})}
+\CommentTok{\# AG\_plac \textless{}{-}tableau\_essence(juveniles,juveniles\_plac,\textquotesingle{}AG\textquotesingle{})\#}
+\CommentTok{\# variables concernant l\textquotesingle{}angelique calculee a l\textquotesingle{}echelle des}
+\CommentTok{\# placettes}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#{-}{-}{-}diversite: nombre d\textquotesingle{}espece differentes par placette}
+\NormalTok{juveniles\_ess }\OtherTok{\textless{}{-}}\NormalTok{ juveniles }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(Nom\_Placette) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(Essence)) }\SpecialCharTok{\%\textgreater{}\%}\CommentTok{\# évite de compter les NA comme une essence }
+  \FunctionTok{count}\NormalTok{(Essence) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{diversite =} \FunctionTok{n}\NormalTok{())}
+
+\CommentTok{\#{-}{-}{-}  nombre de juveniles pour chaque espece}
+\NormalTok{juveniles\_par\_ess }\OtherTok{\textless{}{-}}\NormalTok{ juveniles }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(Nom\_Placette) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(Essence)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{(Essence) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ Essence, }\AttributeTok{values\_from =}\NormalTok{ n,}\AttributeTok{names\_prefix =} \StringTok{"n\_"}\NormalTok{,)}\CommentTok{\#nombre d\textquotesingle{}individus par essence,}
+
+\CommentTok{\#{-}{-}{-}competition: hauteur moyenne des 3 plus grand individus de moins de 10cm de diametre qui ne font pas partie de nos espces etudiees}
+\NormalTok{var\_competition }\OtherTok{\textless{}{-}}\NormalTok{ placettes }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{( }\AttributeTok{competition\_sum=}\NormalTok{h1}\SpecialCharTok{+}\NormalTok{h2}\SpecialCharTok{+}\NormalTok{h3) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{competition\_moy=}\NormalTok{competition\_sum}\SpecialCharTok{/}\DecValTok{3}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}  
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{XUTM,}\SpecialCharTok{{-}}\NormalTok{YUTM,}\SpecialCharTok{{-}}\NormalTok{h1,}\SpecialCharTok{{-}}\NormalTok{h2,}\SpecialCharTok{{-}}\NormalTok{h3)}
+
+\CommentTok{\#{-}{-}{-} nombre total d’individus toutes espèces confondues}
+\NormalTok{n\_tot\_placette }\OtherTok{\textless{}{-}}\NormalTok{ juveniles }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(Nom\_Placette) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(Essence)) }\SpecialCharTok{\%\textgreater{}\%}  
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n\_tot\_sp=}\FunctionTok{n}\NormalTok{())  }
+ 
+\NormalTok{juveniles\_variables }\OtherTok{\textless{}{-}}\NormalTok{ juveniles }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Nom\_Placette) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{slice}\NormalTok{(}\DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{15}\NormalTok{)}
+
+
+\CommentTok{\# tableau qui regroupe les information de base des placettes}
+\NormalTok{juveniles\_plac }\OtherTok{\textless{}{-}}\NormalTok{ var\_competition }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{left\_join}\NormalTok{(juveniles\_variables) }\SpecialCharTok{\%\textgreater{}\%}  
+  \FunctionTok{left\_join}\NormalTok{(n\_tot\_placette) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(juveniles\_ess) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{left\_join}\NormalTok{(juveniles\_par\_ess) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{as.data.frame}\NormalTok{()}
+
+
+
+
+\CommentTok{\#{-}{-}{-} Attribution des valeurs pour les fariables Foret, Parcelle,type.placette, traitement pou les placettes vides}
+\CommentTok{\#faire un code plus court, la c\textquotesingle{}est moche: utiliser dplyr case\_when plutot que des if?}
+
+\NormalTok{compte }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(juveniles\_plac[,}\StringTok{"Nom\_Placette"}\NormalTok{])}
+
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{compte)\{}
+  \ControlFlowTok{if}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(juveniles\_plac[i,}\StringTok{"Foret"}\NormalTok{]) }\SpecialCharTok{==}\ConstantTok{TRUE}\NormalTok{)\{}
+    \ControlFlowTok{if}\NormalTok{(}\FunctionTok{startsWith}\NormalTok{(juveniles\_plac[i,}\StringTok{"Nom\_Placette"}\NormalTok{], }\StringTok{\textquotesingle{}p\textquotesingle{}}\NormalTok{) }\SpecialCharTok{==}\ConstantTok{TRUE}\NormalTok{)\{}
+\NormalTok{    juveniles\_plac[i,}\StringTok{"Foret"}\NormalTok{]}\OtherTok{\textless{}{-}}\StringTok{"Paracou"}
+\NormalTok{    \}}
+    \ControlFlowTok{if}\NormalTok{(}\FunctionTok{startsWith}\NormalTok{(juveniles\_plac[i,}\StringTok{"Nom\_Placette"}\NormalTok{], }\StringTok{\textquotesingle{}HK\textquotesingle{}}\NormalTok{) }\SpecialCharTok{==}\ConstantTok{TRUE}\NormalTok{)\{}
+\NormalTok{    juveniles\_plac[i,}\StringTok{"Foret"}\NormalTok{]}\OtherTok{\textless{}{-}}\StringTok{"Regina"}
+\NormalTok{    juveniles\_plac[i,}\StringTok{"Parcelle"}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"HKO096"}
+\NormalTok{    \}}
+    \ControlFlowTok{if}\NormalTok{(}\FunctionTok{startsWith}\NormalTok{(juveniles\_plac[i,}\StringTok{"Nom\_Placette"}\NormalTok{], }\StringTok{\textquotesingle{}MAW745\textquotesingle{}}\NormalTok{) }\SpecialCharTok{==}\ConstantTok{TRUE}\NormalTok{)\{}
+\NormalTok{    juveniles\_plac[i,}\StringTok{"Foret"}\NormalTok{]}\OtherTok{\textless{}{-}}\StringTok{"St Georges"}
+\NormalTok{    juveniles\_plac[i,}\StringTok{"Parcelle"}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"MAW745"}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \ControlFlowTok{if}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(juveniles\_plac[i,}\StringTok{"Traitement"}\NormalTok{]) }\SpecialCharTok{==}\ConstantTok{TRUE}\NormalTok{)\{  }
+    \ControlFlowTok{if}\NormalTok{(}\FunctionTok{startsWith}\NormalTok{(juveniles\_plac[i,}\StringTok{"Nom\_Placette"}\NormalTok{], }\StringTok{\textquotesingle{}gt\textquotesingle{}}\NormalTok{) }\SpecialCharTok{==}\ConstantTok{TRUE}\NormalTok{)\{}
+\NormalTok{    juveniles\_plac[i,}\StringTok{"Foret"}\NormalTok{]}\OtherTok{\textless{}{-}}\StringTok{"Regina"}
+\NormalTok{    juveniles\_plac[i,}\StringTok{"Traitement"}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"GT"}
+\NormalTok{    juveniles\_plac[i,}\StringTok{"Parcelle"}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"PAI74"}
+\NormalTok{    \} }
+  
+    \ControlFlowTok{if}\NormalTok{(}\FunctionTok{startsWith}\NormalTok{(juveniles\_plac[i,}\StringTok{"Nom\_Placette"}\NormalTok{], }\StringTok{\textquotesingle{}pt\textquotesingle{}}\NormalTok{) }\SpecialCharTok{==}\ConstantTok{TRUE}\NormalTok{)\{}
+\NormalTok{    juveniles\_plac[i,}\StringTok{"Foret"}\NormalTok{]}\OtherTok{\textless{}{-}}\StringTok{"Regina"}
+\NormalTok{    juveniles\_plac[i,}\StringTok{"Traitement"}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"PT"}
+\NormalTok{    juveniles\_plac[i,}\StringTok{"Parcelle"}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"PAI74"}
+\NormalTok{    \}}
+    \ControlFlowTok{if}\NormalTok{(}\FunctionTok{startsWith}\NormalTok{(juveniles\_plac[i,}\StringTok{"Nom\_Placette"}\NormalTok{], }\StringTok{\textquotesingle{}sc\textquotesingle{}}\NormalTok{) }\SpecialCharTok{==}\ConstantTok{TRUE}\NormalTok{)\{}
+\NormalTok{    juveniles\_plac[i,}\StringTok{"Foret"}\NormalTok{]}\OtherTok{\textless{}{-}}\StringTok{"Regina"}
+\NormalTok{    juveniles\_plac[i,}\StringTok{"Traitement"}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"SC"}
+\NormalTok{    juveniles\_plac[i,}\StringTok{"Parcelle"}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"PAI74"}
+\NormalTok{      \}}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+
+\FunctionTok{save}\NormalTok{(juveniles\_plac, }\AttributeTok{file=}\StringTok{"vault/data/juveniles\_plac.RData"}\NormalTok{)}
+
+\CommentTok{\#{-}{-}{-}Creation d\textquotesingle{}un tableau de donnees pour chaque espece etudiee}
+
+\NormalTok{AG\_plac }\OtherTok{\textless{}{-}}\FunctionTok{tableau\_essence}\NormalTok{(juveniles,juveniles\_plac,}\StringTok{"AG"}\NormalTok{)}\CommentTok{\# variables concernant l\textquotesingle{}angelique calculee a l\textquotesingle{}echelle des placettes}
+\NormalTok{BFBI\_plac }\OtherTok{\textless{}{-}}\FunctionTok{tableau\_essence}\NormalTok{(juveniles,juveniles\_plac,}\StringTok{"BFBI"}\NormalTok{)}
+\NormalTok{BFHU\_plac }\OtherTok{\textless{}{-}}\FunctionTok{tableau\_essence}\NormalTok{(juveniles,juveniles\_plac,}\StringTok{"BFHU"}\NormalTok{)}
+\NormalTok{EPF\_plac }\OtherTok{\textless{}{-}}\FunctionTok{tableau\_essence}\NormalTok{(juveniles,juveniles\_plac,}\StringTok{"EPF"}\NormalTok{)}
+\NormalTok{EPG\_plac }\OtherTok{\textless{}{-}}\FunctionTok{tableau\_essence}\NormalTok{(juveniles,juveniles\_plac,}\StringTok{"EPG"}\NormalTok{)}
+\NormalTok{GF\_plac }\OtherTok{\textless{}{-}}\FunctionTok{tableau\_essence}\NormalTok{(juveniles,juveniles\_plac,}\StringTok{"GF"}\NormalTok{)}
+\NormalTok{GFLG\_plac }\OtherTok{\textless{}{-}}\FunctionTok{tableau\_essence}\NormalTok{(juveniles,juveniles\_plac,}\StringTok{"GFLG"}\NormalTok{)}
+\NormalTok{GFLR\_plac }\OtherTok{\textless{}{-}}\FunctionTok{tableau\_essence}\NormalTok{(juveniles,juveniles\_plac,}\StringTok{"GFLR"}\NormalTok{)}
+\NormalTok{GP\_plac }\OtherTok{\textless{}{-}}\FunctionTok{tableau\_essence}\NormalTok{(juveniles,juveniles\_plac,}\StringTok{"GP"}\NormalTok{)}
+\NormalTok{VIO\_plac }\OtherTok{\textless{}{-}}\FunctionTok{tableau\_essence}\NormalTok{(juveniles,juveniles\_plac,}\StringTok{"VIO"}\NormalTok{)}
+\NormalTok{WAC\_plac }\OtherTok{\textless{}{-}}\FunctionTok{tableau\_essence}\NormalTok{(juveniles,juveniles\_plac,}\StringTok{"WAC"}\NormalTok{)}
+
+
+
+
+\CommentTok{\#{-}{-}{-}Sauvegarde}
+\FunctionTok{save}\NormalTok{(AG\_plac,}\AttributeTok{file=}\StringTok{"vault/data/AG\_plac.RData"}\NormalTok{)}
+\FunctionTok{save}\NormalTok{(BFBI\_plac,}\AttributeTok{file=}\StringTok{"vault/data/BFBI\_plac.RData"}\NormalTok{)}
+\FunctionTok{save}\NormalTok{(BFHU\_plac,}\AttributeTok{file=}\StringTok{"vault/data/BFHU\_plac.RData"}\NormalTok{)}
+\FunctionTok{save}\NormalTok{(EPF\_plac,}\AttributeTok{file=}\StringTok{"vault/data/EPF\_plac.RData"}\NormalTok{)}
+\FunctionTok{save}\NormalTok{(EPG\_plac,}\AttributeTok{file=}\StringTok{"vault/data/EPG\_plac.RData"}\NormalTok{)}
+\FunctionTok{save}\NormalTok{(GF\_plac,}\AttributeTok{file=}\StringTok{"vault/data/GF\_plac.RData"}\NormalTok{)}
+\FunctionTok{save}\NormalTok{(GFLG\_plac,}\AttributeTok{file=}\StringTok{"vault/data/GFLG\_plac.RData"}\NormalTok{)}
+\FunctionTok{save}\NormalTok{(GFLR\_plac,}\AttributeTok{file=}\StringTok{"vault/data/GFLR\_plac.RData"}\NormalTok{)}
+\FunctionTok{save}\NormalTok{(GP\_plac,}\AttributeTok{file=}\StringTok{"vault/data/GP\_plac.RData"}\NormalTok{)}
+\FunctionTok{save}\NormalTok{(VIO\_plac,}\AttributeTok{file=}\StringTok{"vault/data/VIO\_plac.RData"}\NormalTok{)}
+\FunctionTok{save}\NormalTok{(WAC\_plac,}\AttributeTok{file=}\StringTok{"vault/data/WAC\_plac.RData"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{placettes\_sf }\OtherTok{\textless{}{-}}\NormalTok{ placettes }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(XUTM)) }\SpecialCharTok{\%\textgreater{}\%}  \CommentTok{\#retire les placettes sans coordonnees}
+  \FunctionTok{st\_as\_sf}\NormalTok{(}\AttributeTok{coords =} \FunctionTok{c}\NormalTok{(}\StringTok{"XUTM"}\NormalTok{,}\StringTok{"YUTM"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{st\_set\_crs}\NormalTok{(}\DecValTok{32622}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(h1,h2,h3,))}
+
+\FunctionTok{st\_write}\NormalTok{(placettes\_sf, }\StringTok{"vault/output/placettes\_sf.gpkg"}\NormalTok{, }\AttributeTok{append=}\ConstantTok{TRUE}\NormalTok{ )}
+
+
+
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data=}\NormalTok{placettes\_sf)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#print(drapeau)}
+
+\ErrorTok{\}}
+
+\NormalTok{juveniles\_plac\_test }\OtherTok{\textless{}{-}}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(juveniles\_plac, Foret }\SpecialCharTok{==} \StringTok{\textquotesingle{}Regina\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Foret=} \FunctionTok{replace}\NormalTok{(Foret, }\StringTok{\textquotesingle{}Paracou\textquotesingle{}}\NormalTok{))}
+
+
+\DocumentationTok{\#\#\#autre test}
+
+\NormalTok{juveniles\_plac}\SpecialCharTok{$}\NormalTok{Foret[}\FunctionTok{which}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(juveniles\_plac}\SpecialCharTok{$}\NormalTok{Foret)}\SpecialCharTok{|}\NormalTok{juveniles\_plac}\SpecialCharTok{$}\NormalTok{Foret }\SpecialCharTok{\%in\%} \StringTok{\textquotesingle{}p\textquotesingle{}}\NormalTok{)] }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}Paracou\textquotesingle{}}
+
+
+\NormalTok{juveniles\_plac}\SpecialCharTok{$}\NormalTok{Foret }\OtherTok{\textless{}{-}} \FunctionTok{case\_when}\NormalTok{(}
+    \FunctionTok{is.na}\NormalTok{(juveniles\_plac}\SpecialCharTok{$}\NormalTok{Foret)}\SpecialCharTok{==}\ConstantTok{TRUE} \SpecialCharTok{\&}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{starts\_with}\NormalTok{(juveniles\_plac}\SpecialCharTok{$}\NormalTok{Foret,}\StringTok{\textquotesingle{}p\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"Paracou"}\NormalTok{,}
+   
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(juveniles\_plac, }\FunctionTok{is.na}\NormalTok{(Foret))}
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Nom\_Placette}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## character(0)
+\end{verbatim}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(knitr)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(emmeans)}
+\FunctionTok{library}\NormalTok{(cowplot)}
+\FunctionTok{library}\NormalTok{(corrplot)}
+\FunctionTok{library}\NormalTok{(factoextra)}
+\FunctionTok{library}\NormalTok{(FactoMineR)}
+\FunctionTok{library}\NormalTok{(ppcor)}
+\FunctionTok{library}\NormalTok{(multcomp)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\#AFDM:Analyse factorielle de données mixtes
+\#\#Angélique
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{load}\NormalTok{(}\StringTok{"vault/data/AG\_plac.RData"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\#1er jeu de donnees
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{AG\_plac\_AFDM }\OtherTok{\textless{}{-}}\NormalTok{ AG\_plac }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(Foret, Type.placette, diversite, n\_AG, n\_inf\_130,}
+\NormalTok{        n\_sup\_130, hauteur\_moy, hauteur\_min, hauteur\_max, sumhauteur) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(hauteur\_min), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(hauteur\_moy), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(hauteur\_max),}
+        \SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(sumhauteur), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(Type.placette))}
+\CommentTok{\# dplyr::select(Foret,n:n\_inf\_130,n\_sup\_130,diversite:n\_VIO)}
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(AG\_plac\_AFDM))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# dplyr::select(2:10,16:22,26,27,31,34,37,40,41,44,45,48,49,51,52,56,57,60,61)}
+\NormalTok{res.famd }\OtherTok{\textless{}{-}} \FunctionTok{FAMD}\NormalTok{(AG\_plac\_AFDM, }\AttributeTok{graph =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{eig.val }\OtherTok{\textless{}{-}}\NormalTok{ res.famd}\SpecialCharTok{$}\NormalTok{eig}
+\FunctionTok{barplot}\NormalTok{(eig.val[, }\DecValTok{2}\NormalTok{], }\AttributeTok{names.arg =} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(eig.val), }\AttributeTok{main =} \StringTok{"Variances Explained by Dimensions (\%)"}\NormalTok{,}
+    \AttributeTok{xlab =} \StringTok{"Principal Dimensions"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Percentage of variances"}\NormalTok{,}
+    \AttributeTok{col =} \StringTok{"steelblue"}\NormalTok{)}
+\CommentTok{\# Add connected line segments to the plot}
+\FunctionTok{lines}\NormalTok{(}\AttributeTok{x =} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(eig.val), eig.val[, }\DecValTok{2}\NormalTok{], }\AttributeTok{type =} \StringTok{"b"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{19}\NormalTok{,}
+    \AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/valeurs_propres-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{eig.val}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        eigenvalue percentage of variance
+## comp 1   3.447962              19.155346
+## comp 2   2.726477              15.147094
+## comp 3   1.341535               7.452973
+## comp 4   1.137082               6.317122
+## comp 5   1.059898               5.888321
+##        cumulative percentage of variance
+## comp 1                          19.15535
+## comp 2                          34.30244
+## comp 3                          41.75541
+## comp 4                          48.07254
+## comp 5                          53.96086
+\end{verbatim}
+
+\normalsize
+
+\hypertarget{toutes-les-variables}{%
+\section{Toutes les variables}\label{toutes-les-variables}}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{var }\OtherTok{\textless{}{-}} \FunctionTok{get\_famd\_var}\NormalTok{(res.famd)}
+\NormalTok{var}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## FAMD results for variables 
+##  ===================================================
+##   Name       Description                      
+## 1 "$coord"   "Coordinates"                    
+## 2 "$cos2"    "Cos2, quality of representation"
+## 3 "$contrib" "Contributions"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Coordonnées des variables}
+\FunctionTok{head}\NormalTok{(var}\SpecialCharTok{$}\NormalTok{coord)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                   Dim.1      Dim.2        Dim.3
+## diversite   0.012502394 0.02326411 0.6144465953
+## n_AG        0.883183496 0.01428793 0.0128702310
+## n_inf_130   0.669765802 0.05513751 0.0276744314
+## n_sup_130   0.606776052 0.06560694 0.0080207337
+## hauteur_moy 0.006545122 0.93612413 0.0017853949
+## hauteur_min 0.029977698 0.70119872 0.0003599731
+##                    Dim.4      Dim.5
+## diversite   0.0009997302 0.01582323
+## n_AG        0.0068694483 0.01797176
+## n_inf_130   0.0066654732 0.06706463
+## n_sup_130   0.0018470475 0.07582262
+## hauteur_moy 0.0008132428 0.01627364
+## hauteur_min 0.0011504889 0.03742157
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Cos2: qualité de représentation}
+\FunctionTok{head}\NormalTok{(var}\SpecialCharTok{$}\NormalTok{cos2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                    Dim.1        Dim.2        Dim.3
+## diversite   1.563098e-04 0.0005412186 3.775446e-01
+## n_AG        7.800131e-01 0.0002041450 1.656428e-04
+## n_inf_130   4.485862e-01 0.0030401449 7.658742e-04
+## n_sup_130   3.681772e-01 0.0043042707 6.433217e-05
+## hauteur_moy 4.283862e-05 0.8763283939 3.187635e-06
+## hauteur_min 8.986624e-04 0.4916796414 1.295806e-07
+##                    Dim.4        Dim.5
+## diversite   9.994604e-07 0.0002503746
+## n_AG        4.718932e-05 0.0003229840
+## n_inf_130   4.442853e-05 0.0044976644
+## n_sup_130   3.411585e-06 0.0057490695
+## hauteur_moy 6.613638e-07 0.0002648315
+## hauteur_min 1.323625e-06 0.0014003742
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Contributions aux dimensions}
+\FunctionTok{head}\NormalTok{(var}\SpecialCharTok{$}\NormalTok{contrib)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                  Dim.1      Dim.2       Dim.3      Dim.4
+## diversite    0.3626024  0.8532662 45.80174988 0.08792067
+## n_AG        25.6146512  0.5240437  0.95936588 0.60412953
+## n_inf_130   19.4249750  2.0222987  2.06289268 0.58619106
+## n_sup_130   17.5981061  2.4062899  0.59787725 0.16243749
+## hauteur_moy  0.1898258 34.3345694  0.13308595 0.07152015
+## hauteur_min  0.8694323 25.7181235  0.02683292 0.10117906
+##                Dim.5
+## diversite   1.492901
+## n_AG        1.695612
+## n_inf_130   6.327462
+## n_sup_130   7.153767
+## hauteur_moy 1.535397
+## hauteur_min 3.530677
+\end{verbatim}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Graphique des variables}
+\FunctionTok{fviz\_famd\_var}\NormalTok{(res.famd, }\AttributeTok{repel =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fviz\_famd\_var}\NormalTok{(res.famd, }\AttributeTok{repel =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-2} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Contribution à la première dimension}
+\FunctionTok{fviz\_contrib}\NormalTok{(res.famd, }\StringTok{"var"}\NormalTok{, }\AttributeTok{axes =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-3} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Contribution à la deuxième dimension}
+\FunctionTok{fviz\_contrib}\NormalTok{(res.famd, }\StringTok{"var"}\NormalTok{, }\AttributeTok{axes =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-4} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Contribution à la 3e dimension}
+\FunctionTok{fviz\_contrib}\NormalTok{(res.famd, }\StringTok{"var"}\NormalTok{, }\AttributeTok{axes =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-5} \end{center}
+
+\normalsize
+
+\#\#Variables quantitatives
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{quanti.var }\OtherTok{\textless{}{-}} \FunctionTok{get\_famd\_var}\NormalTok{(res.famd, }\StringTok{"quanti.var"}\NormalTok{)}
+\NormalTok{quanti.var}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## FAMD results for quantitative variables 
+##  ===================================================
+##   Name       Description                      
+## 1 "$coord"   "Coordinates"                    
+## 2 "$cos2"    "Cos2, quality of representation"
+## 3 "$contrib" "Contributions"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fviz\_famd\_var}\NormalTok{(res.famd, }\StringTok{"quanti.var"}\NormalTok{, }\AttributeTok{col.var =} \StringTok{"black"}\NormalTok{)  }\CommentTok{\# on ne peut pas utiliser repel=TRUE car trop de variables}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-7-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fviz\_famd\_var(res.famd, \textquotesingle{}quanti.var\textquotesingle{}, repel =}
+\CommentTok{\# TRUE,col.var = \textquotesingle{}black\textquotesingle{})}
+\CommentTok{\# couleur selon importance de la contribution aux axes}
+\FunctionTok{fviz\_famd\_var}\NormalTok{(res.famd, }\StringTok{"quanti.var"}\NormalTok{, }\AttributeTok{col.var =} \StringTok{"contrib"}\NormalTok{, }\AttributeTok{gradient.cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#00AFBB"}\NormalTok{,}
+    \StringTok{"\#E7B800"}\NormalTok{, }\StringTok{"\#FC4E07"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-7-2} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Couleur par valeurs cos2: qualité sur le plan des}
+\CommentTok{\# facteurs}
+\FunctionTok{fviz\_famd\_var}\NormalTok{(res.famd, }\StringTok{"quanti.var"}\NormalTok{, }\AttributeTok{col.var =} \StringTok{"cos2"}\NormalTok{, }\AttributeTok{gradient.cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#00AFBB"}\NormalTok{,}
+    \StringTok{"\#E7B800"}\NormalTok{, }\StringTok{"\#FC4E07"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-7-3} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fviz\_famd\_var}\NormalTok{(res.famd, }\StringTok{"quanti.var"}\NormalTok{, }\AttributeTok{col.var =} \StringTok{"cos2"}\NormalTok{, }\AttributeTok{gradient.cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#00AFBB"}\NormalTok{,}
+    \StringTok{"\#E7B800"}\NormalTok{, }\StringTok{"\#FC4E07"}\NormalTok{), }\AttributeTok{axes =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-7-4} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Cos2 total des variables sur Dim.1 et Dim.2}
+\FunctionTok{fviz\_cos2}\NormalTok{(res.famd, }\AttributeTok{choice =} \StringTok{"var"}\NormalTok{, }\AttributeTok{axes =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-7-5} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Cos2 total des variables sur Dim.1 et Dim.3}
+\FunctionTok{fviz\_cos2}\NormalTok{(res.famd, }\AttributeTok{choice =} \StringTok{"var"}\NormalTok{, }\AttributeTok{axes =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-7-6} \end{center}
+
+\normalsize
+
+\#\#Variables qualitatives
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{quali.var }\OtherTok{\textless{}{-}} \FunctionTok{get\_famd\_var}\NormalTok{(res.famd, }\StringTok{"quali.var"}\NormalTok{)}
+\NormalTok{quali.var}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## FAMD results for qualitative variable categories 
+##  ===================================================
+##   Name       Description                      
+## 1 "$coord"   "Coordinates"                    
+## 2 "$cos2"    "Cos2, quality of representation"
+## 3 "$contrib" "Contributions"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fviz\_famd\_var}\NormalTok{(res.famd, }\StringTok{"quali.var"}\NormalTok{, }\AttributeTok{col.var =} \StringTok{"cos2"}\NormalTok{, }\AttributeTok{gradient.cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#00AFBB"}\NormalTok{,}
+    \StringTok{"\#E7B800"}\NormalTok{, }\StringTok{"\#FC4E07"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-8-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fviz\_famd\_var}\NormalTok{(res.famd, }\StringTok{"quali.var"}\NormalTok{, }\AttributeTok{col.var =} \StringTok{"cos2"}\NormalTok{, }\AttributeTok{gradient.cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#00AFBB"}\NormalTok{,}
+    \StringTok{"\#E7B800"}\NormalTok{, }\StringTok{"\#FC4E07"}\NormalTok{), }\AttributeTok{axes =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-8-2} \end{center}
+
+\normalsize
+
+\#\#Individus
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ind }\OtherTok{\textless{}{-}} \FunctionTok{get\_famd\_ind}\NormalTok{(res.famd)}
+\NormalTok{ind}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## FAMD results for individuals 
+##  ===================================================
+##   Name       Description                      
+## 1 "$coord"   "Coordinates"                    
+## 2 "$cos2"    "Cos2, quality of representation"
+## 3 "$contrib" "Contributions"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#couleur par contribution aux axes}
+\FunctionTok{fviz\_famd\_ind}\NormalTok{(res.famd, }\AttributeTok{col.ind =} \StringTok{"contrib"}\NormalTok{,}
+             \AttributeTok{gradient.cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#00AFBB"}\NormalTok{, }\StringTok{"\#E7B800"}\NormalTok{, }\StringTok{"\#FC4E07"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-9-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#couleur par qualité de representation}
+\FunctionTok{fviz\_famd\_ind}\NormalTok{(res.famd, }\AttributeTok{col.ind =} \StringTok{"cos2"}\NormalTok{,}
+             \AttributeTok{gradient.cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#00AFBB"}\NormalTok{, }\StringTok{"\#E7B800"}\NormalTok{, }\StringTok{"\#FC4E07"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-9-2} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#couleur par traitement}
+\FunctionTok{fviz\_mfa\_ind}\NormalTok{(res.famd, }
+             \AttributeTok{habillage =} \StringTok{"Foret"}\NormalTok{, }\CommentTok{\# color by groups }
+             \AttributeTok{palette =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#00AFBB"}\NormalTok{, }\StringTok{"\#E7B800"}\NormalTok{, }\StringTok{"\#FC4E07"}\NormalTok{),}
+             \AttributeTok{addEllipses =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{ellipse.type =} \StringTok{"confidence"}\NormalTok{, }
+             \AttributeTok{repel =} \ConstantTok{TRUE} \CommentTok{\# Avoid text overlapping}
+\NormalTok{             ) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-9-3} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fviz\_ellipses}\NormalTok{(res.famd, }\FunctionTok{c}\NormalTok{(}\StringTok{"Foret"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-9-4} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# n\textquotesingle{}affiche pas le num des individus}
+\FunctionTok{fviz\_ellipses}\NormalTok{(res.famd, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\AttributeTok{geom =} \StringTok{"point"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-9-5} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# individu extreme }
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
 
 
 % Bibliography

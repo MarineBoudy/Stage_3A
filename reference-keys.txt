@@ -2,3 +2,4 @@ fig:planning
 point-détape-3e-semaine-de-stage
 problématique-du-stage
 déroulé-du-stage
+toutes-les-variables
