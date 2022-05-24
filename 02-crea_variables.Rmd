@@ -1,0 +1,334 @@
+---
+title: "crea_varaibles"
+author: "Marine Boudy"
+date: '2022-04-28'
+output: html_document
+---
+
+
+```{r library}
+library(tidyverse)
+library(readxl)
+library(sf)
+library(raster)# moins rapide que terra qui reprend toutes les fonctions de raster
+library(rgdal)
+library(terra)
+library(rmapshaper)#pour la conversion polygone vers ligne
+```
+
+
+
+```{r fonction_convert_col_type}
+
+#---NUMERIC
+##--- convertir une colonne en numeric
+convert_col_to_num <- function(df, my_col_name) {
+  my_col <- as.numeric(df[, my_col_name])
+  df[, my_col_name] <- my_col
+  return(df)
+}
+
+##---conversion de plusieurs colones en numeric
+convert_multiple_col_to_num <- function(df, my_col_names) {
+  length_list <- length(my_col_names)
+  for (i in 1:length_list){
+    df <- convert_col_to_num(df,my_col_names[i]) 
+  }
+  return(df)
+}
+
+
+#---FACTOR
+##--- convertir une colonne en facteur
+convert_col_to_factor <- function(df, my_col_name) {
+  my_col <- as.factor(df[, my_col_name])
+  df[, my_col_name] <- my_col
+  return(df)
+}
+
+##---conversion de plusieurs colones en facteur
+convert_multiple_col_to_factor <- function(df, my_col_names) {
+  length_list <- length(my_col_names)
+  for (i in 1:length_list){
+    df <- convert_col_to_factor(df,my_col_names[i]) 
+  }
+  return(df)
+}
+
+
+```
+
+
+```{r}
+###Import des donnees###
+#---Placette d'inventaire
+
+plac_col_to_num <- c("XUTM","YUTM","h1","h2","h3")
+placettes <- read.csv2("vault/data/tableur/Placettes_S9.csv", header = TRUE, sep = ";", dec = ",", fill = TRUE) %>% 
+  convert_multiple_col_to_num(plac_col_to_num)
+
+#---Inventaire des juveniles
+liste_col_to_num <- c("azimut","Distance.au.centre") 
+liste_col_to_factor <- c("Foret","Parcelle","Carre","Essence","Genre","Espece","Nom.Vernaculaire","Type.placette","Traitement")
+
+juveniles <- read_excel("vault/data/tableur/DB_JUVENILES_S9_xl.xlsx", sheet="DB_JUVENILES_S9",col_names = TRUE,guess_max = 2000) %>% 
+  as.data.frame() %>%
+  convert_multiple_col_to_num(liste_col_to_num) %>% 
+  convert_multiple_col_to_factor(liste_col_to_factor)
+
+save(juveniles,file="vault/data/juveniles.RData")
+
+### trouees
+
+### arbres parents
+
+### lineaires
+
+### 
+
+```
+
+```{r fonction_crea_var_par_sp}
+#---Fonction qui calcule les variables de hauteur pour une essence donnee
+var_hauteur_tot <- function(tableau, code_essence){
+juveniles_hauteur <- tableau %>% 
+  filter(Essence== code_essence) %>% 
+  group_by(Nom_Placette) %>% 
+  summarise(sumhauteur=sum(Hauteur..cm.), hauteur_moy=mean(Hauteur..cm.),hauteur_max=max(Hauteur..cm.), hauteur_min =min(Hauteur..cm.)) %>%
+  dplyr::select(Nom_Placette, sumhauteur, hauteur_moy, hauteur_max, hauteur_min)
+return(juveniles_hauteur)
+
+}
+
+#---Fonction qui calcule les variables de hauteur des individus de moins de 130 cm de hauteur pour une essence donnee
+var_inf130 <- function(tableau,code_essence){
+  
+juveniles_inf_130 <-filter(juveniles,Essence== code_essence, Hauteur..cm. < 130) %>% 
+  group_by(Nom_Placette) %>%
+  summarise(n_inf_130=n(), sum_h_inf_130=sum(Hauteur..cm.), mean_h_inf_130=mean(Hauteur..cm.)) %>% 
+  dplyr::select(Nom_Placette,n_inf_130,sum_h_inf_130)
+
+return(juveniles_inf_130)
+}
+
+#---Fonction qui calcule les variables de hauteur des individus >= 130 cm de hauteur pour une essence donnee
+var_sup130 <- function(tableau,code_essence){
+  
+juveniles_sup_130 <-filter(juveniles, Essence== code_essence, Hauteur..cm. >= 130) %>% 
+  group_by(Nom_Placette) %>%
+  summarise(n_sup_130=n(), sum_h_sup_130=sum(Hauteur..cm.),moy_h_sup_130=mean(Hauteur..cm.),diam_moy=mean(Diametre..cm.)) %>% 
+  dplyr::select(Nom_Placette,n_sup_130,sum_h_sup_130,moy_h_sup_130,diam_moy)
+
+return(juveniles_sup_130)
+}
+
+#---Fonction qui regroupe toutes les données d'une essence en un seul tableau tableau
+tableau_essence <- function(juveniles,juveniles_plac,code_essence){
+
+essence_hauteurs_tot <- var_hauteur_tot(juveniles, code_essence)
+
+essence_sup130 <- var_sup130(juveniles, code_essence)
+
+essence_infsup130 <- var_inf130(juveniles, code_essence)
+
+  juveniles_essence <- juveniles_plac %>% 
+  left_join(essence_hauteurs_tot) %>%
+  left_join(essence_sup130) %>% 
+  left_join(essence_infsup130) %>%
+  as.data.frame() 
+  
+#---Remplace les NA par des 0 pour les variables mesurees sur le terrain
+  for(i in c(9:21,26,30)) {  #faire une fonction pour que ce soit moins moche ?
+   juveniles_essence[ , i][is.na(juveniles_essence[ , i])] <- 0
+  }
+return(juveniles_essence)
+  
+}
+
+##verification fonctions
+
+#AG_hauteur <- var_hauteur_tot(juveniles, "AG")
+
+#AG_sup130 <- var_sup130(juveniles, "AG")
+
+#AG_infsup130 <- var_inf130(juveniles, "AG")
+
+#AG_plac <-tableau_essence(juveniles,juveniles_plac,"AG")# variables concernant l'angelique calculee a l'echelle des placettes
+############
+
+
+
+```
+
+```{r crea_variables_donnees_inventaire}
+#---diversite: nombre d'espece differentes par placette
+juveniles_ess <- juveniles %>% 
+  group_by(Nom_Placette) %>%
+  filter(!is.na(Essence)) %>%# évite de compter les NA comme une essence 
+  count(Essence) %>% 
+  summarise(diversite = n())
+
+#---  nombre de juveniles pour chaque espece
+juveniles_par_ess <- juveniles %>% 
+  group_by(Nom_Placette) %>% 
+  filter(!is.na(Essence)) %>%
+  count(Essence) %>% 
+  pivot_wider(names_from = Essence, values_from = n,names_prefix = "n_",)#nombre d'individus par essence,
+
+#---competition: hauteur moyenne des 3 plus grand individus de moins de 10cm de diametre qui ne font pas partie de nos espces etudiees
+var_competition <- placettes %>% 
+  mutate( competition_sum=h1+h2+h3) %>%
+  mutate(competition_moy=competition_sum/3) %>%  
+  dplyr::select(-XUTM,-YUTM,-h1,-h2,-h3)
+
+#--- nombre total d’individus toutes espèces confondues
+n_tot_placette <- juveniles %>% 
+  group_by(Nom_Placette) %>% 
+  filter(!is.na(Essence)) %>%  
+  summarise(n_tot_sp=n())  
+ 
+juveniles_variables <- juveniles %>%
+  group_by(Nom_Placette) %>%
+  slice(1) %>% 
+  dplyr::select(1:4,14,15)
+
+
+# tableau qui regroupe les information de base des placettes
+juveniles_plac <- var_competition %>% 
+  left_join(juveniles_variables) %>%  
+  left_join(n_tot_placette) %>%
+  left_join(juveniles_ess) %>% 
+  left_join(juveniles_par_ess) %>% 
+  as.data.frame()
+
+
+
+
+#--- Attribution des valeurs pour les fariables Foret, Parcelle,type.placette, traitement pou les placettes vides
+#faire un code plus court, la c'est moche: utiliser dplyr case_when plutot que des if?
+
+compte <- length(juveniles_plac[,"Nom_Placette"])
+
+
+for (i in 1:compte){
+  if(is.na(juveniles_plac[i,"Foret"]) ==TRUE){
+    if(startsWith(juveniles_plac[i,"Nom_Placette"], 'p') ==TRUE){
+    juveniles_plac[i,"Foret"]<-"Paracou"
+    }
+    if(startsWith(juveniles_plac[i,"Nom_Placette"], 'HK') ==TRUE){
+    juveniles_plac[i,"Foret"]<-"Regina"
+    juveniles_plac[i,"Parcelle"] <- "HKO096"
+    }
+    if(startsWith(juveniles_plac[i,"Nom_Placette"], 'MAW745') ==TRUE){
+    juveniles_plac[i,"Foret"]<-"St Georges"
+    juveniles_plac[i,"Parcelle"] <- "MAW745"
+    }
+  }
+  if(is.na(juveniles_plac[i,"Traitement"]) ==TRUE){  
+    if(startsWith(juveniles_plac[i,"Nom_Placette"], 'gt') ==TRUE){
+    juveniles_plac[i,"Foret"]<-"Regina"
+    juveniles_plac[i,"Traitement"] <- "GT"
+    juveniles_plac[i,"Parcelle"] <- "PAI74"
+    } 
+  
+    if(startsWith(juveniles_plac[i,"Nom_Placette"], 'pt') ==TRUE){
+    juveniles_plac[i,"Foret"]<-"Regina"
+    juveniles_plac[i,"Traitement"] <- "PT"
+    juveniles_plac[i,"Parcelle"] <- "PAI74"
+    }
+    if(startsWith(juveniles_plac[i,"Nom_Placette"], 'sc') ==TRUE){
+    juveniles_plac[i,"Foret"]<-"Regina"
+    juveniles_plac[i,"Traitement"] <- "SC"
+    juveniles_plac[i,"Parcelle"] <- "PAI74"
+      }
+  }
+}
+
+
+save(juveniles_plac, file="data/juveniles_plac.RData")
+
+#---Creation d'un tableau de donnees pour chaque espece etudiee
+
+AG_plac <-tableau_essence(juveniles,juveniles_plac,"AG")# variables concernant l'angelique calculee a l'echelle des placettes
+BFBI_plac <-tableau_essence(juveniles,juveniles_plac,"BFBI")
+BFHU_plac <-tableau_essence(juveniles,juveniles_plac,"BFHU")
+EPF_plac <-tableau_essence(juveniles,juveniles_plac,"EPF")
+EPG_plac <-tableau_essence(juveniles,juveniles_plac,"EPG")
+GF_plac <-tableau_essence(juveniles,juveniles_plac,"GF")
+GFLG_plac <-tableau_essence(juveniles,juveniles_plac,"GFLG")
+GFLR_plac <-tableau_essence(juveniles,juveniles_plac,"GFLR")
+GP_plac <-tableau_essence(juveniles,juveniles_plac,"GP")
+VIO_plac <-tableau_essence(juveniles,juveniles_plac,"VIO")
+WAC_plac <-tableau_essence(juveniles,juveniles_plac,"WAC")
+
+
+
+
+#---Sauvegarde
+save(AG_plac,file="vault/data/AG_plac.RData")
+save(BFBI_plac,file="vault/data/BFBI_plac.RData")
+save(BFHU_plac,file="vault/data/BFHU_plac.RData")
+save(EPF_plac,file="vault/data/EPF_plac.RData")
+save(EPG_plac,file="vault/data/EPG_plac.RData")
+save(GF_plac,file="vault/data/GF_plac.RData")
+save(GFLG_plac,file="vault/data/GFLG_plac.RData")
+save(GFLR_plac,file="vault/data/GFLR_plac.RData")
+save(GP_plac,file="vault/data/GP_plac.RData")
+save(VIO_plac,file="vault/data/VIO_plac.RData")
+save(WAC_plac,file="vault/data/WAC_plac.RData")
+
+
+```
+
+
+
+```{r variables_externes,eval = FALSE}
+placettes_sf <- placettes %>% 
+  filter(!is.na(XUTM)) %>%  #retire les placettes sans coordonnees
+  st_as_sf(coords = c("XUTM","YUTM")) %>% 
+  st_set_crs(32622) %>% 
+  dplyr::select(-c(h1,h2,h3,))
+
+st_write(placettes_sf, "vault/output/placettes_sf.gpkg", append=TRUE )
+
+
+
+ggplot() +
+  geom_sf(data=placettes_sf)
+
+
+```
+
+```{r correction_na,eval = FALSE}
+
+
+#print(drapeau)
+
+}
+
+juveniles_plac_test <- dplyr::filter(juveniles_plac, Foret == 'Regina') %>% 
+  mutate(Foret= replace(Foret, 'Paracou'))
+
+
+###autre test
+
+juveniles_plac$Foret[which(is.na(juveniles_plac$Foret)|juveniles_plac$Foret %in% 'p')] <- 'Paracou'
+
+
+juveniles_plac$Foret <- case_when(
+    is.na(juveniles_plac$Foret)==TRUE & dplyr::starts_with(juveniles_plac$Foret,'p') ~ "Paracou",
+   
+)
+```  
+
+```{r}
+test <- filter(juveniles_plac, is.na(Foret))
+
+test$Nom_Placette
+
+
+```
+
+
+
+  
