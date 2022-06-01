@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Création de variables liées aux juveniles inventoriés | Modélisation de la régénération d’espèces semi-héliophiles de Guyane sur un gradient de perturbations naturelles et anthropiques</title>
+  <meta name="description" content="Bookdown template based on LaTeX memoir class" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Création de variables liées aux juveniles inventoriés | Modélisation de la régénération d’espèces semi-héliophiles de Guyane sur un gradient de perturbations naturelles et anthropiques" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://marineboudy.github.io/Stage_3A/images/logo.png" />
+  <meta property="og:description" content="Bookdown template based on LaTeX memoir class" />
+  <meta name="github-repo" content="MarineBoudy/Stage_3A" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Création de variables liées aux juveniles inventoriés | Modélisation de la régénération d’espèces semi-héliophiles de Guyane sur un gradient de perturbations naturelles et anthropiques" />
+  
+  <meta name="twitter:description" content="Bookdown template based on LaTeX memoir class" />
+  <meta name="twitter:image" content="https://marineboudy.github.io/Stage_3A/images/logo.png" />
+
+<meta name="author" content="Marine Boudy" />
+
+
+<meta name="date" content="2022-05-30" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="point-détape-3e-semaine-de-stage.html"/>
+<link rel="next" href="afdmanalyse-factorielle-de-données-mixtes.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script async defer src="https://hypothes.is/embed.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Memoire Marine Boudy</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="point-détape-3e-semaine-de-stage.html"><a href="point-détape-3e-semaine-de-stage.html"><i class="fa fa-check"></i><b>1</b> Point d’étape: 3<sup>e</sup> semaine de stage</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="point-détape-3e-semaine-de-stage.html"><a href="point-détape-3e-semaine-de-stage.html#problématique-du-stage"><i class="fa fa-check"></i><b>1.1</b> Problématique du stage</a></li>
+<li class="chapter" data-level="1.2" data-path="point-détape-3e-semaine-de-stage.html"><a href="point-détape-3e-semaine-de-stage.html#déroulé-du-stage"><i class="fa fa-check"></i><b>1.2</b> Déroulé du stage</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="création-de-variables-liées-aux-juveniles-inventoriés.html"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html"><i class="fa fa-check"></i><b>2</b> Création de variables liées aux juveniles inventoriés</a></li>
+<li class="chapter" data-level="3" data-path="afdmanalyse-factorielle-de-données-mixtes.html"><a href="afdmanalyse-factorielle-de-données-mixtes.html"><i class="fa fa-check"></i><b>3</b> AFDM:Analyse factorielle de données mixtes</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="afdmanalyse-factorielle-de-données-mixtes.html"><a href="afdmanalyse-factorielle-de-données-mixtes.html#angélique"><i class="fa fa-check"></i><b>3.1</b> Angélique</a></li>
+<li class="chapter" data-level="3.2" data-path="afdmanalyse-factorielle-de-données-mixtes.html"><a href="afdmanalyse-factorielle-de-données-mixtes.html#variables-quantitatives"><i class="fa fa-check"></i><b>3.2</b> Variables quantitatives</a></li>
+<li class="chapter" data-level="3.3" data-path="afdmanalyse-factorielle-de-données-mixtes.html"><a href="afdmanalyse-factorielle-de-données-mixtes.html#variables-qualitatives"><i class="fa fa-check"></i><b>3.3</b> Variables qualitatives</a></li>
+<li class="chapter" data-level="3.4" data-path="afdmanalyse-factorielle-de-données-mixtes.html"><a href="afdmanalyse-factorielle-de-données-mixtes.html#individus"><i class="fa fa-check"></i><b>3.4</b> Individus</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="surfaces-douverture-de-la-canopee.html"><a href="surfaces-douverture-de-la-canopee.html"><i class="fa fa-check"></i><b>4</b> Surfaces d’ouverture de la canopee</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="surfaces-douverture-de-la-canopee.html"><a href="surfaces-douverture-de-la-canopee.html#comparaison-de-paracou-aux-autres-sites"><i class="fa fa-check"></i><b>4.1</b> Comparaison de paracou aux autres sites</a></li>
+<li class="chapter" data-level="4.2" data-path="surfaces-douverture-de-la-canopee.html"><a href="surfaces-douverture-de-la-canopee.html#comparaison-des-4-sites"><i class="fa fa-check"></i><b>4.2</b> Comparaison des 4 sites</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/MarineBoudy/Stage_3A" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modélisation de la régénération d’espèces semi-héliophiles de Guyane sur un gradient de perturbations naturelles et anthropiques</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div class = rmdreview>
+Ce gitbook est librement annotable à l'aide de  <b><a href="https://web.hypothes.is/">Hypothes.is</a></b>. N'hésiter à l'annoter soit en public ou au sein d'un groupe. Pour ajouter vos annotations, <span style="background-color: #3297FD; color: white"> sélectionner un zone de texte </span>  et cliquer <i class="h-icon-annotate"></i> sur le menu pop-up. Pour voir les annotations des autres lecteurs, cliquer dans  <i class="h-icon-chevron-left"></i> dans le coin supérieur droit de la page <i class="fa fa-arrow-circle-right  fa-rotate-315" aria-hidden="true"></i>
+</div>
+<div id="création-de-variables-liées-aux-juveniles-inventoriés" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Création de variables liées aux juveniles inventoriés<a href="création-de-variables-liées-aux-juveniles-inventoriés.html#création-de-variables-liées-aux-juveniles-inventoriés" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-3"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-4"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)  <span class="co"># moins rapide que terra qui reprend toutes les fonctions de raster</span></span>
+<span id="cb1-5"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span>
+<span id="cb1-6"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb1-7"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmapshaper)  <span class="co">#pour la conversion polygone vers ligne</span></span></code></pre></div>
+<p></p>
+<p></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#---NUMERIC</span></span>
+<span id="cb2-2"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">##--- convertir une colonne en numeric</span></span>
+<span id="cb2-3"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-3" aria-hidden="true" tabindex="-1"></a>convert_col_to_num <span class="ot">&lt;-</span> <span class="cf">function</span>(df, my_col_name) {</span>
+<span id="cb2-4"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-4" aria-hidden="true" tabindex="-1"></a>    my_col <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(df[, my_col_name])</span>
+<span id="cb2-5"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-5" aria-hidden="true" tabindex="-1"></a>    df[, my_col_name] <span class="ot">&lt;-</span> my_col</span>
+<span id="cb2-6"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(df)</span>
+<span id="cb2-7"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-8"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="do">##---conversion de plusieurs colones en numeric</span></span>
+<span id="cb2-9"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-9" aria-hidden="true" tabindex="-1"></a>convert_multiple_col_to_num <span class="ot">&lt;-</span> <span class="cf">function</span>(df, my_col_names) {</span>
+<span id="cb2-10"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-10" aria-hidden="true" tabindex="-1"></a>    length_list <span class="ot">&lt;-</span> <span class="fu">length</span>(my_col_names)</span>
+<span id="cb2-11"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>length_list) {</span>
+<span id="cb2-12"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-12" aria-hidden="true" tabindex="-1"></a>        df <span class="ot">&lt;-</span> <span class="fu">convert_col_to_num</span>(df, my_col_names[i])</span>
+<span id="cb2-13"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-14"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(df)</span>
+<span id="cb2-15"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-16"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#---FACTOR</span></span>
+<span id="cb2-17"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="do">##--- convertir une colonne en facteur</span></span>
+<span id="cb2-18"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-18" aria-hidden="true" tabindex="-1"></a>convert_col_to_factor <span class="ot">&lt;-</span> <span class="cf">function</span>(df, my_col_name) {</span>
+<span id="cb2-19"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-19" aria-hidden="true" tabindex="-1"></a>    my_col <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df[, my_col_name])</span>
+<span id="cb2-20"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-20" aria-hidden="true" tabindex="-1"></a>    df[, my_col_name] <span class="ot">&lt;-</span> my_col</span>
+<span id="cb2-21"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(df)</span>
+<span id="cb2-22"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-23"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="do">##---conversion de plusieurs colones en facteur</span></span>
+<span id="cb2-24"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-24" aria-hidden="true" tabindex="-1"></a>convert_multiple_col_to_factor <span class="ot">&lt;-</span> <span class="cf">function</span>(df, my_col_names) {</span>
+<span id="cb2-25"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-25" aria-hidden="true" tabindex="-1"></a>    length_list <span class="ot">&lt;-</span> <span class="fu">length</span>(my_col_names)</span>
+<span id="cb2-26"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>length_list) {</span>
+<span id="cb2-27"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-27" aria-hidden="true" tabindex="-1"></a>        df <span class="ot">&lt;-</span> <span class="fu">convert_col_to_factor</span>(df, my_col_names[i])</span>
+<span id="cb2-28"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-29"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(df)</span>
+<span id="cb2-30"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb2-30" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p></p>
+<p></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Import des donnees###</span></span>
+<span id="cb3-2"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#---Placette d&#39;inventaire</span></span>
+<span id="cb3-3"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-3" aria-hidden="true" tabindex="-1"></a>plac_col_to_num <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;XUTM&quot;</span>, <span class="st">&quot;YUTM&quot;</span>, <span class="st">&quot;h1&quot;</span>, <span class="st">&quot;h2&quot;</span>, <span class="st">&quot;h3&quot;</span>)</span>
+<span id="cb3-4"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-4" aria-hidden="true" tabindex="-1"></a>placettes <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;vault/data/tableur/Placettes_S9.csv&quot;</span>,</span>
+<span id="cb3-5"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">convert_multiple_col_to_num</span>(plac_col_to_num)</span>
+<span id="cb3-7"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#---Inventaire des juveniles</span></span>
+<span id="cb3-8"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-8" aria-hidden="true" tabindex="-1"></a>liste_col_to_num <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;azimut&quot;</span>, <span class="st">&quot;Distance.au.centre&quot;</span>)</span>
+<span id="cb3-9"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-9" aria-hidden="true" tabindex="-1"></a>liste_col_to_factor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Foret&quot;</span>, <span class="st">&quot;Parcelle&quot;</span>, <span class="st">&quot;Carre&quot;</span>, <span class="st">&quot;Essence&quot;</span>,</span>
+<span id="cb3-10"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Espece&quot;</span>, <span class="st">&quot;Nom.Vernaculaire&quot;</span>, <span class="st">&quot;Type.placette&quot;</span>, <span class="st">&quot;Traitement&quot;</span>)</span>
+<span id="cb3-11"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-11" aria-hidden="true" tabindex="-1"></a>juveniles <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;vault/data/tableur/DB_JUVENILES_S9_xl.xlsx&quot;</span>,</span>
+<span id="cb3-12"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">sheet =</span> <span class="st">&quot;DB_JUVENILES_S9&quot;</span>, <span class="at">col_names =</span> <span class="cn">TRUE</span>, <span class="at">guess_max =</span> <span class="dv">2000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-13"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-14"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">convert_multiple_col_to_num</span>(liste_col_to_num) <span class="sc">%&gt;%</span></span>
+<span id="cb3-15"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">convert_multiple_col_to_factor</span>(liste_col_to_factor)</span>
+<span id="cb3-16"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(juveniles, <span class="at">file =</span> <span class="st">&quot;vault/data/juveniles.RData&quot;</span>)</span>
+<span id="cb3-17"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="do">### trouees</span></span>
+<span id="cb3-18"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="do">### arbres parents</span></span>
+<span id="cb3-19"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="do">### lineaires</span></span>
+<span id="cb3-20"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span></code></pre></div>
+<p></p>
+<p></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#---Fonction qui calcule les variables de hauteur pour une essence donnee</span></span>
+<span id="cb4-2"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-2" aria-hidden="true" tabindex="-1"></a>var_hauteur_tot <span class="ot">&lt;-</span> <span class="cf">function</span>(tableau, code_essence) {</span>
+<span id="cb4-3"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-3" aria-hidden="true" tabindex="-1"></a>    juveniles_hauteur <span class="ot">&lt;-</span> tableau <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(Essence <span class="sc">==</span> code_essence) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(Nom_Placette) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">sumhauteur =</span> <span class="fu">sum</span>(Hauteur..cm.), <span class="at">hauteur_moy =</span> <span class="fu">mean</span>(Hauteur..cm.),</span>
+<span id="cb4-7"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">hauteur_max =</span> <span class="fu">max</span>(Hauteur..cm.), <span class="at">hauteur_min =</span> <span class="fu">min</span>(Hauteur..cm.)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-8" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">select</span>(Nom_Placette, sumhauteur, hauteur_moy,</span>
+<span id="cb4-9"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-9" aria-hidden="true" tabindex="-1"></a>            hauteur_max, hauteur_min)</span>
+<span id="cb4-10"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(juveniles_hauteur)</span>
+<span id="cb4-11"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-12"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#---Fonction qui calcule les variables de hauteur des individus de moins de 130 cm de hauteur pour une essence donnee</span></span>
+<span id="cb4-13"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-13" aria-hidden="true" tabindex="-1"></a>var_inf130 <span class="ot">&lt;-</span> <span class="cf">function</span>(tableau, code_essence) {</span>
+<span id="cb4-14"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-14" aria-hidden="true" tabindex="-1"></a>    juveniles_inf_130 <span class="ot">&lt;-</span> <span class="fu">filter</span>(juveniles, Essence <span class="sc">==</span> code_essence,</span>
+<span id="cb4-15"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-15" aria-hidden="true" tabindex="-1"></a>        Hauteur..cm. <span class="sc">&lt;</span> <span class="dv">130</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-16"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(Nom_Placette) <span class="sc">%&gt;%</span></span>
+<span id="cb4-17"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n_inf_130 =</span> <span class="fu">n</span>(), <span class="at">sum_h_inf_130 =</span> <span class="fu">sum</span>(Hauteur..cm.),</span>
+<span id="cb4-18"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-18" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_h_inf_130 =</span> <span class="fu">mean</span>(Hauteur..cm.)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-19"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-19" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">select</span>(Nom_Placette, n_inf_130, sum_h_inf_130)</span>
+<span id="cb4-20"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(juveniles_inf_130)</span>
+<span id="cb4-21"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-22"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#---Fonction qui calcule les variables de hauteur des individus &gt;= 130 cm de hauteur pour une essence donnee</span></span>
+<span id="cb4-23"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-23" aria-hidden="true" tabindex="-1"></a>var_sup130 <span class="ot">&lt;-</span> <span class="cf">function</span>(tableau, code_essence) {</span>
+<span id="cb4-24"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-24" aria-hidden="true" tabindex="-1"></a>    juveniles_sup_130 <span class="ot">&lt;-</span> <span class="fu">filter</span>(juveniles, Essence <span class="sc">==</span> code_essence,</span>
+<span id="cb4-25"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-25" aria-hidden="true" tabindex="-1"></a>        Hauteur..cm. <span class="sc">&gt;=</span> <span class="dv">130</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-26"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-26" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(Nom_Placette) <span class="sc">%&gt;%</span></span>
+<span id="cb4-27"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-27" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n_sup_130 =</span> <span class="fu">n</span>(), <span class="at">sum_h_sup_130 =</span> <span class="fu">sum</span>(Hauteur..cm.),</span>
+<span id="cb4-28"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">moy_h_sup_130 =</span> <span class="fu">mean</span>(Hauteur..cm.), <span class="at">diam_moy =</span> <span class="fu">mean</span>(Diametre..cm.)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-29"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-29" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">select</span>(Nom_Placette, n_sup_130, sum_h_sup_130,</span>
+<span id="cb4-30"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-30" aria-hidden="true" tabindex="-1"></a>            moy_h_sup_130, diam_moy)</span>
+<span id="cb4-31"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(juveniles_sup_130)</span>
+<span id="cb4-32"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-33"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co">#---Fonction qui regroupe toutes les données d&#39;une essence en un seul tableau tableau</span></span>
+<span id="cb4-34"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-34" aria-hidden="true" tabindex="-1"></a>tableau_essence <span class="ot">&lt;-</span> <span class="cf">function</span>(juveniles, juveniles_plac, code_essence) {</span>
+<span id="cb4-35"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-35" aria-hidden="true" tabindex="-1"></a>    essence_hauteurs_tot <span class="ot">&lt;-</span> <span class="fu">var_hauteur_tot</span>(juveniles, code_essence)</span>
+<span id="cb4-36"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-36" aria-hidden="true" tabindex="-1"></a>    essence_sup130 <span class="ot">&lt;-</span> <span class="fu">var_sup130</span>(juveniles, code_essence)</span>
+<span id="cb4-37"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-37" aria-hidden="true" tabindex="-1"></a>    essence_infsup130 <span class="ot">&lt;-</span> <span class="fu">var_inf130</span>(juveniles, code_essence)</span>
+<span id="cb4-38"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-38" aria-hidden="true" tabindex="-1"></a>    juveniles_essence <span class="ot">&lt;-</span> juveniles_plac <span class="sc">%&gt;%</span></span>
+<span id="cb4-39"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-39" aria-hidden="true" tabindex="-1"></a>        <span class="fu">left_join</span>(essence_hauteurs_tot) <span class="sc">%&gt;%</span></span>
+<span id="cb4-40"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-40" aria-hidden="true" tabindex="-1"></a>        <span class="fu">left_join</span>(essence_sup130) <span class="sc">%&gt;%</span></span>
+<span id="cb4-41"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-41" aria-hidden="true" tabindex="-1"></a>        <span class="fu">left_join</span>(essence_infsup130) <span class="sc">%&gt;%</span></span>
+<span id="cb4-42"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-42" aria-hidden="true" tabindex="-1"></a>        <span class="fu">as.data.frame</span>()</span>
+<span id="cb4-43"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-43" aria-hidden="true" tabindex="-1"></a>    <span class="co">#---Remplace les NA par des 0 pour les variables mesurees sur le terrain</span></span>
+<span id="cb4-44"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">9</span><span class="sc">:</span><span class="dv">21</span>, <span class="dv">26</span>, <span class="dv">30</span>)) {</span>
+<span id="cb4-45"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-45" aria-hidden="true" tabindex="-1"></a>        <span class="co"># faire une fonction pour que ce soit moins moche ?</span></span>
+<span id="cb4-46"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-46" aria-hidden="true" tabindex="-1"></a>        juveniles_essence[, i][<span class="fu">is.na</span>(juveniles_essence[, i])] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb4-47"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-47" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-48"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(juveniles_essence)</span>
+<span id="cb4-49"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-49" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-50"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="do">## verification fonctions</span></span>
+<span id="cb4-51"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="co"># AG_hauteur &lt;- var_hauteur_tot(juveniles, &#39;AG&#39;)</span></span>
+<span id="cb4-52"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="co"># AG_sup130 &lt;- var_sup130(juveniles, &#39;AG&#39;)</span></span>
+<span id="cb4-53"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="co"># AG_infsup130 &lt;- var_inf130(juveniles, &#39;AG&#39;)</span></span>
+<span id="cb4-54"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="co"># AG_plac &lt;-tableau_essence(juveniles,juveniles_plac,&#39;AG&#39;)#</span></span>
+<span id="cb4-55"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="co"># variables concernant l&#39;angelique calculee a l&#39;echelle des</span></span>
+<span id="cb4-56"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="co"># placettes</span></span></code></pre></div>
+<p></p>
+<p></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#---diversite: nombre d&#39;espece differentes par placette</span></span>
+<span id="cb5-2"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-2" aria-hidden="true" tabindex="-1"></a>juveniles_ess <span class="ot">&lt;-</span> juveniles <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Nom_Placette) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Essence)) <span class="sc">%&gt;%</span><span class="co"># évite de compter les NA comme une essence </span></span>
+<span id="cb5-5"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Essence) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-6"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">diversite =</span> <span class="fu">n</span>())</span>
+<span id="cb5-7"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#---  nombre de juveniles pour chaque espece</span></span>
+<span id="cb5-9"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-9" aria-hidden="true" tabindex="-1"></a>juveniles_par_ess <span class="ot">&lt;-</span> juveniles <span class="sc">%&gt;%</span> </span>
+<span id="cb5-10"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Nom_Placette) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-11"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Essence)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-12"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Essence) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-13"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Essence, <span class="at">values_from =</span> n,<span class="at">names_prefix =</span> <span class="st">&quot;n_&quot;</span>,)<span class="co">#nombre d&#39;individus par essence,</span></span>
+<span id="cb5-14"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#---competition: hauteur moyenne des 3 plus grand individus de moins de 10cm de diametre qui ne font pas partie de nos espces etudiees</span></span>
+<span id="cb5-16"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-16" aria-hidden="true" tabindex="-1"></a>var_competition <span class="ot">&lt;-</span> placettes <span class="sc">%&gt;%</span> </span>
+<span id="cb5-17"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">competition_sum=</span>h1<span class="sc">+</span>h2<span class="sc">+</span>h3) <span class="sc">%&gt;%</span></span>
+<span id="cb5-18"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">competition_moy=</span>competition_sum<span class="sc">/</span><span class="dv">3</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb5-19"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-19" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>XUTM,<span class="sc">-</span>YUTM,<span class="sc">-</span>h1,<span class="sc">-</span>h2,<span class="sc">-</span>h3)</span>
+<span id="cb5-20"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#--- nombre total d’individus toutes espèces confondues</span></span>
+<span id="cb5-22"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-22" aria-hidden="true" tabindex="-1"></a>n_tot_placette <span class="ot">&lt;-</span> juveniles <span class="sc">%&gt;%</span> </span>
+<span id="cb5-23"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Nom_Placette) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-24"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Essence)) <span class="sc">%&gt;%</span>  </span>
+<span id="cb5-25"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_tot_sp=</span><span class="fu">n</span>())  </span>
+<span id="cb5-26"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-26" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-27"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-27" aria-hidden="true" tabindex="-1"></a>juveniles_variables <span class="ot">&lt;-</span> juveniles <span class="sc">%&gt;%</span></span>
+<span id="cb5-28"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Nom_Placette) <span class="sc">%&gt;%</span></span>
+<span id="cb5-29"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-30"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-30" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">14</span>,<span class="dv">15</span>)</span>
+<span id="cb5-31"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co"># tableau qui regroupe les information de base des placettes</span></span>
+<span id="cb5-34"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-34" aria-hidden="true" tabindex="-1"></a>juveniles_plac <span class="ot">&lt;-</span> var_competition <span class="sc">%&gt;%</span> </span>
+<span id="cb5-35"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(juveniles_variables) <span class="sc">%&gt;%</span>  </span>
+<span id="cb5-36"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(n_tot_placette) <span class="sc">%&gt;%</span></span>
+<span id="cb5-37"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(juveniles_ess) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-38"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(juveniles_par_ess) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-39"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb5-40"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-41"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-42"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-43"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-44"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="co">#--- Attribution des valeurs pour les fariables Foret, Parcelle,type.placette, traitement pou les placettes vides</span></span>
+<span id="cb5-45"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="co">#faire un code plus court, la c&#39;est moche: utiliser dplyr case_when plutot que des if?</span></span>
+<span id="cb5-46"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-47"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-47" aria-hidden="true" tabindex="-1"></a>compte <span class="ot">&lt;-</span> <span class="fu">length</span>(juveniles_plac[,<span class="st">&quot;Nom_Placette&quot;</span>])</span>
+<span id="cb5-48"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-49"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-50"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>compte){</span>
+<span id="cb5-51"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-51" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.na</span>(juveniles_plac[i,<span class="st">&quot;Foret&quot;</span>]) <span class="sc">==</span><span class="cn">TRUE</span>){</span>
+<span id="cb5-52"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">startsWith</span>(juveniles_plac[i,<span class="st">&quot;Nom_Placette&quot;</span>], <span class="st">&#39;p&#39;</span>) <span class="sc">==</span><span class="cn">TRUE</span>){</span>
+<span id="cb5-53"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-53" aria-hidden="true" tabindex="-1"></a>    juveniles_plac[i,<span class="st">&quot;Foret&quot;</span>]<span class="ot">&lt;-</span><span class="st">&quot;Paracou&quot;</span></span>
+<span id="cb5-54"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-54" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-55"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">startsWith</span>(juveniles_plac[i,<span class="st">&quot;Nom_Placette&quot;</span>], <span class="st">&#39;HK&#39;</span>) <span class="sc">==</span><span class="cn">TRUE</span>){</span>
+<span id="cb5-56"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-56" aria-hidden="true" tabindex="-1"></a>    juveniles_plac[i,<span class="st">&quot;Foret&quot;</span>]<span class="ot">&lt;-</span><span class="st">&quot;Regina&quot;</span></span>
+<span id="cb5-57"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-57" aria-hidden="true" tabindex="-1"></a>    juveniles_plac[i,<span class="st">&quot;Parcelle&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;HKO096&quot;</span></span>
+<span id="cb5-58"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-58" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-59"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">startsWith</span>(juveniles_plac[i,<span class="st">&quot;Nom_Placette&quot;</span>], <span class="st">&#39;MAW745&#39;</span>) <span class="sc">==</span><span class="cn">TRUE</span>){</span>
+<span id="cb5-60"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-60" aria-hidden="true" tabindex="-1"></a>    juveniles_plac[i,<span class="st">&quot;Foret&quot;</span>]<span class="ot">&lt;-</span><span class="st">&quot;St Georges&quot;</span></span>
+<span id="cb5-61"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-61" aria-hidden="true" tabindex="-1"></a>    juveniles_plac[i,<span class="st">&quot;Parcelle&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;MAW745&quot;</span></span>
+<span id="cb5-62"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-62" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-63"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-63" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-64"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-64" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.na</span>(juveniles_plac[i,<span class="st">&quot;Traitement&quot;</span>]) <span class="sc">==</span><span class="cn">TRUE</span>){  </span>
+<span id="cb5-65"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">startsWith</span>(juveniles_plac[i,<span class="st">&quot;Nom_Placette&quot;</span>], <span class="st">&#39;gt&#39;</span>) <span class="sc">==</span><span class="cn">TRUE</span>){</span>
+<span id="cb5-66"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-66" aria-hidden="true" tabindex="-1"></a>    juveniles_plac[i,<span class="st">&quot;Foret&quot;</span>]<span class="ot">&lt;-</span><span class="st">&quot;Regina&quot;</span></span>
+<span id="cb5-67"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-67" aria-hidden="true" tabindex="-1"></a>    juveniles_plac[i,<span class="st">&quot;Traitement&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;GT&quot;</span></span>
+<span id="cb5-68"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-68" aria-hidden="true" tabindex="-1"></a>    juveniles_plac[i,<span class="st">&quot;Parcelle&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;PAI74&quot;</span></span>
+<span id="cb5-69"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-69" aria-hidden="true" tabindex="-1"></a>    } </span>
+<span id="cb5-70"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-70" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-71"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-71" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">startsWith</span>(juveniles_plac[i,<span class="st">&quot;Nom_Placette&quot;</span>], <span class="st">&#39;pt&#39;</span>) <span class="sc">==</span><span class="cn">TRUE</span>){</span>
+<span id="cb5-72"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-72" aria-hidden="true" tabindex="-1"></a>    juveniles_plac[i,<span class="st">&quot;Foret&quot;</span>]<span class="ot">&lt;-</span><span class="st">&quot;Regina&quot;</span></span>
+<span id="cb5-73"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-73" aria-hidden="true" tabindex="-1"></a>    juveniles_plac[i,<span class="st">&quot;Traitement&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;PT&quot;</span></span>
+<span id="cb5-74"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-74" aria-hidden="true" tabindex="-1"></a>    juveniles_plac[i,<span class="st">&quot;Parcelle&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;PAI74&quot;</span></span>
+<span id="cb5-75"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-75" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-76"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-76" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">startsWith</span>(juveniles_plac[i,<span class="st">&quot;Nom_Placette&quot;</span>], <span class="st">&#39;sc&#39;</span>) <span class="sc">==</span><span class="cn">TRUE</span>){</span>
+<span id="cb5-77"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-77" aria-hidden="true" tabindex="-1"></a>    juveniles_plac[i,<span class="st">&quot;Foret&quot;</span>]<span class="ot">&lt;-</span><span class="st">&quot;Regina&quot;</span></span>
+<span id="cb5-78"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-78" aria-hidden="true" tabindex="-1"></a>    juveniles_plac[i,<span class="st">&quot;Traitement&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;SC&quot;</span></span>
+<span id="cb5-79"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-79" aria-hidden="true" tabindex="-1"></a>    juveniles_plac[i,<span class="st">&quot;Parcelle&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;PAI74&quot;</span></span>
+<span id="cb5-80"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-80" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb5-81"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-81" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-82"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-82" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-83"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-84"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-85"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-85" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(juveniles_plac, <span class="at">file=</span><span class="st">&quot;vault/data/juveniles_plac.RData&quot;</span>)</span>
+<span id="cb5-86"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-87"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-87" aria-hidden="true" tabindex="-1"></a><span class="co">#---Creation d&#39;un tableau de donnees pour chaque espece etudiee</span></span>
+<span id="cb5-88"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-89"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-89" aria-hidden="true" tabindex="-1"></a>AG_plac <span class="ot">&lt;-</span><span class="fu">tableau_essence</span>(juveniles,juveniles_plac,<span class="st">&quot;AG&quot;</span>)<span class="co"># variables concernant l&#39;angelique calculee a l&#39;echelle des placettes</span></span>
+<span id="cb5-90"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-90" aria-hidden="true" tabindex="-1"></a>BFBI_plac <span class="ot">&lt;-</span><span class="fu">tableau_essence</span>(juveniles,juveniles_plac,<span class="st">&quot;BFBI&quot;</span>)</span>
+<span id="cb5-91"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-91" aria-hidden="true" tabindex="-1"></a>BFHU_plac <span class="ot">&lt;-</span><span class="fu">tableau_essence</span>(juveniles,juveniles_plac,<span class="st">&quot;BFHU&quot;</span>)</span>
+<span id="cb5-92"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-92" aria-hidden="true" tabindex="-1"></a>EPF_plac <span class="ot">&lt;-</span><span class="fu">tableau_essence</span>(juveniles,juveniles_plac,<span class="st">&quot;EPF&quot;</span>)</span>
+<span id="cb5-93"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-93" aria-hidden="true" tabindex="-1"></a>EPG_plac <span class="ot">&lt;-</span><span class="fu">tableau_essence</span>(juveniles,juveniles_plac,<span class="st">&quot;EPG&quot;</span>)</span>
+<span id="cb5-94"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-94" aria-hidden="true" tabindex="-1"></a>GF_plac <span class="ot">&lt;-</span><span class="fu">tableau_essence</span>(juveniles,juveniles_plac,<span class="st">&quot;GF&quot;</span>)</span>
+<span id="cb5-95"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-95" aria-hidden="true" tabindex="-1"></a>GFLG_plac <span class="ot">&lt;-</span><span class="fu">tableau_essence</span>(juveniles,juveniles_plac,<span class="st">&quot;GFLG&quot;</span>)</span>
+<span id="cb5-96"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-96" aria-hidden="true" tabindex="-1"></a>GFLR_plac <span class="ot">&lt;-</span><span class="fu">tableau_essence</span>(juveniles,juveniles_plac,<span class="st">&quot;GFLR&quot;</span>)</span>
+<span id="cb5-97"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-97" aria-hidden="true" tabindex="-1"></a>GP_plac <span class="ot">&lt;-</span><span class="fu">tableau_essence</span>(juveniles,juveniles_plac,<span class="st">&quot;GP&quot;</span>)</span>
+<span id="cb5-98"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-98" aria-hidden="true" tabindex="-1"></a>VIO_plac <span class="ot">&lt;-</span><span class="fu">tableau_essence</span>(juveniles,juveniles_plac,<span class="st">&quot;VIO&quot;</span>)</span>
+<span id="cb5-99"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-99" aria-hidden="true" tabindex="-1"></a>WAC_plac <span class="ot">&lt;-</span><span class="fu">tableau_essence</span>(juveniles,juveniles_plac,<span class="st">&quot;WAC&quot;</span>)</span>
+<span id="cb5-100"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-101"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-102"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-103"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-104"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-104" aria-hidden="true" tabindex="-1"></a><span class="co">#---Sauvegarde</span></span>
+<span id="cb5-105"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-105" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(AG_plac,<span class="at">file=</span><span class="st">&quot;vault/data/AG_plac.RData&quot;</span>)</span>
+<span id="cb5-106"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-106" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(BFBI_plac,<span class="at">file=</span><span class="st">&quot;vault/data/BFBI_plac.RData&quot;</span>)</span>
+<span id="cb5-107"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-107" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(BFHU_plac,<span class="at">file=</span><span class="st">&quot;vault/data/BFHU_plac.RData&quot;</span>)</span>
+<span id="cb5-108"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-108" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(EPF_plac,<span class="at">file=</span><span class="st">&quot;vault/data/EPF_plac.RData&quot;</span>)</span>
+<span id="cb5-109"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-109" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(EPG_plac,<span class="at">file=</span><span class="st">&quot;vault/data/EPG_plac.RData&quot;</span>)</span>
+<span id="cb5-110"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-110" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(GF_plac,<span class="at">file=</span><span class="st">&quot;vault/data/GF_plac.RData&quot;</span>)</span>
+<span id="cb5-111"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-111" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(GFLG_plac,<span class="at">file=</span><span class="st">&quot;vault/data/GFLG_plac.RData&quot;</span>)</span>
+<span id="cb5-112"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-112" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(GFLR_plac,<span class="at">file=</span><span class="st">&quot;vault/data/GFLR_plac.RData&quot;</span>)</span>
+<span id="cb5-113"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-113" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(GP_plac,<span class="at">file=</span><span class="st">&quot;vault/data/GP_plac.RData&quot;</span>)</span>
+<span id="cb5-114"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-114" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(VIO_plac,<span class="at">file=</span><span class="st">&quot;vault/data/VIO_plac.RData&quot;</span>)</span>
+<span id="cb5-115"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb5-115" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(WAC_plac,<span class="at">file=</span><span class="st">&quot;vault/data/WAC_plac.RData&quot;</span>)</span></code></pre></div>
+<p></p>
+
+<p></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-2"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb6-3"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-4"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb6-5"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb6-6"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb6-7"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
+<span id="cb6-8"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(FactoMineR)</span>
+<span id="cb6-9"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ppcor)</span>
+<span id="cb6-10"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span></code></pre></div>
+<p></p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="point-détape-3e-semaine-de-stage.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="afdmanalyse-factorielle-de-données-mixtes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MyBook.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -320,7 +320,7 @@
 
 \author{Marine Boudy}
 
-\date{2022-04-28}
+\date{2022-05-30}
 
 
 % Include headers (preamble.tex) here
@@ -573,7 +573,8 @@ Dans chaque placette sont inventoriés les individus des 11 espèces présentant
 
 La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces à inventorier est également mesurée. Cette mesure permet d'avoir une idée de la compétition entre nos espèces d'intérêt et les autres.
 
-\#Creation de variables
+\hypertarget{cruxe9ation-de-variables-liuxe9es-aux-juveniles-inventoriuxe9s}{%
+\chapter{Création de variables liées aux juveniles inventoriés}\label{cruxe9ation-de-variables-liuxe9es-aux-juveniles-inventoriuxe9s}}
 
 \scriptsize
 
@@ -852,68 +853,6 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{placettes\_sf }\OtherTok{\textless{}{-}}\NormalTok{ placettes }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(XUTM)) }\SpecialCharTok{\%\textgreater{}\%}  \CommentTok{\#retire les placettes sans coordonnees}
-  \FunctionTok{st\_as\_sf}\NormalTok{(}\AttributeTok{coords =} \FunctionTok{c}\NormalTok{(}\StringTok{"XUTM"}\NormalTok{,}\StringTok{"YUTM"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{st\_set\_crs}\NormalTok{(}\DecValTok{32622}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
-\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(h1,h2,h3,))}
-
-\FunctionTok{st\_write}\NormalTok{(placettes\_sf, }\StringTok{"vault/output/placettes\_sf.gpkg"}\NormalTok{, }\AttributeTok{append=}\ConstantTok{TRUE}\NormalTok{ )}
-
-
-
-\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data=}\NormalTok{placettes\_sf)}
-\end{Highlighting}
-\end{Shaded}
-
-\normalsize
-
-\scriptsize
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#print(drapeau)}
-
-\ErrorTok{\}}
-
-\NormalTok{juveniles\_plac\_test }\OtherTok{\textless{}{-}}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(juveniles\_plac, Foret }\SpecialCharTok{==} \StringTok{\textquotesingle{}Regina\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Foret=} \FunctionTok{replace}\NormalTok{(Foret, }\StringTok{\textquotesingle{}Paracou\textquotesingle{}}\NormalTok{))}
-
-
-\DocumentationTok{\#\#\#autre test}
-
-\NormalTok{juveniles\_plac}\SpecialCharTok{$}\NormalTok{Foret[}\FunctionTok{which}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(juveniles\_plac}\SpecialCharTok{$}\NormalTok{Foret)}\SpecialCharTok{|}\NormalTok{juveniles\_plac}\SpecialCharTok{$}\NormalTok{Foret }\SpecialCharTok{\%in\%} \StringTok{\textquotesingle{}p\textquotesingle{}}\NormalTok{)] }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}Paracou\textquotesingle{}}
-
-
-\NormalTok{juveniles\_plac}\SpecialCharTok{$}\NormalTok{Foret }\OtherTok{\textless{}{-}} \FunctionTok{case\_when}\NormalTok{(}
-    \FunctionTok{is.na}\NormalTok{(juveniles\_plac}\SpecialCharTok{$}\NormalTok{Foret)}\SpecialCharTok{==}\ConstantTok{TRUE} \SpecialCharTok{\&}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{starts\_with}\NormalTok{(juveniles\_plac}\SpecialCharTok{$}\NormalTok{Foret,}\StringTok{\textquotesingle{}p\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"Paracou"}\NormalTok{,}
-   
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\normalsize
-
-\scriptsize
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{test }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(juveniles\_plac, }\FunctionTok{is.na}\NormalTok{(Foret))}
-\NormalTok{test}\SpecialCharTok{$}\NormalTok{Nom\_Placette}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## character(0)
-\end{verbatim}
-
-\normalsize
-
-\scriptsize
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \FunctionTok{library}\NormalTok{(knitr)}
 \FunctionTok{library}\NormalTok{(ggplot2)}
@@ -929,8 +868,11 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 
 \normalsize
 
-\#AFDM:Analyse factorielle de données mixtes
-\#\#Angélique
+\hypertarget{afdmanalyse-factorielle-de-donnuxe9es-mixtes}{%
+\chapter{AFDM:Analyse factorielle de données mixtes}\label{afdmanalyse-factorielle-de-donnuxe9es-mixtes}}
+
+\hypertarget{anguxe9lique}{%
+\section{Angélique}\label{anguxe9lique}}
 
 \scriptsize
 
@@ -1009,9 +951,7 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{verbatim}
 
 \normalsize
-
-\hypertarget{toutes-les-variables}{%
-\section{Toutes les variables}\label{toutes-les-variables}}
+\#\# Variables qualitatives et quantitatives
 
 \scriptsize
 
@@ -1114,7 +1054,7 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-5-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1122,7 +1062,7 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-2} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-5-2} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1131,7 +1071,7 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-3} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-5-3} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1140,7 +1080,7 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-4} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-5-4} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1149,11 +1089,12 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-5} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-5-5} \end{center}
 
 \normalsize
 
-\#\#Variables quantitatives
+\hypertarget{variables-quantitatives}{%
+\section{Variables quantitatives}\label{variables-quantitatives}}
 
 \scriptsize
 
@@ -1179,7 +1120,7 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-7-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1191,7 +1132,7 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-7-2} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-2} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1202,7 +1143,7 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-7-3} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-3} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1211,7 +1152,7 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-7-4} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-4} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1220,7 +1161,7 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-7-5} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-5} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1229,11 +1170,12 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-7-6} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-6-6} \end{center}
 
 \normalsize
 
-\#\#Variables qualitatives
+\hypertarget{variables-qualitatives}{%
+\section{Variables qualitatives}\label{variables-qualitatives}}
 
 \scriptsize
 
@@ -1260,7 +1202,7 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-8-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-7-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1269,11 +1211,12 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-8-2} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-7-2} \end{center}
 
 \normalsize
 
-\#\#Individus
+\hypertarget{individus}{%
+\section{Individus}\label{individus}}
 
 \scriptsize
 
@@ -1301,7 +1244,7 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-9-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-8-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1311,7 +1254,7 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-9-2} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-8-2} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1325,7 +1268,7 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-9-3} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-8-3} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1333,7 +1276,7 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-9-4} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-8-4} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1342,13 +1285,194 @@ La hauteur des 3 plus hautes tiges ne faisant pas partie de la liste d'espèces 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-9-5} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-8-5} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# individu extreme }
 \end{Highlighting}
 \end{Shaded}
+
+\normalsize
+
+\hypertarget{surfaces-douverture-de-la-canopee}{%
+\chapter{Surfaces d'ouverture de la canopee}\label{surfaces-douverture-de-la-canopee}}
+
+L'objectif est de comparer les surfaces de trouees intersectées dans un rayon de 5,10 et 15m autour des palcettes entre Paracou et les autres sites d'études, afin de rééquilibrer échantillonnage.
+
+On etudie les 3 varaibles suivantes:
+
+P5.S = surface de trouée localisée dans un rayon de 5m autour du centre de la placette d'inventaire
+P10.S = surface de trouée localisée dans un rayon de 10m autour du centre de la placette d'inventaire
+P15.S = surface de trouée localisée dans un rayon de 15m autour du centre de la placette d'inventaire
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(sf)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(patchwork)}
+\FunctionTok{library}\NormalTok{(units)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{load}\NormalTok{(}\StringTok{"vault/data/ouvertures.RData"}\NormalTok{)}
+
+\NormalTok{ouvertures\_histo }\OtherTok{\textless{}{-}}\NormalTok{ouvertures }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{drop\_units}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# les surfaces d\textquotesingle{}intersection avec les trouee ont une unite(m2) ,on la retire pour le moment(probleme d\textquotesingle{}affichage avec ggplot2)}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Site =} \FunctionTok{case\_when}\NormalTok{(Foret}\SpecialCharTok{==}\StringTok{"Paracou"} \SpecialCharTok{\textasciitilde{}} \StringTok{"Paracou"}\NormalTok{,}
+\NormalTok{                           Parcelle}\SpecialCharTok{==}\StringTok{"HKO096"} \SpecialCharTok{\textasciitilde{}} \StringTok{"HKO096"}\NormalTok{,}
+\NormalTok{                           Parcelle}\SpecialCharTok{==}\StringTok{"MAW745"} \SpecialCharTok{\textasciitilde{}} \StringTok{"MAW"}\NormalTok{,}
+\NormalTok{                           Parcelle}\SpecialCharTok{==}\StringTok{"MAW744"} \SpecialCharTok{\textasciitilde{}} \StringTok{"MAW"}\NormalTok{,}
+\NormalTok{                           Parcelle}\SpecialCharTok{==}\StringTok{"PAI74"} \SpecialCharTok{\textasciitilde{}} \StringTok{"PAI74"}\NormalTok{))}\CommentTok{\# variable "Site d\textquotesingle{}etude" pour les facet\_wrap}
+\NormalTok{ouvertures\_histo[}\FunctionTok{is.na}\NormalTok{(ouvertures\_histo)] }\OtherTok{\textless{}{-}} \DecValTok{0}
+
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(ouvertures\_histo))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 39
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(ouvertures\_histo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Nom_Placette              Foret        Parcelle  
+##  Length:485         Paracou   :164   HKO096 : 84  
+##  Class :character   Regina    :166   MAW744 : 84  
+##  Mode  :character   St Georges:155   PAI74  : 82  
+##                                      MAW745 : 71  
+##                                      9      : 17  
+##                                      (Other):108  
+##                                      NA's   : 39  
+##       P5.S            P10.S            P15.S        
+##  Min.   : 0.000   Min.   :  0.00   Min.   :  0.000  
+##  1st Qu.: 0.000   1st Qu.:  0.00   1st Qu.:  8.949  
+##  Median : 0.000   Median : 13.29   Median : 42.265  
+##  Mean   : 9.069   Mean   : 32.60   Mean   : 67.756  
+##  3rd Qu.:11.621   3rd Qu.: 50.22   3rd Qu.: 96.307  
+##  Max.   :78.303   Max.   :240.27   Max.   :461.620  
+##                                                     
+##      LP10.S            LP15.S           LG5.S      
+##  Min.   :  0.000   Min.   :  0.00   Min.   : 0.00  
+##  1st Qu.:  0.000   1st Qu.:  0.00   1st Qu.: 0.00  
+##  Median :  9.909   Median : 14.42   Median :20.05  
+##  Mean   : 24.192   Mean   : 33.67   Mean   :25.69  
+##  3rd Qu.: 35.814   3rd Qu.: 48.32   3rd Qu.:50.23  
+##  Max.   :168.324   Max.   :370.24   Max.   :73.36  
+##                                                    
+##      LG10.S           LG15.S         LG_L10.S     
+##  Min.   :  0.00   Min.   :  0.0   Min.   :  0.00  
+##  1st Qu.: 19.63   1st Qu.: 96.0   1st Qu.: 13.32  
+##  Median :104.89   Median :224.2   Median : 74.15  
+##  Mean   :100.94   Mean   :218.8   Mean   : 78.08  
+##  3rd Qu.:167.12   3rd Qu.:338.3   3rd Qu.:123.41  
+##  Max.   :272.24   Max.   :571.2   Max.   :235.28  
+##                                                   
+##     LG_L15.S          Site          
+##  Min.   :  0.00   Length:485        
+##  1st Qu.: 37.08   Class :character  
+##  Median : 92.84   Mode  :character  
+##  Mean   :109.78                     
+##  3rd Qu.:158.39                     
+##  Max.   :435.65                     
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ouvertures\_paracou }\OtherTok{\textless{}{-}}\NormalTok{ ouvertures\_histo }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(Foret}\SpecialCharTok{==}\StringTok{"Paracou"}\NormalTok{)}\CommentTok{\#selection des données de Paracou}
+
+\NormalTok{ouvertures\_autres }\OtherTok{\textless{}{-}}\NormalTok{ ouvertures\_histo }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\NormalTok{Foret}\SpecialCharTok{==}\StringTok{"Paracou"}\NormalTok{)}\CommentTok{\#selecction des données hors Paracou}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\hypertarget{comparaison-de-paracou-aux-autres-sites}{%
+\section{Comparaison de paracou aux autres sites}\label{comparaison-de-paracou-aux-autres-sites}}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot comparant Paracou aux autres forets}
+\NormalTok{p1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ouvertures\_paracou) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ P5.S),}
+    \AttributeTok{binwidth =} \DecValTok{1}\NormalTok{, }\AttributeTok{boundary =} \DecValTok{0}\NormalTok{, }\AttributeTok{closed =} \StringTok{"left"}\NormalTok{, }\AttributeTok{colour =} \DecValTok{4}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Paracou"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Effectif"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{lims}\NormalTok{(}\AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{90}\NormalTok{), }\AttributeTok{y =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{200}\NormalTok{))}
+\NormalTok{p2 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ouvertures\_autres) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ P5.S),}
+    \AttributeTok{binwidth =} \DecValTok{1}\NormalTok{, }\AttributeTok{boundary =} \DecValTok{0}\NormalTok{, }\AttributeTok{closed =} \StringTok{"left"}\NormalTok{, }\AttributeTok{colour =} \DecValTok{4}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Autres sites"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Effectif"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{lims}\NormalTok{(}\AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{90}\NormalTok{), }\AttributeTok{y =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{200}\NormalTok{))}
+\NormalTok{p3 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ouvertures\_paracou) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ P10.S),}
+    \AttributeTok{binwidth =} \DecValTok{5}\NormalTok{, }\AttributeTok{boundary =} \DecValTok{0}\NormalTok{, }\AttributeTok{closed =} \StringTok{"left"}\NormalTok{, }\AttributeTok{colour =} \DecValTok{4}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Paracou"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Effectif"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{lims}\NormalTok{(}\AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{250}\NormalTok{), }\AttributeTok{y =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{140}\NormalTok{))}
+\NormalTok{p5 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ouvertures\_autres) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ P10.S),}
+    \AttributeTok{binwidth =} \DecValTok{5}\NormalTok{, }\AttributeTok{boundary =} \DecValTok{0}\NormalTok{, }\AttributeTok{closed =} \StringTok{"left"}\NormalTok{, }\AttributeTok{colour =} \DecValTok{4}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Autres sites"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Effectif"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{lims}\NormalTok{(}\AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{250}\NormalTok{), }\AttributeTok{y =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{140}\NormalTok{))}
+\NormalTok{p4 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ouvertures\_paracou) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ P15.S),}
+    \AttributeTok{binwidth =} \DecValTok{5}\NormalTok{, }\AttributeTok{boundary =} \DecValTok{0}\NormalTok{, }\AttributeTok{closed =} \StringTok{"left"}\NormalTok{, }\AttributeTok{colour =} \DecValTok{4}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Paracou"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Effectif"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{lims}\NormalTok{(}\AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{500}\NormalTok{), }\AttributeTok{y =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{70}\NormalTok{))}
+\NormalTok{p6 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ouvertures\_autres) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ P15.S),}
+    \AttributeTok{binwidth =} \DecValTok{5}\NormalTok{, }\AttributeTok{boundary =} \DecValTok{0}\NormalTok{, }\AttributeTok{closed =} \StringTok{"left"}\NormalTok{, }\AttributeTok{colour =} \DecValTok{4}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Autres sites"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{lims}\NormalTok{(}\AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,}
+    \DecValTok{500}\NormalTok{), }\AttributeTok{y =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{70}\NormalTok{))}
+\CommentTok{\#{-}{-}{-} Plot de Paracou et autres sites mélangés(Regina, St Georges)}
+\NormalTok{(p1}\SpecialCharTok{/}\NormalTok{p2 }\SpecialCharTok{|}\NormalTok{ p3}\SpecialCharTok{/}\NormalTok{p5 }\SpecialCharTok{|}\NormalTok{ p4}\SpecialCharTok{/}\NormalTok{p6) }\SpecialCharTok{+} \FunctionTok{plot\_annotation}\NormalTok{(}\AttributeTok{title =} \StringTok{"Histogramme des surfaces de trouées situées dans un rayon de 5, 10, et 15 m autour des placettes d\textquotesingle{}inventaire"}\NormalTok{,}
+    \AttributeTok{subtitle =} \StringTok{"Comparaison du site de Paracou aux inventaire sur les autres sites"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-9-1} \end{center}
+
+\normalsize
+rq:Les surfaces nulles, dont l'effectif est toujours très grand, écrasent les graphes
+La largeur des barres des histogrammes est de 1m2 pour P5.S,et de 5m2 pour P10.S et P15.S
+
+Le graphique ci-dessus montre qu'il existe un manque dans les grandes surfaces pour Paracou, ce qui est cohérent car l'exploitation est ancienne, les trouees sont donc de taille réduite.
+La repartition des ouvertures de moins de 100m dans le rayon de 10m est également différente.
+
+\hypertarget{comparaison-des-4-sites}{%
+\section{Comparaison des 4 sites}\label{comparaison-des-4-sites}}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#{-}{-}{-} Plot regroupant chaque site d\textquotesingle{}étude}
+\NormalTok{p8 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ouvertures\_histo) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(P5.S),}
+    \AttributeTok{binwidth =} \DecValTok{1}\NormalTok{, }\AttributeTok{boundary =} \DecValTok{0}\NormalTok{, }\AttributeTok{closed =} \StringTok{"left"}\NormalTok{, }\AttributeTok{colour =} \DecValTok{4}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Site, }\AttributeTok{ncol =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Effectif"}\NormalTok{)}
+\NormalTok{p9 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ouvertures\_histo) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(P10.S),}
+    \AttributeTok{binwidth =} \DecValTok{5}\NormalTok{, }\AttributeTok{boundary =} \DecValTok{0}\NormalTok{, }\AttributeTok{closed =} \StringTok{"left"}\NormalTok{, }\AttributeTok{colour =} \DecValTok{4}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Site, }\AttributeTok{ncol =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Effectif"}\NormalTok{)}
+\NormalTok{p10 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ouvertures\_histo) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(P15.S),}
+    \AttributeTok{binwidth =} \DecValTok{5}\NormalTok{, }\AttributeTok{boundary =} \DecValTok{0}\NormalTok{, }\AttributeTok{closed =} \StringTok{"left"}\NormalTok{, }\AttributeTok{colour =} \DecValTok{4}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Site, }\AttributeTok{ncol =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Effectif"}\NormalTok{)}
+\NormalTok{p8 }\SpecialCharTok{+}\NormalTok{ p9 }\SpecialCharTok{+}\NormalTok{ p10 }\SpecialCharTok{+} \FunctionTok{plot\_annotation}\NormalTok{(}\AttributeTok{title =} \StringTok{"Histogramme des surfaces de trouées situées dans un rayon de 5, 10, et 15 m }\SpecialCharTok{\textbackslash{}n}\StringTok{ autour des placettes d\textquotesingle{}inventaire pour chaque site d\textquotesingle{}etude"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/unnamed-chunk-10-1} \end{center}
 
 \normalsize
 

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Surfaces d’ouverture de la canopee | Modélisation de la régénération d’espèces semi-héliophiles de Guyane sur un gradient de perturbations naturelles et anthropiques</title>
+  <meta name="description" content="Bookdown template based on LaTeX memoir class" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Surfaces d’ouverture de la canopee | Modélisation de la régénération d’espèces semi-héliophiles de Guyane sur un gradient de perturbations naturelles et anthropiques" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://marineboudy.github.io/Stage_3A/images/logo.png" />
+  <meta property="og:description" content="Bookdown template based on LaTeX memoir class" />
+  <meta name="github-repo" content="MarineBoudy/Stage_3A" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Surfaces d’ouverture de la canopee | Modélisation de la régénération d’espèces semi-héliophiles de Guyane sur un gradient de perturbations naturelles et anthropiques" />
+  
+  <meta name="twitter:description" content="Bookdown template based on LaTeX memoir class" />
+  <meta name="twitter:image" content="https://marineboudy.github.io/Stage_3A/images/logo.png" />
+
+<meta name="author" content="Marine Boudy" />
+
+
+<meta name="date" content="2022-05-30" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="afdmanalyse-factorielle-de-données-mixtes.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script async defer src="https://hypothes.is/embed.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Memoire Marine Boudy</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="point-détape-3e-semaine-de-stage.html"><a href="point-détape-3e-semaine-de-stage.html"><i class="fa fa-check"></i><b>1</b> Point d’étape: 3<sup>e</sup> semaine de stage</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="point-détape-3e-semaine-de-stage.html"><a href="point-détape-3e-semaine-de-stage.html#problématique-du-stage"><i class="fa fa-check"></i><b>1.1</b> Problématique du stage</a></li>
+<li class="chapter" data-level="1.2" data-path="point-détape-3e-semaine-de-stage.html"><a href="point-détape-3e-semaine-de-stage.html#déroulé-du-stage"><i class="fa fa-check"></i><b>1.2</b> Déroulé du stage</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="création-de-variables-liées-aux-juveniles-inventoriés.html"><a href="création-de-variables-liées-aux-juveniles-inventoriés.html"><i class="fa fa-check"></i><b>2</b> Création de variables liées aux juveniles inventoriés</a></li>
+<li class="chapter" data-level="3" data-path="afdmanalyse-factorielle-de-données-mixtes.html"><a href="afdmanalyse-factorielle-de-données-mixtes.html"><i class="fa fa-check"></i><b>3</b> AFDM:Analyse factorielle de données mixtes</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="afdmanalyse-factorielle-de-données-mixtes.html"><a href="afdmanalyse-factorielle-de-données-mixtes.html#angélique"><i class="fa fa-check"></i><b>3.1</b> Angélique</a></li>
+<li class="chapter" data-level="3.2" data-path="afdmanalyse-factorielle-de-données-mixtes.html"><a href="afdmanalyse-factorielle-de-données-mixtes.html#variables-quantitatives"><i class="fa fa-check"></i><b>3.2</b> Variables quantitatives</a></li>
+<li class="chapter" data-level="3.3" data-path="afdmanalyse-factorielle-de-données-mixtes.html"><a href="afdmanalyse-factorielle-de-données-mixtes.html#variables-qualitatives"><i class="fa fa-check"></i><b>3.3</b> Variables qualitatives</a></li>
+<li class="chapter" data-level="3.4" data-path="afdmanalyse-factorielle-de-données-mixtes.html"><a href="afdmanalyse-factorielle-de-données-mixtes.html#individus"><i class="fa fa-check"></i><b>3.4</b> Individus</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="surfaces-douverture-de-la-canopee.html"><a href="surfaces-douverture-de-la-canopee.html"><i class="fa fa-check"></i><b>4</b> Surfaces d’ouverture de la canopee</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="surfaces-douverture-de-la-canopee.html"><a href="surfaces-douverture-de-la-canopee.html#comparaison-de-paracou-aux-autres-sites"><i class="fa fa-check"></i><b>4.1</b> Comparaison de paracou aux autres sites</a></li>
+<li class="chapter" data-level="4.2" data-path="surfaces-douverture-de-la-canopee.html"><a href="surfaces-douverture-de-la-canopee.html#comparaison-des-4-sites"><i class="fa fa-check"></i><b>4.2</b> Comparaison des 4 sites</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/MarineBoudy/Stage_3A" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modélisation de la régénération d’espèces semi-héliophiles de Guyane sur un gradient de perturbations naturelles et anthropiques</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div class = rmdreview>
+Ce gitbook est librement annotable à l'aide de  <b><a href="https://web.hypothes.is/">Hypothes.is</a></b>. N'hésiter à l'annoter soit en public ou au sein d'un groupe. Pour ajouter vos annotations, <span style="background-color: #3297FD; color: white"> sélectionner un zone de texte </span>  et cliquer <i class="h-icon-annotate"></i> sur le menu pop-up. Pour voir les annotations des autres lecteurs, cliquer dans  <i class="h-icon-chevron-left"></i> dans le coin supérieur droit de la page <i class="fa fa-arrow-circle-right  fa-rotate-315" aria-hidden="true"></i>
+</div>
+<div id="surfaces-douverture-de-la-canopee" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Surfaces d’ouverture de la canopee<a href="surfaces-douverture-de-la-canopee.html#surfaces-douverture-de-la-canopee" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>L’objectif est de comparer les surfaces de trouees intersectées dans un rayon de 5,10 et 15m autour des palcettes entre Paracou et les autres sites d’études, afin de rééquilibrer échantillonnage.</p>
+<p>On etudie les 3 varaibles suivantes:</p>
+<p>P5.S = surface de trouée localisée dans un rayon de 5m autour du centre de la placette d’inventaire
+P10.S = surface de trouée localisée dans un rayon de 10m autour du centre de la placette d’inventaire
+P15.S = surface de trouée localisée dans un rayon de 15m autour du centre de la placette d’inventaire</p>
+<p></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="surfaces-douverture-de-la-canopee.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb47-2"><a href="surfaces-douverture-de-la-canopee.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb47-3"><a href="surfaces-douverture-de-la-canopee.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb47-4"><a href="surfaces-douverture-de-la-canopee.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb47-5"><a href="surfaces-douverture-de-la-canopee.html#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(units)</span></code></pre></div>
+<p></p>
+<p></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="surfaces-douverture-de-la-canopee.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;vault/data/ouvertures.RData&quot;</span>)</span>
+<span id="cb48-2"><a href="surfaces-douverture-de-la-canopee.html#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="surfaces-douverture-de-la-canopee.html#cb48-3" aria-hidden="true" tabindex="-1"></a>ouvertures_histo <span class="ot">&lt;-</span>ouvertures <span class="sc">%&gt;%</span> </span>
+<span id="cb48-4"><a href="surfaces-douverture-de-la-canopee.html#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_units</span>() <span class="sc">%&gt;%</span> <span class="co"># les surfaces d&#39;intersection avec les trouee ont une unite(m2) ,on la retire pour le moment(probleme d&#39;affichage avec ggplot2)</span></span>
+<span id="cb48-5"><a href="surfaces-douverture-de-la-canopee.html#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Site =</span> <span class="fu">case_when</span>(Foret<span class="sc">==</span><span class="st">&quot;Paracou&quot;</span> <span class="sc">~</span> <span class="st">&quot;Paracou&quot;</span>,</span>
+<span id="cb48-6"><a href="surfaces-douverture-de-la-canopee.html#cb48-6" aria-hidden="true" tabindex="-1"></a>                           Parcelle<span class="sc">==</span><span class="st">&quot;HKO096&quot;</span> <span class="sc">~</span> <span class="st">&quot;HKO096&quot;</span>,</span>
+<span id="cb48-7"><a href="surfaces-douverture-de-la-canopee.html#cb48-7" aria-hidden="true" tabindex="-1"></a>                           Parcelle<span class="sc">==</span><span class="st">&quot;MAW745&quot;</span> <span class="sc">~</span> <span class="st">&quot;MAW&quot;</span>,</span>
+<span id="cb48-8"><a href="surfaces-douverture-de-la-canopee.html#cb48-8" aria-hidden="true" tabindex="-1"></a>                           Parcelle<span class="sc">==</span><span class="st">&quot;MAW744&quot;</span> <span class="sc">~</span> <span class="st">&quot;MAW&quot;</span>,</span>
+<span id="cb48-9"><a href="surfaces-douverture-de-la-canopee.html#cb48-9" aria-hidden="true" tabindex="-1"></a>                           Parcelle<span class="sc">==</span><span class="st">&quot;PAI74&quot;</span> <span class="sc">~</span> <span class="st">&quot;PAI74&quot;</span>))<span class="co"># variable &quot;Site d&#39;etude&quot; pour les facet_wrap</span></span>
+<span id="cb48-10"><a href="surfaces-douverture-de-la-canopee.html#cb48-10" aria-hidden="true" tabindex="-1"></a>ouvertures_histo[<span class="fu">is.na</span>(ouvertures_histo)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb48-11"><a href="surfaces-douverture-de-la-canopee.html#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-12"><a href="surfaces-douverture-de-la-canopee.html#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(ouvertures_histo))</span></code></pre></div>
+<pre><code>## [1] 39</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="surfaces-douverture-de-la-canopee.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ouvertures_histo)</span></code></pre></div>
+<pre><code>##  Nom_Placette              Foret        Parcelle  
+##  Length:485         Paracou   :164   HKO096 : 84  
+##  Class :character   Regina    :166   MAW744 : 84  
+##  Mode  :character   St Georges:155   PAI74  : 82  
+##                                      MAW745 : 71  
+##                                      9      : 17  
+##                                      (Other):108  
+##                                      NA&#39;s   : 39  
+##       P5.S            P10.S            P15.S        
+##  Min.   : 0.000   Min.   :  0.00   Min.   :  0.000  
+##  1st Qu.: 0.000   1st Qu.:  0.00   1st Qu.:  8.949  
+##  Median : 0.000   Median : 13.29   Median : 42.265  
+##  Mean   : 9.069   Mean   : 32.60   Mean   : 67.756  
+##  3rd Qu.:11.621   3rd Qu.: 50.22   3rd Qu.: 96.307  
+##  Max.   :78.303   Max.   :240.27   Max.   :461.620  
+##                                                     
+##      LP10.S            LP15.S           LG5.S      
+##  Min.   :  0.000   Min.   :  0.00   Min.   : 0.00  
+##  1st Qu.:  0.000   1st Qu.:  0.00   1st Qu.: 0.00  
+##  Median :  9.909   Median : 14.42   Median :20.05  
+##  Mean   : 24.192   Mean   : 33.67   Mean   :25.69  
+##  3rd Qu.: 35.814   3rd Qu.: 48.32   3rd Qu.:50.23  
+##  Max.   :168.324   Max.   :370.24   Max.   :73.36  
+##                                                    
+##      LG10.S           LG15.S         LG_L10.S     
+##  Min.   :  0.00   Min.   :  0.0   Min.   :  0.00  
+##  1st Qu.: 19.63   1st Qu.: 96.0   1st Qu.: 13.32  
+##  Median :104.89   Median :224.2   Median : 74.15  
+##  Mean   :100.94   Mean   :218.8   Mean   : 78.08  
+##  3rd Qu.:167.12   3rd Qu.:338.3   3rd Qu.:123.41  
+##  Max.   :272.24   Max.   :571.2   Max.   :235.28  
+##                                                   
+##     LG_L15.S          Site          
+##  Min.   :  0.00   Length:485        
+##  1st Qu.: 37.08   Class :character  
+##  Median : 92.84   Mode  :character  
+##  Mean   :109.78                     
+##  3rd Qu.:158.39                     
+##  Max.   :435.65                     
+## </code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="surfaces-douverture-de-la-canopee.html#cb52-1" aria-hidden="true" tabindex="-1"></a>ouvertures_paracou <span class="ot">&lt;-</span> ouvertures_histo <span class="sc">%&gt;%</span> </span>
+<span id="cb52-2"><a href="surfaces-douverture-de-la-canopee.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Foret<span class="sc">==</span><span class="st">&quot;Paracou&quot;</span>)<span class="co">#selection des données de Paracou</span></span>
+<span id="cb52-3"><a href="surfaces-douverture-de-la-canopee.html#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="surfaces-douverture-de-la-canopee.html#cb52-4" aria-hidden="true" tabindex="-1"></a>ouvertures_autres <span class="ot">&lt;-</span> ouvertures_histo <span class="sc">%&gt;%</span> </span>
+<span id="cb52-5"><a href="surfaces-douverture-de-la-canopee.html#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>Foret<span class="sc">==</span><span class="st">&quot;Paracou&quot;</span>)<span class="co">#selecction des données hors Paracou</span></span></code></pre></div>
+<p></p>
+<div id="comparaison-de-paracou-aux-autres-sites" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Comparaison de paracou aux autres sites<a href="surfaces-douverture-de-la-canopee.html#comparaison-de-paracou-aux-autres-sites" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p></p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="surfaces-douverture-de-la-canopee.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot comparant Paracou aux autres forets</span></span>
+<span id="cb53-2"><a href="surfaces-douverture-de-la-canopee.html#cb53-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> ouvertures_paracou) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> P5.S),</span>
+<span id="cb53-3"><a href="surfaces-douverture-de-la-canopee.html#cb53-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">boundary =</span> <span class="dv">0</span>, <span class="at">closed =</span> <span class="st">&quot;left&quot;</span>, <span class="at">colour =</span> <span class="dv">4</span>,</span>
+<span id="cb53-4"><a href="surfaces-douverture-de-la-canopee.html#cb53-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Paracou&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Effectif&quot;</span>) <span class="sc">+</span></span>
+<span id="cb53-5"><a href="surfaces-douverture-de-la-canopee.html#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lims</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">90</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">200</span>))</span>
+<span id="cb53-6"><a href="surfaces-douverture-de-la-canopee.html#cb53-6" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> ouvertures_autres) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> P5.S),</span>
+<span id="cb53-7"><a href="surfaces-douverture-de-la-canopee.html#cb53-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">boundary =</span> <span class="dv">0</span>, <span class="at">closed =</span> <span class="st">&quot;left&quot;</span>, <span class="at">colour =</span> <span class="dv">4</span>,</span>
+<span id="cb53-8"><a href="surfaces-douverture-de-la-canopee.html#cb53-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Autres sites&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Effectif&quot;</span>) <span class="sc">+</span></span>
+<span id="cb53-9"><a href="surfaces-douverture-de-la-canopee.html#cb53-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lims</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">90</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">200</span>))</span>
+<span id="cb53-10"><a href="surfaces-douverture-de-la-canopee.html#cb53-10" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> ouvertures_paracou) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> P10.S),</span>
+<span id="cb53-11"><a href="surfaces-douverture-de-la-canopee.html#cb53-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">boundary =</span> <span class="dv">0</span>, <span class="at">closed =</span> <span class="st">&quot;left&quot;</span>, <span class="at">colour =</span> <span class="dv">4</span>,</span>
+<span id="cb53-12"><a href="surfaces-douverture-de-la-canopee.html#cb53-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Paracou&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Effectif&quot;</span>) <span class="sc">+</span></span>
+<span id="cb53-13"><a href="surfaces-douverture-de-la-canopee.html#cb53-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lims</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">250</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">140</span>))</span>
+<span id="cb53-14"><a href="surfaces-douverture-de-la-canopee.html#cb53-14" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> ouvertures_autres) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> P10.S),</span>
+<span id="cb53-15"><a href="surfaces-douverture-de-la-canopee.html#cb53-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">boundary =</span> <span class="dv">0</span>, <span class="at">closed =</span> <span class="st">&quot;left&quot;</span>, <span class="at">colour =</span> <span class="dv">4</span>,</span>
+<span id="cb53-16"><a href="surfaces-douverture-de-la-canopee.html#cb53-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Autres sites&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Effectif&quot;</span>) <span class="sc">+</span></span>
+<span id="cb53-17"><a href="surfaces-douverture-de-la-canopee.html#cb53-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lims</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">250</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">140</span>))</span>
+<span id="cb53-18"><a href="surfaces-douverture-de-la-canopee.html#cb53-18" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> ouvertures_paracou) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> P15.S),</span>
+<span id="cb53-19"><a href="surfaces-douverture-de-la-canopee.html#cb53-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">boundary =</span> <span class="dv">0</span>, <span class="at">closed =</span> <span class="st">&quot;left&quot;</span>, <span class="at">colour =</span> <span class="dv">4</span>,</span>
+<span id="cb53-20"><a href="surfaces-douverture-de-la-canopee.html#cb53-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Paracou&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Effectif&quot;</span>) <span class="sc">+</span></span>
+<span id="cb53-21"><a href="surfaces-douverture-de-la-canopee.html#cb53-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lims</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">500</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">70</span>))</span>
+<span id="cb53-22"><a href="surfaces-douverture-de-la-canopee.html#cb53-22" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> ouvertures_autres) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> P15.S),</span>
+<span id="cb53-23"><a href="surfaces-douverture-de-la-canopee.html#cb53-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">boundary =</span> <span class="dv">0</span>, <span class="at">closed =</span> <span class="st">&quot;left&quot;</span>, <span class="at">colour =</span> <span class="dv">4</span>,</span>
+<span id="cb53-24"><a href="surfaces-douverture-de-la-canopee.html#cb53-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Autres sites&quot;</span>) <span class="sc">+</span> <span class="fu">lims</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb53-25"><a href="surfaces-douverture-de-la-canopee.html#cb53-25" aria-hidden="true" tabindex="-1"></a>    <span class="dv">500</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">70</span>))</span>
+<span id="cb53-26"><a href="surfaces-douverture-de-la-canopee.html#cb53-26" aria-hidden="true" tabindex="-1"></a><span class="co">#--- Plot de Paracou et autres sites mélangés(Regina, St Georges)</span></span>
+<span id="cb53-27"><a href="surfaces-douverture-de-la-canopee.html#cb53-27" aria-hidden="true" tabindex="-1"></a>(p1<span class="sc">/</span>p2 <span class="sc">|</span> p3<span class="sc">/</span>p5 <span class="sc">|</span> p4<span class="sc">/</span>p6) <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">&quot;Histogramme des surfaces de trouées situées dans un rayon de 5, 10, et 15 m autour des placettes d&#39;inventaire&quot;</span>,</span>
+<span id="cb53-28"><a href="surfaces-douverture-de-la-canopee.html#cb53-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Comparaison du site de Paracou aux inventaire sur les autres sites&quot;</span>)</span></code></pre></div>
+<p><img src="MyBook_files/figure-html/unnamed-chunk-9-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>
+rq:Les surfaces nulles, dont l’effectif est toujours très grand, écrasent les graphes
+La largeur des barres des histogrammes est de 1m2 pour P5.S,et de 5m2 pour P10.S et P15.S</p>
+<p>Le graphique ci-dessus montre qu’il existe un manque dans les grandes surfaces pour Paracou, ce qui est cohérent car l’exploitation est ancienne, les trouees sont donc de taille réduite.
+La repartition des ouvertures de moins de 100m dans le rayon de 10m est également différente.</p>
+</div>
+<div id="comparaison-des-4-sites" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Comparaison des 4 sites<a href="surfaces-douverture-de-la-canopee.html#comparaison-des-4-sites" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p></p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="surfaces-douverture-de-la-canopee.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">#--- Plot regroupant chaque site d&#39;étude</span></span>
+<span id="cb54-2"><a href="surfaces-douverture-de-la-canopee.html#cb54-2" aria-hidden="true" tabindex="-1"></a>p8 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> ouvertures_histo) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(P5.S),</span>
+<span id="cb54-3"><a href="surfaces-douverture-de-la-canopee.html#cb54-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">boundary =</span> <span class="dv">0</span>, <span class="at">closed =</span> <span class="st">&quot;left&quot;</span>, <span class="at">colour =</span> <span class="dv">4</span>,</span>
+<span id="cb54-4"><a href="surfaces-douverture-de-la-canopee.html#cb54-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Site, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Effectif&quot;</span>)</span>
+<span id="cb54-5"><a href="surfaces-douverture-de-la-canopee.html#cb54-5" aria-hidden="true" tabindex="-1"></a>p9 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> ouvertures_histo) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(P10.S),</span>
+<span id="cb54-6"><a href="surfaces-douverture-de-la-canopee.html#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">boundary =</span> <span class="dv">0</span>, <span class="at">closed =</span> <span class="st">&quot;left&quot;</span>, <span class="at">colour =</span> <span class="dv">4</span>,</span>
+<span id="cb54-7"><a href="surfaces-douverture-de-la-canopee.html#cb54-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Site, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Effectif&quot;</span>)</span>
+<span id="cb54-8"><a href="surfaces-douverture-de-la-canopee.html#cb54-8" aria-hidden="true" tabindex="-1"></a>p10 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> ouvertures_histo) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(P15.S),</span>
+<span id="cb54-9"><a href="surfaces-douverture-de-la-canopee.html#cb54-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">boundary =</span> <span class="dv">0</span>, <span class="at">closed =</span> <span class="st">&quot;left&quot;</span>, <span class="at">colour =</span> <span class="dv">4</span>,</span>
+<span id="cb54-10"><a href="surfaces-douverture-de-la-canopee.html#cb54-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Site, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Effectif&quot;</span>)</span>
+<span id="cb54-11"><a href="surfaces-douverture-de-la-canopee.html#cb54-11" aria-hidden="true" tabindex="-1"></a>p8 <span class="sc">+</span> p9 <span class="sc">+</span> p10 <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">&quot;Histogramme des surfaces de trouées situées dans un rayon de 5, 10, et 15 m </span><span class="sc">\n</span><span class="st"> autour des placettes d&#39;inventaire pour chaque site d&#39;etude&quot;</span>)</span></code></pre></div>
+<p><img src="MyBook_files/figure-html/unnamed-chunk-10-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="afdmanalyse-factorielle-de-données-mixtes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MyBook.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

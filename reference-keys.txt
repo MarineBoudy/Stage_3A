@@ -2,4 +2,12 @@ fig:planning
 point-détape-3e-semaine-de-stage
 problématique-du-stage
 déroulé-du-stage
-toutes-les-variables
+création-de-variables-liées-aux-juveniles-inventoriés
+afdmanalyse-factorielle-de-données-mixtes
+angélique
+variables-quantitatives
+variables-qualitatives
+individus
+surfaces-douverture-de-la-canopee
+comparaison-de-paracou-aux-autres-sites
+comparaison-des-4-sites
