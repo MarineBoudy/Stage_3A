@@ -82,7 +82,7 @@ theme_mb <- function(base_size = 60) {
 
 ## Comparaison de paracou aux autres sites
 
-```{r fig.height=70,fig.width=50}
+```{r fig.height=70, fig.width=50}
 #Plot comparant Paracou aux autres forets
 
 p1<-ggplot(data = ouvertures_paracou) +
@@ -152,7 +152,7 @@ La repartition des ouvertures de moins de 100m dans le rayon de 10m est égaleme
 
 ## Comparaison des 4 sites
 
-```{r , fig.height=70,fig.width=50}
+```{r , fig.height=70, fig.width=50}
 #--- Plot regroupant chaque site d'étude
 
 p8<- ggplot(data = ouvertures_histo) +
