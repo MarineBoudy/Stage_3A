@@ -2,14 +2,16 @@
 title: "Surfaces d'ouverture"
 author: "Marine Boudy"
 date: '2022-05-30'
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 # Surfaces d'ouverture de la canopee
 
 L'objectif est de comparer les surfaces de trouees intersectées dans un rayon de 5,10 et 15m autour des palcettes entre Paracou et les autres sites d'études, afin de rééquilibrer échantillonnage.
 
-On etudie les 3 varaibles suivantes:
+On etudie les 3 variables suivantes:
 
 P5.S = surface de trouée localisée dans un rayon de 5m autour du centre de la placette d'inventaire
 P10.S = surface de trouée localisée dans un rayon de 10m autour du centre de la placette d'inventaire
@@ -39,8 +41,6 @@ ouvertures_histo <-ouvertures %>%
                            Parcelle=="PAI74" ~ "PAI74"))# variable "Site d'etude" pour les facet_wrap
 ouvertures_histo[is.na(ouvertures_histo)] <- 0
 
-sum(is.na(ouvertures_histo))
-summary(ouvertures_histo)
 
 ouvertures_paracou <- ouvertures_histo %>% 
   filter(Foret=="Paracou")#selection des données de Paracou
@@ -51,54 +51,96 @@ ouvertures_autres <- ouvertures_histo %>%
 ```
 
 
+```{r}
+####theme plot
+
+theme_mb <- function(base_size = 60) {
+  theme_bw(base_size = base_size) %+replace%
+    theme(
+      # L'ensemble de la figure
+      plot.title = element_text(size = rel(1), face = "bold", margin = margin(0,0,5,0), hjust = 0),
+      # Zone où se situe le graphique
+      panel.grid.minor = element_blank(),
+      panel.border = element_blank(),
+      # Les axes
+      axis.title = element_text(size = rel(0.85), face = "bold"),
+      axis.text = element_text(size = rel(0.70), face = "bold"),
+      axis.line = element_line(color = "black", arrow = arrow(length = unit(0.3, "lines"), type = "closed")),
+      #La légende
+      legend.title = element_text(size = rel(0.85), face = "bold"),
+      legend.text = element_text(size = rel(0.70), face = "bold"),
+      legend.key = element_rect(fill = "transparent", colour = NA),
+      legend.key.size = unit(1.5, "lines"),
+      legend.background = element_rect(fill = "transparent", colour = NA),
+      # Les étiquettes dans le cas d'un facetting
+      strip.background = element_rect(fill = "#7AC5CD", color = "#7AC5CD"),
+      strip.text = element_text(size = rel(0.85), face = "bold", color = "white", margin = margin(5,0,5,0))
+      )
+}
+```
+
+
 ## Comparaison de paracou aux autres sites
 
-```{r}
+```{r fig.height=70,fig.width=50}
 #Plot comparant Paracou aux autres forets
 
 p1<-ggplot(data = ouvertures_paracou) +
-  geom_histogram(aes(x = P5.S),binwidth=1, boundary=0, closed ="left",colour = 4, fill = "white")+
+  geom_histogram(aes(x = P5.S),size=2.5, binwidth=1, boundary=0, closed ="left",colour = 4, fill = "white")+
   ggtitle("Paracou")+
   ylab("Effectif")+
-  lims(x = c(-1, 90), y = c(0, 200))
-
+  lims(x = c(-1, 90), y = c(0, 200))+
+  theme_mb()
 
 p2<-ggplot(data = ouvertures_autres) +
-  geom_histogram(aes(x = P5.S),binwidth=1,boundary=0,closed ="left", colour = 4, fill = "white")+
+  geom_histogram(aes(x = P5.S),size=2.5,binwidth=1,boundary=0,closed ="left", colour = 4, fill = "white")+
   ggtitle("Autres sites") +
   ylab("Effectif")+
-  lims(x = c(-1, 90), y = c(0, 200))
+  lims(x = c(-1, 90), y = c(0, 200))+
+  theme_mb()
   
 
 
 p3 <- ggplot(data = ouvertures_paracou) +
-  geom_histogram(aes(x = P10.S),binwidth=5, boundary=0,closed ="left",colour = 4, fill = "white")+
+  geom_histogram(aes(x = P10.S),size=2.5,binwidth=5, boundary=0,closed ="left",colour = 4, fill = "white")+
   ggtitle("Paracou") +
   ylab("Effectif")+
-  lims(x = c(-1, 250), y = c(0, 140))
+  lims(x = c(-1, 250), y = c(0, 140))+
+  theme_mb()
   
 p5 <- ggplot(data = ouvertures_autres) +
-  geom_histogram(aes(x = P10.S),binwidth=5, boundary=0, closed ="left",colour = 4, fill = "white")+
+  geom_histogram(aes(x = P10.S),size=2.5,binwidth=5, boundary=0, closed ="left",colour = 4, fill = "white")+
   ggtitle("Autres sites") +
   ylab("Effectif")+
-  lims(x = c(-1, 250), y = c(0, 140))
+  lims(x = c(-1, 250), y = c(0, 140))+
+  theme_mb()
 
 
 p4 <- ggplot(data = ouvertures_paracou) +
-  geom_histogram(aes(x = P15.S),binwidth=5, boundary=0,closed ="left",colour = 4, fill = "white")+
+  geom_histogram(aes(x = P15.S),size=2.5,binwidth=5, boundary=0,closed ="left",colour = 4, fill = "white")+
   ggtitle("Paracou") +
   ylab("Effectif")+
-  lims(x = c(-1, 500), y = c(-1,70))
+  lims(x = c(-1, 500), y = c(-1,70))+
+  theme_mb()
 
 
 p6 <- ggplot(data = ouvertures_autres) +
-  geom_histogram(aes(x = P15.S),binwidth=5,boundary=0, closed ="left",colour = 4, fill = "white")+
+  geom_histogram(aes(x = P15.S),size=2.5,binwidth=5,boundary=0, closed ="left",colour = 4, fill = "white")+
   ggtitle("Autres sites") +
-  lims(x = c(-1, 500), y = c(-1,70)) 
+  ylab("Effectif")+
+  lims(x = c(-1, 500), y = c(-1,70))+
+  theme_mb() 
 
 
 #--- Plot de Paracou et autres sites mélangés(Regina, St Georges)
-(p1 / p2 | p3 /p5 | p4/p6) +  plot_annotation ( title = "Histogramme des surfaces de trouées situées dans un rayon de 5, 10, et 15 m autour des placettes d'inventaire",subtitle = "Comparaison du site de Paracou aux inventaire sur les autres sites")
+# (p1 / p2 | p3 /p5 | p4/p6) +  plot_annotation ( title = "Histogramme des surfaces de trouées situées dans un rayon de 5, 10, et 15 m autour des placettes d'inventaire",subtitle = "Comparaison du site de Paracou aux inventaire sur les autres sites")
+# 
+
+(p1/p2)+plot_annotation(title = "Comparaison des surfaces de trouées situées dans un rayon de 5 m autour des placettes d'inventaire entre Paracou \n et les autres sites d'étude",theme = theme_mb() ) 
+
+(p3/p5)+plot_annotation(title = "Comparaison des surfaces de trouées situées dans un rayon de 10 m autour des placettes d'inventaire entre Paracou \n et les autres sites d'étude",theme = theme_mb() ) 
+
+(p4/p6)+plot_annotation(title = "Comparaison des surfaces de trouées situées dans un rayon de 15 m autour des placettes d'inventaire entre Paracou \n et les autres sites d'étude",theme = theme_mb() ) 
 
 
 ```
@@ -110,27 +152,36 @@ La repartition des ouvertures de moins de 100m dans le rayon de 10m est égaleme
 
 ## Comparaison des 4 sites
 
-```{r}
+```{r , fig.height=70,fig.width=50}
 #--- Plot regroupant chaque site d'étude
 
 p8<- ggplot(data = ouvertures_histo) +
-  geom_histogram(aes(P5.S),binwidth=1,boundary=0, closed ="left", colour = 4, fill = "white")+
-  facet_wrap(~ Site,ncol=1)+
-  ylab("Effectif")
+  geom_histogram(aes(P5.S),size=2.5,binwidth=1,boundary=0, closed ="left", colour = 4, fill = "white")+
+  facet_wrap(~ Site,ncol=1) +
+  ylab("Effectif")+
+  theme_mb()
 
 
 p9<- ggplot(data = ouvertures_histo) +
-  geom_histogram(aes(P10.S),binwidth=5,boundary=0, closed ="left", colour = 4, fill = "white")+
+  geom_histogram(aes(P10.S),size=2.5,binwidth=5,boundary=0, closed ="left", colour = 4, fill = "white")+
   facet_wrap(~ Site,ncol=1)+
-  ylab("Effectif")
+  ylab("Effectif")+
+  theme_mb()
 
 
 p10<- ggplot(data = ouvertures_histo) +
-  geom_histogram(aes(P15.S),binwidth=5,boundary=0, closed ="left", colour = 4, fill = "white")+
+  geom_histogram(aes(P15.S),size=2.5,binwidth=5,boundary=0, closed ="left", colour = 4, fill = "white")+
   facet_wrap(~ Site,ncol=1)+
-  ylab("Effectif")
+  ylab("Effectif")+
+  theme_mb()
 
-p8 + p9 + p10 +plot_annotation(
-  title = "Histogramme des surfaces de trouées situées dans un rayon de 5, 10, et 15 m \n autour des placettes d'inventaire pour chaque site d'etude")
+# p8 + p9 + p10 +plot_annotation(
+#   title = "Histogramme des surfaces de trouées situées dans un rayon de 5, 10, et 15 m \n autour des placettes d'inventaire pour chaque site d'etude")
+
+p8+plot_annotation( title = "Histogramme des surfaces de trouées situées dans un rayon de 5 m \n  autour des placettes d'inventaire pour chaque site d'etude",theme= theme_mb())
+
+p9+plot_annotation(title = "Histogramme des surfaces de trouées situées dans un rayon de 10 m \n autour des placettes d'inventaire pour chaque site d'etude",theme= theme_mb())
+
+p10+plot_annotation(title = "Histogramme des surfaces de trouées situées dans un rayon de 15 m \n autour des placettes d'inventaire pour chaque site d'etude",theme= theme_mb())
 ```
 
