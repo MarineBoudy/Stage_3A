@@ -82,8 +82,9 @@ theme_mb <- function(base_size = 60) {
 
 ## Comparaison de paracou aux autres sites
 
-```{r fig.height=70, fig.width=50}
+```{r }
 #Plot comparant Paracou aux autres forets
+####theme plot
 
 p1<-ggplot(data = ouvertures_paracou) +
   geom_histogram(aes(x = P5.S),size=2.5, binwidth=1, boundary=0, closed ="left",colour = 4, fill = "white")+
@@ -131,28 +132,6 @@ p6 <- ggplot(data = ouvertures_autres) +
   lims(x = c(-1, 500), y = c(-1,70))+
   theme_mb() 
 
-
-#--- Plot de Paracou et autres sites mélangés(Regina, St Georges)
-# (p1 / p2 | p3 /p5 | p4/p6) +  plot_annotation ( title = "Histogramme des surfaces de trouées situées dans un rayon de 5, 10, et 15 m autour des placettes d'inventaire",subtitle = "Comparaison du site de Paracou aux inventaire sur les autres sites")
-# 
-
-(p1/p2)+plot_annotation(title = "Comparaison des surfaces de trouées situées dans un rayon de 5 m autour des placettes d'inventaire entre Paracou \n et les autres sites d'étude",theme = theme_mb() ) 
-
-(p3/p5)+plot_annotation(title = "Comparaison des surfaces de trouées situées dans un rayon de 10 m autour des placettes d'inventaire entre Paracou \n et les autres sites d'étude",theme = theme_mb() ) 
-
-(p4/p6)+plot_annotation(title = "Comparaison des surfaces de trouées situées dans un rayon de 15 m autour des placettes d'inventaire entre Paracou \n et les autres sites d'étude",theme = theme_mb() ) 
-
-
-```
-rq:Les surfaces nulles, dont l'effectif est toujours très grand, écrasent les graphes
-La largeur des barres des histogrammes est de 1m2 pour P5.S,et de 5m2 pour P10.S et P15.S
-
-Le graphique ci-dessus montre qu'il existe un manque dans les grandes surfaces pour Paracou, ce qui est cohérent car l'exploitation est ancienne, les trouees sont donc de taille réduite.
-La repartition des ouvertures de moins de 100m dans le rayon de 10m est également différente.
-
-## Comparaison des 4 sites
-
-```{r , fig.height=70, fig.width=50}
 #--- Plot regroupant chaque site d'étude
 
 p8<- ggplot(data = ouvertures_histo) +
@@ -175,6 +154,36 @@ p10<- ggplot(data = ouvertures_histo) +
   ylab("Effectif")+
   theme_mb()
 
+
+```
+
+
+## Plots
+
+```{r fig.height=50, fig.width=50}
+
+
+#--- Plot de Paracou et autres sites mélangés(Regina, St Georges)
+# (p1 / p2 | p3 /p5 | p4/p6) +  plot_annotation ( title = "Histogramme des surfaces de trouées situées dans un rayon de 5, 10, et 15 m autour des placettes d'inventaire",subtitle = "Comparaison du site de Paracou aux inventaire sur les autres sites")
+# 
+
+(p1/p2)+plot_annotation(title = "Comparaison des surfaces de trouées situées dans un rayon de 5 m autour des placettes d'inventaire entre Paracou \n et les autres sites d'étude",theme = theme_mb() ) 
+
+(p3/p5)+plot_annotation(title = "Comparaison des surfaces de trouées situées dans un rayon de 10 m autour des placettes d'inventaire entre Paracou \n et les autres sites d'étude",theme = theme_mb() ) 
+
+(p4/p6)+plot_annotation(title = "Comparaison des surfaces de trouées situées dans un rayon de 15 m autour des placettes d'inventaire entre Paracou \n et les autres sites d'étude",theme = theme_mb() ) 
+
+```
+
+rq:Les surfaces nulles, dont l'effectif est toujours très grand, écrasent les graphes
+La largeur des barres des histogrammes est de 1m2 pour P5.S,et de 5m2 pour P10.S et P15.S
+
+Le graphique ci-dessus montre qu'il existe un manque dans les grandes surfaces pour Paracou, ce qui est cohérent car l'exploitation est ancienne, les trouees sont donc de taille réduite.
+La repartition des ouvertures de moins de 100m dans le rayon de 10m est également différente.
+
+## Comparaison des 4 sites
+
+```{r fig.height=50, fig.width=50}
 # p8 + p9 + p10 +plot_annotation(
 #   title = "Histogramme des surfaces de trouées situées dans un rayon de 5, 10, et 15 m \n autour des placettes d'inventaire pour chaque site d'etude")
 
@@ -183,5 +192,7 @@ p8+plot_annotation( title = "Histogramme des surfaces de trouées situées dans 
 p9+plot_annotation(title = "Histogramme des surfaces de trouées situées dans un rayon de 10 m \n autour des placettes d'inventaire pour chaque site d'etude",theme= theme_mb())
 
 p10+plot_annotation(title = "Histogramme des surfaces de trouées situées dans un rayon de 15 m \n autour des placettes d'inventaire pour chaque site d'etude",theme= theme_mb())
+
+
 ```
 
